@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Linkedin, GraduationCap, Building } from "lucide-react";
+import { Linkedin, GraduationCap, Building, Instagram } from "lucide-react";
 
 const founders = [
   {
@@ -8,6 +8,7 @@ const founders = [
     description:
       "IIT graduate and practicing Vedic Astrologer. Has developed proprietary techniques honed over thousands of cases, bringing ancient wisdom into the AI age.",
     linkedin: "https://www.linkedin.com/in/arana/",
+    instagram: "https://instagram.com/agni108_",
     credentials: ["IIT Graduate", "Vedic Astrologer", "1000+ Cases"],
     icon: GraduationCap,
   },
@@ -80,15 +81,28 @@ const Founders = () => {
                 ))}
               </div>
 
-              <a
-                href={founder.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-body font-medium transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
-                Connect on LinkedIn
-              </a>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href={founder.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-body font-medium transition-colors"
+                >
+                  <Linkedin className="w-5 h-5" />
+                  LinkedIn
+                </a>
+                {founder.instagram && (
+                  <a
+                    href={founder.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-body font-medium transition-colors"
+                  >
+                    <Instagram className="w-5 h-5" />
+                    Instagram
+                  </a>
+                )}
+              </div>
             </motion.div>
           ))}
         </div>
