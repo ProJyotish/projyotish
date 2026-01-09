@@ -18,7 +18,7 @@ const founders = [
     description:
       "Built tech at Amazon and Freecharge. Brings years of experience building LLM models across sectors, ensuring InstaJyotish delivers accurate and instant insights.",
     linkedin: "https://www.linkedin.com/in/nishant-kyal/",
-    credentials: ["Ex-Amazon", "Ex-Freecharge", "LLM Expert"],
+    credentials: ["IIT Alumni", "Ex-Amazon", "Ex-Freecharge", "LLM Expert"],
     icon: Building,
   },
 ];
