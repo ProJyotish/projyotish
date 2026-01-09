@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 import logo from "@/assets/instajyotish-logo.jpeg";
 
 const navLinks = [
-  { name: "How It Works", href: "#how-it-works" },
-  { name: "Use Cases", href: "#use-cases" },
-  { name: "Pricing", href: "#pricing" },
-  { name: "Team", href: "#founders" },
+  { name: "How It Works", href: "/#how-it-works" },
+  { name: "Use Cases", href: "/#use-cases" },
+  { name: "Pricing", href: "/#pricing" },
+  { name: "Team", href: "/#founders" },
 ];
 
 const Navbar = () => {
@@ -18,7 +19,7 @@ const Navbar = () => {
       <div className="container px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2">
+          <Link to="/" className="flex items-center gap-2">
             <img
               src={logo}
               alt="InstaJyotish"
@@ -27,7 +28,7 @@ const Navbar = () => {
             <span className="font-display text-lg font-semibold text-foreground hidden sm:block">
               InstaJyotish
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -41,7 +42,7 @@ const Navbar = () => {
               </a>
             ))}
             <a
-              href="#pricing"
+              href="/#pricing"
               className="px-5 py-2 bg-primary text-primary-foreground font-body font-medium text-sm rounded-lg hover:bg-primary/90 transition-colors"
             >
               Get Started
@@ -79,7 +80,7 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="#pricing"
+                href="/#pricing"
                 onClick={() => setIsOpen(false)}
                 className="px-5 py-3 bg-primary text-primary-foreground font-body font-medium text-center rounded-lg"
               >

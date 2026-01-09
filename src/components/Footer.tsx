@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="flex flex-col gap-8">
           {/* Top row: Logo, Navigation, Legal */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-3">
               <img
                 src={logo}
                 alt="InstaJyotish"
@@ -17,29 +17,29 @@ const Footer = () => {
               <span className="font-display text-xl font-semibold text-foreground">
                 InstaJyotish
               </span>
-            </div>
+            </Link>
 
             <nav className="flex flex-wrap justify-center gap-6">
               <a
-                href="#how-it-works"
+                href="/#how-it-works"
                 className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 How It Works
               </a>
               <a
-                href="#use-cases"
+                href="/#use-cases"
                 className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 Use Cases
               </a>
               <a
-                href="#pricing"
+                href="/#pricing"
                 className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 Pricing
               </a>
               <a
-                href="#founders"
+                href="/#founders"
                 className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors"
               >
                 Team
