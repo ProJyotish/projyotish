@@ -5,7 +5,7 @@ const steps = [
   {
     icon: MessageSquare,
     title: "Connect via WhatsApp or iMessage",
-    description: "Simply message InstaJyotish on your preferred platform. No app download needed.",
+    description: "Simply message ProJyotish on your preferred platform. No app download needed.",
   },
   {
     icon: Calendar,

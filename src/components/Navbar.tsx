@@ -22,7 +22,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center gap-2">
             <img
               src={logo}
-              alt="InstaJyotish"
+              alt="ProJyotish"
               className="w-9 h-9 rounded-lg"
             />
             <span className="font-display text-lg font-semibold text-foreground hidden sm:block">

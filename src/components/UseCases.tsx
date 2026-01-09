@@ -61,7 +61,7 @@ const UseCases = () => {
             What Can You Ask?
           </h2>
           <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
-            From daily timing optimization to deep karmic insights, InstaJyotish guides you through life's decisions
+            From daily timing optimization to deep karmic insights, ProJyotish guides you through life's decisions
           </p>
         </motion.div>
 

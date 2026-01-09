@@ -25,7 +25,7 @@ const CTA = () => {
           </h2>
           
           <p className="font-body text-lg text-primary-foreground/80 mb-8 max-w-xl mx-auto">
-            Connect with InstaJyotish on WhatsApp or iMessage and discover the cosmic guidance 
+            Connect with ProJyotish on WhatsApp or iMessage and discover the cosmic guidance 
             that awaits you.
           </p>
 
