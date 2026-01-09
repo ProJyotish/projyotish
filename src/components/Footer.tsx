@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "@/assets/instajyotish-logo.jpeg";
+import logo from "@/assets/projyotish-logo.jpg";
 
 const Footer = () => {
   return (
@@ -11,11 +11,11 @@ const Footer = () => {
             <Link to="/" className="flex items-center gap-3">
               <img
                 src={logo}
-                alt="InstaJyotish"
+                alt="ProJyotish"
                 className="w-10 h-10 rounded-lg"
               />
               <span className="font-display text-xl font-semibold text-foreground">
-                InstaJyotish
+                ProJyotish
               </span>
             </Link>
 
@@ -65,7 +65,7 @@ const Footer = () => {
           {/* Bottom row: Copyright */}
           <div className="border-t border-border pt-6 text-center">
             <p className="font-body text-sm text-muted-foreground">
-              © 2026 InstaJyotish. All rights reserved.
+              © 2026 ProJyotish. All rights reserved.
             </p>
           </div>
         </div>

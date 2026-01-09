@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { MessageCircle, Sparkles } from "lucide-react";
-import logo from "@/assets/instajyotish-logo.jpeg";
+import logo from "@/assets/projyotish-logo.jpg";
 
 const Hero = () => {
   return (
@@ -23,7 +23,7 @@ const Hero = () => {
           >
             <img
               src={logo}
-              alt="InstaJyotish Logo"
+              alt="ProJyotish Logo"
               className="w-40 h-40 md:w-52 md:h-52 mx-auto rounded-2xl shadow-elevated animate-float"
             />
           </motion.div>

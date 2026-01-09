@@ -26,7 +26,7 @@ const PrivacyPolicy = () => {
                   1. Introduction
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  InstaJyotish ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our AI-powered Vedic astrology services through WhatsApp, iMessage, or our website.
+                  ProJyotish ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our AI-powered Vedic astrology services through WhatsApp, iMessage, or our website.
                 </p>
               </section>
 
@@ -151,7 +151,7 @@ const PrivacyPolicy = () => {
                   <li><strong>Withdraw Consent:</strong> Revoke previously given consent</li>
                 </ul>
                 <p className="text-muted-foreground leading-relaxed mt-4">
-                  To exercise these rights, contact us at privacy@instajyotish.com
+                  To exercise these rights, contact us at privacy@projyotish.com
                 </p>
               </section>
 
@@ -216,8 +216,8 @@ const PrivacyPolicy = () => {
                   For privacy-related inquiries or to exercise your rights:
                 </p>
                 <div className="mt-4 text-foreground space-y-2">
-                  <p><strong>Email:</strong> privacy@instajyotish.com</p>
-                  <p><strong>Support:</strong> support@instajyotish.com</p>
+                  <p><strong>Email:</strong> privacy@projyotish.com</p>
+                  <p><strong>Support:</strong> support@projyotish.com</p>
                 </div>
               </section>
 
@@ -230,7 +230,7 @@ const PrivacyPolicy = () => {
                 </p>
                 <div className="mt-4 text-foreground space-y-2">
                   <p><strong>Name:</strong> Abhimanyu Arora</p>
-                  <p><strong>Email:</strong> grievance@instajyotish.com</p>
+                  <p><strong>Email:</strong> grievance@projyotish.com</p>
                 </div>
               </section>
             </div>

@@ -26,7 +26,7 @@ const TermsAndConditions = () => {
                   1. Acceptance of Terms
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  By accessing and using InstaJyotish services through WhatsApp, iMessage, or any other platform, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our services.
+                  By accessing and using ProJyotish services through WhatsApp, iMessage, or any other platform, you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our services.
                 </p>
               </section>
 
@@ -35,7 +35,7 @@ const TermsAndConditions = () => {
                   2. Description of Services
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  InstaJyotish provides AI-powered Vedic astrology services including but not limited to:
+                  ProJyotish provides AI-powered Vedic astrology services including but not limited to:
                 </p>
                 <ul className="list-disc pl-6 text-muted-foreground space-y-2 mt-4">
                   <li>Personalized daily muhurta (auspicious timing) recommendations</li>
@@ -59,7 +59,7 @@ const TermsAndConditions = () => {
                   4. Subscription Plans and Payments
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  InstaJyotish offers various subscription tiers (Trial, Flow, Karma) with different features and pricing. By subscribing to a paid plan:
+                  ProJyotish offers various subscription tiers (Trial, Flow, Karma) with different features and pricing. By subscribing to a paid plan:
                 </p>
                 <ul className="list-disc pl-6 text-muted-foreground space-y-2 mt-4">
                   <li>You authorize us to charge the applicable fees to your chosen payment method</li>
@@ -83,7 +83,7 @@ const TermsAndConditions = () => {
                   6. Messaging Services (WhatsApp/iMessage)
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  By opting in to receive messages from InstaJyotish:
+                  By opting in to receive messages from ProJyotish:
                 </p>
                 <ul className="list-disc pl-6 text-muted-foreground space-y-2 mt-4">
                   <li>You consent to receive service-related messages including daily recommendations</li>
@@ -99,7 +99,7 @@ const TermsAndConditions = () => {
                   7. Disclaimer of Warranties
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  InstaJyotish services are provided for informational and entertainment purposes only. Astrological guidance should not be considered as a substitute for professional advice in medical, legal, financial, or other matters. We make no guarantees about the accuracy of predictions or outcomes.
+                  ProJyotish services are provided for informational and entertainment purposes only. Astrological guidance should not be considered as a substitute for professional advice in medical, legal, financial, or other matters. We make no guarantees about the accuracy of predictions or outcomes.
                 </p>
               </section>
 
@@ -108,7 +108,7 @@ const TermsAndConditions = () => {
                   8. Limitation of Liability
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  InstaJyotish and its founders shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services. Our total liability shall not exceed the amount paid by you for the services in the 12 months preceding the claim.
+                  ProJyotish and its founders shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services. Our total liability shall not exceed the amount paid by you for the services in the 12 months preceding the claim.
                 </p>
               </section>
 
@@ -117,7 +117,7 @@ const TermsAndConditions = () => {
                   9. Intellectual Property
                 </h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  All content, algorithms, methodologies, and materials provided through InstaJyotish are proprietary and protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without express written permission.
+                  All content, algorithms, methodologies, and materials provided through ProJyotish are proprietary and protected by intellectual property laws. You may not reproduce, distribute, or create derivative works without express written permission.
                 </p>
               </section>
 
@@ -156,7 +156,7 @@ const TermsAndConditions = () => {
                   For questions about these Terms and Conditions, please contact us at:
                 </p>
                 <p className="text-foreground mt-4">
-                  <strong>Email:</strong> support@instajyotish.com
+                  <strong>Email:</strong> support@projyotish.com
                 </p>
               </section>
             </div>

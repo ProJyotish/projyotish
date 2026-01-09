@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "@/assets/instajyotish-logo.jpeg";
+import logo from "@/assets/projyotish-logo.jpg";
 
 const navLinks = [
   { name: "How It Works", href: "/#how-it-works" },
@@ -26,7 +26,7 @@ const Navbar = () => {
               className="w-9 h-9 rounded-lg"
             />
             <span className="font-display text-lg font-semibold text-foreground hidden sm:block">
-              InstaJyotish
+              ProJyotish
             </span>
           </Link>
 
