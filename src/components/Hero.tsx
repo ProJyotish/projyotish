@@ -47,8 +47,8 @@ const Hero = () => {
             className="font-body text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed"
           >
             AI-powered Vedic Astrology on WhatsApp & iMessage. Get personalized 
-            muhurtas for key decisions and deep karmic insights — trained on 
-            traditional knowledge and thousands of real cases.
+            muhurtas for key decisions and deep karmic insights — trained by 
+            IITian Vedic Astrologer on ancient knowledge and thousands of real cases.
           </motion.p>
 
           {/* CTA Buttons */}
