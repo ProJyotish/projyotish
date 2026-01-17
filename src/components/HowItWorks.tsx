@@ -43,7 +43,7 @@ const HowItWorks = () => {
             Trained by <span className="text-primary font-semibold">Abhimanyu Rana</span>, an IIT Delhi B.Tech graduate turned professional Vedic astrologer, ProJyotish harnesses authentic Vedic Jyotish principles alongside innovative techniques. The result? Spot-on predictions with unmatched accuracy, every time.
           </p>
           <p className="font-body text-lg text-primary/80 mt-4 italic">
-            It's like having an elite astrologer on call — a luxury once reserved for the ultra-wealthy and influential.
+            It's like having an elite astrologer on call - a luxury once reserved for the ultra-wealthy and influential.
           </p>
         </motion.div>
 
@@ -99,7 +99,7 @@ const HowItWorks = () => {
             </h3>
           </div>
           <p className="font-body text-lg text-muted-foreground leading-relaxed">
-            It's incredibly straightforward. Just send a <span className="text-primary font-semibold">"Hi"</span> to ProJyotish on WhatsApp, and you're in. From there, share your queries, birth details, or any questions — we handle the rest with expert precision.
+            It's incredibly straightforward. Just send a <span className="text-primary font-semibold">"Hi"</span> to ProJyotish on WhatsApp, and you're in. From there, share your queries, birth details, or any questions - we handle the rest with expert precision.
           </p>
         </motion.div>
 
@@ -121,10 +121,10 @@ const HowItWorks = () => {
           </h3>
           <blockquote className="font-body text-lg text-muted-foreground italic border-l-4 border-primary/30 pl-6 mb-6 text-left">
             "I will now describe the Shastra for the benefit of all."
-            <footer className="text-sm text-primary/70 mt-2 not-italic">— Sage Parashara to Maitreya, Brihat Parashara Hora Shastra</footer>
+            <footer className="text-sm text-primary/70 mt-2 not-italic">- Sage Parashara to Maitreya, Brihat Parashara Hora Shastra</footer>
           </blockquote>
           <p className="font-body text-muted-foreground leading-relaxed">
-            We embody this timeless ethos. Technology is our bridge to democratize this ancient wisdom, making elite Vedic astrology accessible to everyone — not just the privileged few. We're transparent about being a high-quality blend of software and AI, because true empowerment starts with trust.
+            We embody this timeless ethos. Technology is our bridge to democratize this ancient wisdom, making elite Vedic astrology accessible to everyone - not just the privileged few. We're transparent about being a high-quality blend of software and AI, because true empowerment starts with trust.
           </p>
         </motion.div>
       </div>
