@@ -77,6 +77,9 @@ const Pricing = () => {
             <button className="w-full py-3 px-6 rounded-xl font-body font-semibold transition-all duration-300 bg-primary-foreground text-primary hover:bg-primary-foreground/90">
               {launchPlan.cta}
             </button>
+            <p className="mt-3 text-center text-xs text-primary-foreground/70 font-body">
+              You will see the name Agni108 on the payment page
+            </p>
           </motion.div>
         </div>
       </div>
