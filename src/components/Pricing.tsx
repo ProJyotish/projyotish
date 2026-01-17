@@ -18,8 +18,9 @@ const launchPlan = {
 
 const Pricing = () => {
   return (
-    <section id="pricing" className="py-24 bg-card">
-      <div className="container px-4">
+    <section id="pricing" className="py-24 bg-card relative">
+      {/* Blurred pricing content */}
+      <div className="container px-4 blur-sm pointer-events-none select-none">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -36,13 +37,7 @@ const Pricing = () => {
         </motion.div>
 
         <div className="flex justify-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="relative rounded-2xl p-8 bg-primary text-primary-foreground shadow-glow max-w-md w-full"
-          >
+          <div className="relative rounded-2xl p-8 bg-primary text-primary-foreground shadow-glow max-w-md w-full">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-accent-foreground px-4 py-1 rounded-full text-sm font-body font-semibold shadow-soft">
               Limited Time Offer
             </div>
@@ -80,9 +75,30 @@ const Pricing = () => {
             <p className="mt-3 text-center text-xs text-primary-foreground/70 font-body">
               You will see the name Agni108 on the payment page
             </p>
-          </motion.div>
+          </div>
         </div>
       </div>
+
+      {/* Overlay with pre-launch message */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="absolute inset-0 flex flex-col items-center justify-center"
+      >
+        <h3 className="font-display text-2xl md:text-4xl font-bold text-foreground mb-6 text-center">
+          Free access for pre-launch users.
+        </h3>
+        <a
+          href="https://wa.me/918291218234?text=Namaste"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-8 py-3 bg-primary text-primary-foreground font-body font-semibold rounded-xl hover:bg-primary/90 transition-colors"
+        >
+          Get Started
+        </a>
+      </motion.div>
     </section>
   );
 };
