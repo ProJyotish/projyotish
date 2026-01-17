@@ -40,7 +40,7 @@ const HowItWorks = () => {
             The World's Most Powerful Astrology AI
           </h2>
           <p className="font-body text-lg text-muted-foreground leading-relaxed">
-            Trained by <span className="text-primary font-semibold">Abhimanyu Rana</span>, an IIT Delhi B.Tech graduate turned professional Vedic astrologer, ProJyotish harnesses authentic Vedic Jyotish principles alongside innovative techniques. The result? Spot-on predictions with unmatched accuracy, every time.
+            Trained by <span className="text-primary font-semibold">Abhimanyu Rana</span>, an IIT Delhi B.Tech turned professional Vedic astrologer (<a href="https://www.pinpointjyotish.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">www.pinpointjyotish.com</a>), ProJyotish harnesses authentic Vedic Jyotish principles alongside innovative techniques. The result? Spot-on predictions with unmatched accuracy, every time.
           </p>
           <p className="font-body text-lg text-primary/80 mt-4 italic">
             It's like having an elite astrologer on call - a luxury once reserved for the ultra-wealthy and influential.
