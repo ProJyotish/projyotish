@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Linkedin, GraduationCap, Building, Instagram } from "lucide-react";
+import { Linkedin, GraduationCap, Building, Instagram, Globe } from "lucide-react";
 
 const founders = [
   {
@@ -9,6 +9,7 @@ const founders = [
       "IIT graduate and practicing Vedic Astrologer. Has developed proprietary techniques honed over thousands of cases, bringing ancient wisdom into the AI age.",
     linkedin: "https://www.linkedin.com/in/arana/",
     instagram: "https://instagram.com/agni108_",
+    website: "https://www.pinpointjyotish.com",
     credentials: ["IIT Graduate", "Vedic Astrologer", "1000+ Cases"],
     icon: GraduationCap,
   },
@@ -100,6 +101,17 @@ const Founders = () => {
                   >
                     <Instagram className="w-5 h-5" />
                     Instagram
+                  </a>
+                )}
+                {founder.website && (
+                  <a
+                    href={founder.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-body font-medium transition-colors"
+                  >
+                    <Globe className="w-5 h-5" />
+                    Website
                   </a>
                 )}
               </div>
