@@ -41,7 +41,7 @@ const useCases = [
     icon: Star,
     title: "Life Purpose & Direction",
     description: "Deep karmic analysis to understand your dharma and life path.",
-    example: "\"What is my true calling according to my chart?\"",
+    example: "\"Does my kundli support opening and running an organic cafe?\"",
     color: "bg-terracotta/20 text-terracotta",
   },
 ];
