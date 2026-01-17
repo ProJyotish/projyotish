@@ -33,7 +33,7 @@ const useCases = [
   {
     icon: Users,
     title: "Daily Life Optimization",
-    description: "Get personalized time slots for important meetings, travel, and daily activities.",
+    description: "You will get personalized time slots for activities relevant to your profile such as important meetings, travel, or trading.",
     example: "\"What are my favorable hours tomorrow for networking?\"",
     color: "bg-accent/30 text-accent-foreground",
   },
