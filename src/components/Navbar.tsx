@@ -42,7 +42,9 @@ const Navbar = () => {
               </a>
             ))}
             <a
-              href="/#pricing"
+              href="https://wa.me/918291218234?text=Namaste"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-5 py-2 bg-primary text-primary-foreground font-body font-medium text-sm rounded-lg hover:bg-primary/90 transition-colors"
             >
               Get Started
@@ -80,7 +82,9 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="/#pricing"
+                href="https://wa.me/918291218234?text=Namaste"
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
                 className="px-5 py-3 bg-primary text-primary-foreground font-body font-medium text-center rounded-lg"
               >
