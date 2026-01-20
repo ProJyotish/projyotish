@@ -8,62 +8,69 @@
 
 @layer base {
   :root {
-    /* Warm cream background inspired by the logo */
-    --background: 40 45% 96%;
-    --foreground: 25 30% 15%;
+    /* Cream background from logo */
+    --background: 40 20% 95%;
+    --foreground: 240 40% 20%;
 
-    /* Card surfaces - slightly warmer */
-    --card: 40 40% 98%;
-    --card-foreground: 25 30% 15%;
+    /* Card surfaces */
+    --card: 40 25% 98%;
+    --card-foreground: 240 40% 20%;
 
-    --popover: 40 40% 98%;
-    --popover-foreground: 25 30% 15%;
+    --popover: 40 25% 98%;
+    --popover-foreground: 240 40% 20%;
 
-    /* Primary - Terracotta/Rust from logo */
-    --primary: 15 55% 42%;
-    --primary-foreground: 40 45% 96%;
+    /* Primary - Deep Navy/Indigo from logo text */
+    --primary: 240 40% 25%;
+    --primary-foreground: 40 20% 95%;
 
-    /* Secondary - Sage green from logo */
-    --secondary: 120 18% 40%;
-    --secondary-foreground: 40 45% 96%;
+    /* Secondary - Silver/Gray from moon */
+    --secondary: 210 15% 60%;
+    --secondary-foreground: 240 40% 20%;
 
-    /* Accent - Saffron gold from logo */
-    --accent: 40 80% 55%;
-    --accent-foreground: 25 30% 15%;
+    /* Accent - Golden from sun */
+    --accent: 42 55% 55%;
+    --accent-foreground: 240 40% 20%;
 
     /* Muted tones */
-    --muted: 40 30% 90%;
-    --muted-foreground: 25 15% 45%;
+    --muted: 40 15% 90%;
+    --muted-foreground: 240 20% 40%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 40 25% 85%;
-    --input: 40 25% 85%;
-    --ring: 15 55% 42%;
+    --border: 40 20% 85%;
+    --input: 40 20% 85%;
+    --ring: 240 40% 25%;
 
     --radius: 0.75rem;
 
-    /* Custom colors */
-    --terracotta: 15 55% 42%;
-    --terracotta-light: 15 45% 55%;
-    --saffron: 40 80% 55%;
-    --saffron-light: 42 85% 70%;
-    --sage: 120 18% 40%;
-    --sage-light: 120 15% 55%;
-    --cream: 40 45% 96%;
-    --cream-dark: 40 35% 90%;
-    --gold: 45 90% 48%;
+    /* Custom colors - Updated to match logo */
+    --navy: 240 40% 25%;
+    --navy-light: 240 35% 35%;
+    --gold: 42 55% 55%;
+    --gold-light: 42 60% 70%;
+    --silver: 210 15% 60%;
+    --silver-light: 210 12% 75%;
+    --cream: 40 20% 95%;
+    --cream-dark: 40 18% 88%;
+
+    /* Legacy colors for compatibility */
+    --terracotta: 240 40% 25%;
+    --terracotta-light: 240 35% 35%;
+    --saffron: 42 55% 55%;
+    --saffron-light: 42 60% 70%;
+    --sage: 210 15% 60%;
+    --sage-light: 210 12% 75%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(40 45% 96%) 0%, hsl(40 35% 90%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(15 55% 42%) 0%, hsl(40 80% 55%) 100%);
-    --gradient-glow: radial-gradient(circle at center, hsl(40 80% 55% / 0.3) 0%, transparent 70%);
+    --gradient-hero: linear-gradient(135deg, hsl(40 20% 95%) 0%, hsl(40 18% 88%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(240 40% 25%) 0%, hsl(42 55% 55%) 100%);
+    --gradient-glow: radial-gradient(circle at center, hsl(42 55% 55% / 0.3) 0%, transparent 70%);
 
     /* Shadows */
-    --shadow-soft: 0 4px 20px -2px hsl(25 30% 15% / 0.08);
-    --shadow-elevated: 0 10px 40px -10px hsl(25 30% 15% / 0.15);
-    --shadow-glow: 0 0 40px hsl(40 80% 55% / 0.3);
+    --shadow-soft: 0 4px 20px -2px hsl(240 40% 20% / 0.08);
+    --shadow-elevated: 0 10px 40px -10px hsl(240 40% 20% / 0.15);
+    --shadow-glow: 0 0 40px hsl(42 55% 55% / 0.3);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -76,33 +83,33 @@
   }
 
   .dark {
-    --background: 25 25% 8%;
-    --foreground: 40 30% 92%;
+    --background: 240 30% 8%;
+    --foreground: 40 20% 92%;
 
-    --card: 25 22% 12%;
-    --card-foreground: 40 30% 92%;
+    --card: 240 25% 12%;
+    --card-foreground: 40 20% 92%;
 
-    --popover: 25 22% 12%;
-    --popover-foreground: 40 30% 92%;
+    --popover: 240 25% 12%;
+    --popover-foreground: 40 20% 92%;
 
-    --primary: 15 50% 50%;
-    --primary-foreground: 25 25% 8%;
+    --primary: 42 55% 55%;
+    --primary-foreground: 240 30% 8%;
 
-    --secondary: 120 15% 35%;
-    --secondary-foreground: 40 30% 92%;
+    --secondary: 210 15% 45%;
+    --secondary-foreground: 40 20% 92%;
 
-    --accent: 40 75% 50%;
-    --accent-foreground: 25 25% 8%;
+    --accent: 42 60% 60%;
+    --accent-foreground: 240 30% 8%;
 
-    --muted: 25 20% 18%;
-    --muted-foreground: 40 20% 60%;
+    --muted: 240 20% 18%;
+    --muted-foreground: 40 15% 60%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 25 20% 20%;
-    --input: 25 20% 20%;
-    --ring: 15 50% 50%;
+    --border: 240 20% 20%;
+    --input: 240 20% 20%;
+    --ring: 42 55% 55%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
