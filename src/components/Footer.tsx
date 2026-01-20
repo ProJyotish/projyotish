@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "@/assets/projyotish-logo-new.jpeg";
+import logo from "@/assets/projyotish-logo.svg";
 
 const Footer = () => {
   return (
