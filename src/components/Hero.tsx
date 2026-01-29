@@ -59,7 +59,9 @@ const Hero = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <a
-              href="#pricing"
+              href="https://wa.me/918291218234?text=Namaste"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-body font-semibold rounded-xl shadow-elevated hover:shadow-glow transition-all duration-300 hover:-translate-y-1"
             >
               <Sparkles className="w-5 h-5" />
