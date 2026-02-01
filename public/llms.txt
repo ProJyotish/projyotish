@@ -1,10 +1,10 @@
-# InstaJyotish - AI-Powered Vedic Astrology
+# ProJyotish - AI-Powered Vedic Astrology
 
-> InstaJyotish provides instant, personalized Vedic astrology readings powered by AI technology. Get accurate horoscope predictions, birth chart analysis, and spiritual guidance via WhatsApp.
+> ProJyotish provides instant, personalized Vedic astrology readings powered by AI technology. Get accurate horoscope predictions, birth chart analysis, and spiritual guidance via WhatsApp.
 
-## About InstaJyotish
+## About ProJyotish
 
-InstaJyotish is an innovative astrology service that combines ancient Vedic wisdom with modern AI technology. Our platform delivers personalized astrological insights directly through WhatsApp, making spiritual guidance accessible to everyone.
+ProJyotish is an innovative astrology service that combines ancient Vedic wisdom with modern AI technology. Our platform delivers personalized astrological insights directly through WhatsApp, making spiritual guidance accessible to everyone.
 
 ### Key Features
 
@@ -34,7 +34,7 @@ Our system is built on authentic Jyotish Shastra principles including:
 
 ### Contact
 
-- Website: https://insta-karma-guide.lovable.app
+- Website: https://projyotish.com
 - WhatsApp: +91 8291218234
 
 ### Pricing
@@ -43,7 +43,7 @@ Simple, transparent pricing with pay-per-reading model. No subscriptions require
 
 ## Documentation
 
-This is a single-page web application showcasing InstaJyotish's astrology services.
+This is a single-page web application showcasing ProJyotish's astrology services.
 
 ### Main Sections
 
@@ -51,9 +51,9 @@ This is a single-page web application showcasing InstaJyotish's astrology servic
 - How It Works: Step-by-step guide to using the service
 - Use Cases: Different types of astrological readings available
 - Pricing: Service costs and payment information
-- Founders: Team behind InstaJyotish
+- Founders: Team behind ProJyotish
 - CTA: Contact and get started options
 
 ## License
 
-All rights reserved. InstaJyotish 2024.
+All rights reserved. ProJyotish 2026.
