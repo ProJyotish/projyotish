@@ -10,6 +10,22 @@
       gtag('config', 'G-MSRSJ04P4T');
     </script>
 
+    <!-- Google tag (gtag.js) event - delayed navigation helper -->
+    <script>
+      function gtagSendEvent(url) {
+        var callback = function () {
+          if (typeof url === 'string') {
+            window.open(url, '_blank');
+          }
+        };
+        gtag('event', 'whatsapp_click', {
+          'event_callback': callback,
+          'event_timeout': 2000
+        });
+        return false;
+      }
+    </script>
+
     <!-- Microsoft Clarity -->
     <script type="text/javascript">
       (function(c,l,a,r,i,t,y){

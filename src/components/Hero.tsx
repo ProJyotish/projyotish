@@ -58,15 +58,16 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <a
-              href="https://wa.me/918291218234?text=Namaste"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                (window as any).gtagSendEvent("https://wa.me/918291218234?text=Namaste");
+              }}
               className="group inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-body font-semibold rounded-xl shadow-elevated hover:shadow-glow transition-all duration-300 hover:-translate-y-1"
             >
               <Sparkles className="w-5 h-5" />
               Start Your Journey
-            </a>
+            </button>
             <a
               href="#how-it-works"
               className="inline-flex items-center gap-2 px-8 py-4 bg-card text-foreground font-body font-medium rounded-xl shadow-soft border border-border hover:border-primary/30 transition-all duration-300"
