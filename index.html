@@ -18,10 +18,15 @@
             window.open(url, '_blank');
           }
         };
-        gtag('event', 'whatsapp_click', {
-          'event_callback': callback,
-          'event_timeout': 2000
-        });
+        if (typeof gtag === 'function') {
+          gtag('event', 'click', {
+            'event_callback': callback,
+            'event_timeout': 2000
+          });
+        } else {
+          // Fallback if gtag isn't loaded
+          callback();
+        }
         return false;
       }
     </script>
