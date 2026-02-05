@@ -3,7 +3,7 @@
  
  const testimonials = [
    {
-     quote: "It told me that I will have a medical procedure. And I had the very next week! Freaky!",
+      quote: "It told me that I will have a medical procedure. And I had one the very next week! Freaky!",
    },
    {
      quote: "My billionaire boss used to set her crucial meeting time astrologically. Now I do it too.",
