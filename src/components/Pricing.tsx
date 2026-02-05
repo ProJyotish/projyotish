@@ -22,7 +22,7 @@ const plans = [
   },
   {
     name: "Quarterly",
-    price: "₹399",
+    price: "₹366",
     duration: "/month",
     description: "Billed quarterly",
     badge: "Best Value",
