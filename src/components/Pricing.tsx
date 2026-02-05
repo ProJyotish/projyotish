@@ -11,24 +11,24 @@ const features = [
 
 const plans = [
   {
-    name: "Quarterly",
-    price: "₹499",
-    duration: "/month",
-    description: "Billed quarterly",
-    badge: "Best Value",
-    savings: "Save 55%",
-    razorpayButtonId: "pl_SCMacxJd2kUNx6",
-    popular: true,
-  },
-  {
     name: "Monthly",
-    price: "₹1099",
+    price: "₹499",
     duration: "/month",
     description: "Billed monthly",
     badge: null,
     savings: null,
     razorpayButtonId: "pl_SCMdcIb09vDfin",
     popular: false,
+  },
+  {
+    name: "Quarterly",
+    price: "₹399",
+    duration: "/month",
+    description: "Billed quarterly",
+    badge: "Best Value",
+    savings: "Save 20%",
+    razorpayButtonId: "pl_SCMacxJd2kUNx6",
+    popular: true,
   },
 ];
 
