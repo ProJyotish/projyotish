@@ -10,7 +10,7 @@ const founders = [
     linkedin: "https://www.linkedin.com/in/arana/",
     instagram: "https://instagram.com/agni108_",
     website: "https://www.pinpointjyotish.com",
-    credentials: ["IIT Graduate", "Vedic Astrologer", "1000+ Cases"],
+    credentials: ["IIT Graduate", "Vedic Astrologer"],
     icon: GraduationCap,
   },
   {
