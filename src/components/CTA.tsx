@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { MessageCircle, Sparkles } from "lucide-react";
-
+import { Link } from "react-router-dom";
 const CTA = () => {
   return (
     <section className="py-24 bg-primary relative overflow-hidden">
