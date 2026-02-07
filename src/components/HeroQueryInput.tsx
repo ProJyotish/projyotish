@@ -2,16 +2,13 @@ import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 
 const suggestions = [
-  "Career guidance",
-  "Marriage compatibility",
+  "When to schedule salary hike meeting with boss",
   "Health insights",
-  "Best muhurat",
-  "Kundli reading",
-  "Business decisions",
-  "Relationship advice",
-  "Financial timing",
-  "Education prospects",
-  "Travel timing",
+  "Will my relationship survive?",
+  "Best time to accept job offer",
+  "When will I buy a house?",
+  "Do I have combinations for wealth?",
+  "Will I settle abroad?",
 ];
 
 // WhatsApp icon as inline SVG component
