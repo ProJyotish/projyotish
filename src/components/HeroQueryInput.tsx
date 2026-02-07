@@ -22,7 +22,13 @@ const HeroQueryInput = () => {
     const message = query.trim() || "Namaste";
     const encodedMessage = encodeURIComponent(message);
     const url = `https://wa.me/918291218234?text=${encodedMessage}`;
-    (window as any).gtagSendEvent(url);
+    
+    // Use gtagSendEvent if available, otherwise fallback to window.open
+    if ((window as any).gtagSendEvent) {
+      (window as any).gtagSendEvent(url);
+    } else {
+      window.open(url, "_blank");
+    }
   };
 
   const handleChipClick = (suggestion: string) => {
