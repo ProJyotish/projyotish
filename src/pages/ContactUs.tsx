@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import EmailReveal from "@/components/EmailReveal";
-import { MessageCircle, Mail, Clock } from "lucide-react";
+import { Mail, Clock } from "lucide-react";
 
 const ContactUs = () => {
   return (
@@ -46,26 +46,6 @@ const ContactUs = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                  <MessageCircle className="w-6 h-6 text-primary" />
-                </div>
-                <h2 className="font-display text-xl font-semibold text-foreground mb-3">
-                  WhatsApp
-                </h2>
-                <p className="text-muted-foreground mb-4">
-                  Already a subscriber? Message us directly on WhatsApp for quick assistance.
-                </p>
-                <span className="text-primary font-medium">
-                  Available to active subscribers
-                </span>
-              </motion.div>
-
-              <motion.div
-                className="bg-card border border-border rounded-2xl p-8 md:col-span-2"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
               >
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
                   <Clock className="w-6 h-6 text-primary" />
