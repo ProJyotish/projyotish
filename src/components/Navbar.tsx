@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import logo from "@/assets/projyotish-logo.jpg";
+import logo from "@/assets/projyotish-logo-new.jpeg";
 
 const navLinks = [
   { name: "How It Works", href: "/#how-it-works" },
