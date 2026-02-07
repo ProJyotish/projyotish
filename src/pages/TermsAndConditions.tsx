@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import EmailReveal from "@/components/EmailReveal";
 
 const TermsAndConditions = () => {
   return (
@@ -155,8 +156,8 @@ const TermsAndConditions = () => {
                 <p className="text-muted-foreground leading-relaxed">
                   For questions about these Terms and Conditions, please contact us at:
                 </p>
-                <p className="text-foreground mt-4">
-                  <strong>Email:</strong> support@projyotish.com
+                <p className="mt-4">
+                  <EmailReveal email="support@projyotish.com" label="Email:" />
                 </p>
               </section>
             </div>

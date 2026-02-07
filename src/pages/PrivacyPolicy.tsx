@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import EmailReveal from "@/components/EmailReveal";
 
 const PrivacyPolicy = () => {
   return (
@@ -151,7 +152,7 @@ const PrivacyPolicy = () => {
                   <li><strong>Withdraw Consent:</strong> Revoke previously given consent</li>
                 </ul>
                 <p className="text-muted-foreground leading-relaxed mt-4">
-                  To exercise these rights, contact us at privacy@projyotish.com
+                  To exercise these rights, contact us at: <EmailReveal email="support@projyotish.com" />
                 </p>
               </section>
 
@@ -215,9 +216,8 @@ const PrivacyPolicy = () => {
                 <p className="text-muted-foreground leading-relaxed">
                   For privacy-related inquiries or to exercise your rights:
                 </p>
-                <div className="mt-4 text-foreground space-y-2">
-                  <p><strong>Email:</strong> privacy@projyotish.com</p>
-                  <p><strong>Support:</strong> support@projyotish.com</p>
+                <div className="mt-4 space-y-2">
+                  <p><EmailReveal email="support@projyotish.com" label="Email:" /></p>
                 </div>
               </section>
 
@@ -228,9 +228,9 @@ const PrivacyPolicy = () => {
                 <p className="text-muted-foreground leading-relaxed">
                   In accordance with Information Technology Act 2000 and rules made thereunder, the name and contact details of the Grievance Officer are provided below:
                 </p>
-                <div className="mt-4 text-foreground space-y-2">
-                  <p><strong>Name:</strong> Abhimanyu Arora</p>
-                  <p><strong>Email:</strong> grievance@projyotish.com</p>
+                <div className="mt-4 space-y-2">
+                  <p className="text-foreground"><strong>Name:</strong> Abhimanyu Arora</p>
+                  <p><EmailReveal email="support@projyotish.com" label="Email:" /></p>
                 </div>
               </section>
             </div>
