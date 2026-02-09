@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Check, Crown, Sparkles } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { Check, Crown, Sparkles, MessageCircle } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const features = [
   "Unlimited Questions",
@@ -17,7 +17,7 @@ const plans = [
     description: "Billed monthly",
     badge: null,
     savings: null,
-    razorpayButtonId: "pl_SCMdcIb09vDfin",
+    whatsappMessage: "Send me Monthly subscription link",
     popular: false,
   },
   {
@@ -27,40 +27,10 @@ const plans = [
     description: "Billed quarterly",
     badge: "Best Value",
     savings: "Save 20%",
-    razorpayButtonId: "pl_SCMacxJd2kUNx6",
+    whatsappMessage: "Send me Quarterly subscription link",
     popular: true,
   },
 ];
-
-const RazorpayButton = ({ buttonId }: { buttonId: string }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-    
-    // Clear any existing content
-    containerRef.current.innerHTML = '';
-    
-    // Create form and script
-    const form = document.createElement('form');
-    const script = document.createElement('script');
-    script.src = 'https://cdn.razorpay.com/static/widget/subscription-button.js';
-    script.setAttribute('data-subscription_button_id', buttonId);
-    script.setAttribute('data-button_theme', 'brand-color');
-    script.async = true;
-    
-    form.appendChild(script);
-    containerRef.current.appendChild(form);
-    
-    return () => {
-      if (containerRef.current) {
-        containerRef.current.innerHTML = '';
-      }
-    };
-  }, [buttonId]);
-
-  return <div ref={containerRef} className="w-full flex justify-center" />;
-};
 
 const Pricing = () => {
   return (
@@ -158,13 +128,25 @@ const Pricing = () => {
                 ))}
               </ul>
 
-              <RazorpayButton buttonId={plan.razorpayButtonId} />
-              
-              <p className={`mt-3 text-center text-xs font-body ${
-                plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"
-              }`}>
-                You will see "Agni108" on the payment page
-              </p>
+              <Button
+                asChild
+                className={`w-full ${
+                  plan.popular 
+                    ? "bg-primary-foreground text-primary hover:bg-primary-foreground/90" 
+                    : "bg-primary text-primary-foreground hover:bg-primary/90"
+                }`}
+                size="lg"
+              >
+                <a
+                  href={`https://wa.me/918291218234?text=${encodeURIComponent(plan.whatsappMessage)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Get Started
+                </a>
+              </Button>
             </motion.div>
           ))}
         </div>
