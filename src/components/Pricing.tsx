@@ -1,39 +1,72 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Crown, Sparkles, MessageCircle, Users } from "lucide-react";
+import { Check, Crown, Sparkles, MessageCircle, Users, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const plans = [
-  {
-    name: "Premium",
-    icon: Crown,
-    monthly: { price: "₹499", total: "₹499/month", whatsapp: "Send me Premium Monthly subscription link" },
-    quarterly: { price: "₹366", total: "₹1,099/quarter", whatsapp: "Send me Premium Quarterly subscription link", savings: "Save 27%" },
-    features: [
-      "Unlimited Questions",
-      "Daily Favourable Time Reports",
-      "Customised for Your Kundli",
-      "Personalised for Your Profession",
-    ],
-    popular: false,
-    badge: null,
-  },
-  {
-    name: "Power User",
-    icon: Users,
-    monthly: { price: "₹599", total: "₹599/month", whatsapp: "Send me Power User Monthly subscription link" },
-    quarterly: { price: "₹446", total: "₹1,339/quarter", whatsapp: "Send me Power User Quarterly subscription link", savings: "Save 25%" },
-    features: [
-      "Everything in Premium",
-      "Support for multiple profiles",
-    ],
-    popular: true,
-    badge: "Most Popular",
-  },
-];
+const plansData = {
+  india: [
+    {
+      name: "Premium",
+      icon: Crown,
+      monthly: { price: "₹499", total: "₹499/month", whatsapp: "Send me Premium Monthly subscription link" },
+      quarterly: { price: "₹366", total: "₹1,099/quarter", whatsapp: "Send me Premium Quarterly subscription link", savings: "Save 27%" },
+      features: [
+        "Unlimited Questions",
+        "Daily Favourable Time Reports",
+        "Customised for Your Kundli",
+        "Personalised for Your Profession",
+      ],
+      popular: false,
+      badge: null,
+    },
+    {
+      name: "Power User",
+      icon: Users,
+      monthly: { price: "₹599", total: "₹599/month", whatsapp: "Send me Power User Monthly subscription link" },
+      quarterly: { price: "₹446", total: "₹1,339/quarter", whatsapp: "Send me Power User Quarterly subscription link", savings: "Save 25%" },
+      features: [
+        "Everything in Premium",
+        "Support for multiple profiles",
+      ],
+      popular: true,
+      badge: "Most Popular",
+    },
+  ],
+  international: [
+    {
+      name: "Premium",
+      icon: Crown,
+      monthly: { price: "$19.99", total: "$19.99/month", whatsapp: "Send me Premium Monthly subscription link (International)" },
+      quarterly: { price: "$16.00", total: "$47.99/quarter", whatsapp: "Send me Premium Quarterly subscription link (International)", savings: "Save 20%" },
+      features: [
+        "Unlimited Questions",
+        "Daily Favourable Time Reports",
+        "Customised for Your Kundli",
+        "Personalised for Your Profession",
+      ],
+      popular: false,
+      badge: null,
+    },
+    {
+      name: "Power User",
+      icon: Users,
+      monthly: { price: "$24.99", total: "$24.99/month", whatsapp: "Send me Power User Monthly subscription link (International)" },
+      quarterly: { price: "$20.00", total: "$59.99/quarter", whatsapp: "Send me Power User Quarterly subscription link (International)", savings: "Save 20%" },
+      features: [
+        "Everything in Premium",
+        "Support for multiple profiles",
+      ],
+      popular: true,
+      badge: "Most Popular",
+    },
+  ],
+};
 
 const Pricing = () => {
   const [isQuarterly, setIsQuarterly] = useState(false);
+  const [region, setRegion] = useState<"india" | "international">("india");
+
+  const plans = plansData[region];
 
   return (
     <section id="pricing" className="py-24 bg-card">
@@ -54,6 +87,33 @@ const Pricing = () => {
           <div className="inline-flex items-center gap-2 bg-accent/20 text-accent-foreground px-4 py-2 rounded-full mb-8">
             <Sparkles className="w-4 h-4 text-accent" />
             <span className="font-body text-sm font-medium">3 Days Free Trial - No Limits</span>
+          </div>
+
+          {/* Region Toggle */}
+          <div className="flex items-center justify-center gap-2 mb-6">
+            <Globe className="w-4 h-4 text-muted-foreground" />
+            <div className="inline-flex bg-muted rounded-full p-1">
+              <button
+                onClick={() => setRegion("india")}
+                className={`px-4 py-1.5 rounded-full text-sm font-body font-medium transition-colors ${
+                  region === "india"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                🇮🇳 India
+              </button>
+              <button
+                onClick={() => setRegion("international")}
+                className={`px-4 py-1.5 rounded-full text-sm font-body font-medium transition-colors ${
+                  region === "international"
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                🌍 International
+              </button>
+            </div>
           </div>
 
           {/* Billing Toggle */}
