@@ -1,75 +1,40 @@
 
 
-# Interactive "Start Your Journey" Input Field
+## Pricing Page Redesign
 
-Transform the current "Start Your Journey" button into an engaging input field with quick suggestion chips, inspired by heymaya.pro.
+### What Changes
 
-## Overview
+The "Choose Your Plan" section will be restructured with:
 
-Replace the static button with an interactive component where users can type their astrology query directly. The typed message will be pre-filled into WhatsApp when they click send.
+1. **Monthly/Quarterly toggle** at the top to switch between billing periods
+2. **Two plan cards side-by-side**: Premium and Power User
+3. **Updated feature lists** per plan
 
-## Design Concept
+### Plan Details
 
-```text
-+----------------------------------------------------------+
-|                                                          |
-|   [Input field: "Ask about your kundli, muhurat..."]  ->  |
-|                                                          |
-+----------------------------------------------------------+
+| | Premium | Power User |
+|---|---|---|
+| Monthly | ₹499/month | ₹599/month |
+| Quarterly | ₹1,099/quarter (₹366/month) | ₹1,339/quarter (₹446/month) |
 
-     [Career] [Marriage] [Health] [Muhurat] [Kundli]
-              (scrolling suggestion chips)
-```
+**Premium Features:**
+- Unlimited Questions
+- Daily Favourable Time Reports
+- Customised for Your Kundli
+- Personalised for Your Profession
 
-## Features
+**Power User Features:**
+- Everything in Premium
+- Support for multiple profiles
 
-1. **Expandable Input Field**: Clean, rounded input with placeholder text and a send button
-2. **Quick Suggestion Chips**: Horizontally scrolling pills with common query topics
-3. **Smooth Animations**: Chips auto-scroll and pause on hover
-4. **WhatsApp Integration**: User's typed message becomes the pre-filled WhatsApp text
-5. **Mobile Responsive**: Works well on all screen sizes
+### Technical Changes
 
-## Suggestion Chips
-
-Astrology-themed quick options:
-- Career guidance
-- Marriage compatibility  
-- Health insights
-- Best muhurat
-- Kundli reading
-- Business decisions
-- Relationship advice
-- Financial timing
-
----
-
-## Technical Details
-
-### Files to Create
-
-**`src/components/HeroQueryInput.tsx`**
-New component containing:
-- Controlled input field with state management
-- Send button with WhatsApp link generation
-- Animated suggestion chips using Framer Motion
-- Infinite horizontal scroll animation for chips
-
-### Files to Modify
-
-**`src/components/Hero.tsx`**
-- Import and use the new `HeroQueryInput` component
-- Replace the current "Start Your Journey" button
-- Keep the "See How It Works" secondary button
-
-**`src/index.css`**
-- Add keyframes for horizontal marquee animation
-- Add pause-on-hover utility class
-
-### Implementation Approach
-
-1. Create input component with `useState` for the query text
-2. Generate WhatsApp URL dynamically: `https://wa.me/918291218234?text={encodedQuery}`
-3. Use Framer Motion for chip hover effects
-4. CSS animation for infinite horizontal scroll of chips
-5. Clicking a chip fills the input with that suggestion
+**File: `src/components/Pricing.tsx`**
+- Add a `useState` toggle for Monthly vs Quarterly billing
+- Replace the current `plans` array with two plan objects (Premium, Power User) each containing monthly and quarterly pricing
+- Render a toggle/switch at the top using the existing Switch or a styled toggle group
+- Render two side-by-side cards with features and dynamic pricing based on toggle state
+- Power User card gets the "popular" highlight styling
+- WhatsApp CTA buttons will pre-fill messages like "Send me Premium Monthly subscription link", etc.
+- The "Best Value" badge appears on the Quarterly option in the toggle, and Power User gets a badge like "Most Popular"
 
