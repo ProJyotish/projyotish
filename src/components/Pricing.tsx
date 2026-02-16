@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, Crown, Sparkles, MessageCircle, Users, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { trackMetaEvent } from "@/lib/tracking";
 
 const plansData = {
   india: [
@@ -228,6 +229,7 @@ const Pricing = () => {
                     href={`https://wa.me/918291218234?text=${encodeURIComponent(billing.whatsapp)}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackMetaEvent("Lead", { content_name: `Pricing ${plan.name} ${isQuarterly ? "Quarterly" : "Monthly"}` })}
                     className="flex items-center gap-2"
                   >
                     <MessageCircle className="w-5 h-5" />
