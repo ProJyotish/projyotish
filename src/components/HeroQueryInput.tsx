@@ -45,6 +45,12 @@ const HeroQueryInput = () => {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              trackMetaEvent("Lead", { content_name: "Hero WhatsApp CTA" });
+              window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+            }
+          }}
           placeholder="Ask about your kundli, muhurat, career..."
           className="w-full h-14 pl-5 pr-14 bg-card border-2 border-border rounded-full font-body text-foreground placeholder:text-muted-foreground shadow-soft focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-all duration-300"
         />
