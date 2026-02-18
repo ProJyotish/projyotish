@@ -43,8 +43,8 @@ const MarriageTiming = () => {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight"
             >
-              Meeting people but{" "}
-              <span className="text-gradient">nothing finalises?</span>
+              Get Relationship{" "}
+              <span className="text-gradient">Astrology Consultation</span>
             </motion.h1>
 
             {/* Body copy */}
@@ -55,16 +55,13 @@ const MarriageTiming = () => {
               className="space-y-5 mb-10"
             >
               <p className="font-body text-lg md:text-xl text-muted-foreground leading-relaxed">
-                In Vedic astrology, marriage happens only during{" "}
-                <span className="text-foreground font-semibold">active commitment periods</span>{" "}
-                in your birth chart.
+                High quality Astrologer developed by IITians who have studied Jyotisha as a science.
               </p>
-              <p className="font-body text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Outside these windows, conversations happen but{" "}
-                <span className="text-foreground font-semibold">commitment delays</span>.
+              <p className="font-body text-lg md:text-xl text-foreground font-semibold leading-relaxed">
+                Unlimited Questions. No Time Limits.
               </p>
               <p className="font-body text-lg md:text-xl text-primary leading-relaxed font-medium">
-                ProJyotish identifies your exact marriage activation period using your birth details.
+                Use the 3 day free trial to untangle Karma hindering relationships
               </p>
             </motion.div>
 
@@ -80,7 +77,7 @@ const MarriageTiming = () => {
                 className="inline-flex items-center gap-3 px-10 py-5 bg-primary text-primary-foreground font-display font-bold text-lg rounded-2xl shadow-elevated hover:bg-primary/90 transition-all duration-300 hover:-translate-y-1"
               >
                 <Heart className="w-6 h-6" />
-                Know Your Exact Marriage Timing
+                Start Free Trial Now
               </button>
               <p className="text-sm text-muted-foreground font-body">
                 Chat with ProJyotish on WhatsApp — instant & private
