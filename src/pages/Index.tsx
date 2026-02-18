@@ -8,7 +8,7 @@ import Founders from "@/components/Founders";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 import { MessageCircle } from "lucide-react";
-import { trackMetaEvent } from "@/lib/tracking";
+import { trackClick } from "@/lib/tracking";
 
 const Index = () => {
   return (
@@ -30,7 +30,7 @@ const Index = () => {
         href="https://wa.me/918291218234?text=Namaste"
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() => trackMetaEvent("Lead", { content_name: "Floating WhatsApp CTA" })}
+        onClick={() => trackClick("Floating WhatsApp CTA")}
         className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 bg-primary text-primary-foreground font-body font-semibold rounded-full shadow-lg hover:bg-primary/90 transition-colors md:hidden"
       >
         <MessageCircle className="w-5 h-5" />

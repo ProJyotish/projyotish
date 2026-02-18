@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { MessageCircle, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-import { trackMetaEvent } from "@/lib/tracking";
+import { trackClick } from "@/lib/tracking";
 const CTA = () => {
   return (
     <section className="py-24 bg-primary relative overflow-hidden">
@@ -33,7 +33,7 @@ const CTA = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to="/pricing"
-              onClick={() => trackMetaEvent("Lead", { content_name: "CTA Get Started" })}
+              onClick={() => trackClick("CTA Get Started")}
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-foreground text-primary font-body font-semibold rounded-xl shadow-elevated hover:bg-primary-foreground/90 transition-all duration-300 hover:-translate-y-1"
             >
               <Sparkles className="w-5 h-5" />
