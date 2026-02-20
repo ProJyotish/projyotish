@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Star, Shield, Clock, Globe, CheckCircle } from "lucide-react";
 import logo from "@/assets/projyotish-logo-new.jpeg";
 import { trackMetaEvent } from "@/lib/tracking";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 // WhatsApp icon
@@ -160,8 +161,9 @@ const testimonials = [
 const CareerLanding = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <Navbar />
       {/* ===== HERO ===== */}
-      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-hero">
+      <section className="relative pt-20 pb-8 flex items-center justify-center bg-gradient-hero">
 
         {/* Solar system SVG background */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30 md:opacity-40">
@@ -218,7 +220,7 @@ const CareerLanding = () => {
           <div className="absolute bottom-20 right-10 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
         </div>
 
-        <div className="container px-4 py-12 relative z-10">
+        <div className="container px-4 py-6 relative z-10">
           <div className="max-w-2xl mx-auto text-center">
             <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="mb-8">
               <img src={logo} alt="ProJyotish" className="w-20 h-20 mx-auto rounded-2xl shadow-elevated" />
