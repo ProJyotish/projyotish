@@ -161,7 +161,12 @@ const CareerLanding = () => {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       {/* ===== HERO ===== */}
-      <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-hero">
+      <section className="relative min-h-[80vh] flex items-center justify-center bg-gradient-hero">
+        {/* Logo above SVG */}
+        <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="absolute inset-0 flex items-center justify-center pointer-events-none z-[5]">
+          <img src={logo} alt="ProJyotish" className="w-20 h-20 rounded-2xl shadow-elevated" />
+        </motion.div>
+
         {/* Solar system SVG background */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30 md:opacity-40">
           <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[500px] h-[500px] md:w-[700px] md:h-[700px]">
@@ -217,11 +222,8 @@ const CareerLanding = () => {
           <div className="absolute bottom-20 right-10 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
         </div>
 
-        <div className="container px-4 py-20 relative z-10">
-          <div className="max-w-2xl mx-auto text-center">
-            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="mb-8">
-              <img src={logo} alt="ProJyotish" className="w-20 h-20 mx-auto rounded-2xl shadow-elevated" />
-            </motion.div>
+        <div className="container px-4 py-12 relative z-10">
+          <div className="max-w-2xl mx-auto text-center mt-24">
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
