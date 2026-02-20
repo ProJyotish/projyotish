@@ -10,6 +10,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ContactUs from "./pages/ContactUs";
 import MarriageTiming from "./pages/MarriageTiming";
 import CareerLanding from "./pages/CareerLanding";
+import BusinessLanding from "./pages/BusinessLanding";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/marriage-timing" element={<MarriageTiming />} />
           <Route path="/career" element={<CareerLanding />} />
+          <Route path="/business" element={<BusinessLanding />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
