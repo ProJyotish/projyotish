@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Star, Shield, Clock, Globe, CheckCircle } from "lucide-react";
 import logo from "@/assets/projyotish-logo-new.jpeg";
 import { trackMetaEvent } from "@/lib/tracking";
+import Footer from "@/components/Footer";
 
 // WhatsApp icon
 const WhatsAppIcon = ({ className }: { className?: string }) => (
@@ -337,6 +338,8 @@ const CareerLanding = () => {
           </motion.div>
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 };

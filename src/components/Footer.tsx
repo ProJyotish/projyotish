@@ -44,6 +44,12 @@ const Footer = () => {
               >
                 Team
               </a>
+              <Link
+                to="/career"
+                className="font-body text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Career Guidance
+              </Link>
             </nav>
 
             <nav className="flex flex-wrap justify-center gap-6">
