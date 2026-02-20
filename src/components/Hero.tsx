@@ -36,7 +36,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.15 }}
             className="flex justify-center mb-6"
           >
-            <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-48 h-48 md:w-64 md:h-64 opacity-40">
+            <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-60 h-60 md:w-80 md:h-80 opacity-40">
               <defs>
                 <filter id="sun-glow-hero" x="-50%" y="-50%" width="200%" height="200%">
                   <feGaussianBlur stdDeviation="6" result="blur" />
