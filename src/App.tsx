@@ -12,6 +12,7 @@ import MarriageTiming from "./pages/MarriageTiming";
 import CareerLanding from "./pages/CareerLanding";
 import BusinessLanding from "./pages/BusinessLanding";
 import HealthLanding from "./pages/HealthLanding";
+import LoveLanding from "./pages/LoveLanding";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/career" element={<CareerLanding />} />
           <Route path="/business" element={<BusinessLanding />} />
           <Route path="/health" element={<HealthLanding />} />
+          <Route path="/love" element={<LoveLanding />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
