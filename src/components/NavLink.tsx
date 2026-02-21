@@ -1,16 +1,15 @@
 "use client";
 
-import Link from "next/link";
+import Link, { type LinkProps } from "next/link";
 import { forwardRef } from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/src/lib/utils";
 
-interface NavLinkCompatProps {
+interface NavLinkCompatProps extends Omit<LinkProps, "href"> {
   href: string;
   className?: string;
   activeClassName?: string;
   children?: React.ReactNode;
-  [key: string]: unknown;
 }
 
 const NavLink = forwardRef<HTMLAnchorElement, NavLinkCompatProps>(
