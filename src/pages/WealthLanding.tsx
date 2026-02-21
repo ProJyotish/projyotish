@@ -1,10 +1,11 @@
+"use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, Shield, Clock, Globe, CheckCircle } from "lucide-react";
-import logo from "@/assets/projyotish-logo-new.jpeg";
-import { trackMetaEvent } from "@/lib/tracking";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import logo from "@/src/assets/projyotish-logo-new.jpeg";
+import { trackMetaEvent } from "@/src/lib/tracking";
+import Navbar from "@/src/components/Navbar";
+import Footer from "@/src/components/Footer";
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} xmlns="http://www.w3.org/2000/svg">
@@ -47,7 +48,7 @@ const RotatingText = ({ texts, className = "" }: { texts: string[]; className?: 
 const WhatsAppChat = ({ messages }: { messages: { text: string; sent: boolean; time?: string }[] }) => (
   <div className="bg-[#ECE5DD] rounded-2xl p-4 shadow-elevated max-w-sm w-full">
     <div className="flex items-center gap-3 pb-3 border-b border-[#D1C7B7] mb-3">
-      <img src={logo} alt="ProJyotish" className="w-10 h-10 rounded-full" />
+      <img src={logo.src} alt="ProJyotish" className="w-10 h-10 rounded-full" />
       <div><p className="font-body font-semibold text-sm text-[#111B21]">ProJyotish</p><p className="font-body text-xs text-[#667781]">online</p></div>
     </div>
     <div className="space-y-2">
@@ -66,7 +67,7 @@ const WhatsAppChat = ({ messages }: { messages: { text: string; sent: boolean; t
 const QuestionCard = ({ question }: { question: string }) => (
   <div className="bg-[#ECE5DD] rounded-2xl p-4 shadow-soft min-w-[280px] max-w-[300px] flex-shrink-0">
     <div className="flex items-center gap-3 pb-3 border-b border-[#D1C7B7] mb-3">
-      <img src={logo} alt="ProJyotish" className="w-8 h-8 rounded-full" />
+      <img src={logo.src} alt="ProJyotish" className="w-8 h-8 rounded-full" />
       <p className="font-body font-semibold text-xs text-[#111B21]">ProJyotish</p>
     </div>
     <div className="flex justify-start">
@@ -156,7 +157,7 @@ const WealthLanding = () => {
         <div className="container px-4 py-6 relative z-10">
           <div className="max-w-2xl mx-auto text-center">
             <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="mb-8">
-              <img src={logo} alt="ProJyotish" className="w-20 h-20 mx-auto rounded-2xl shadow-elevated" />
+              <img src={logo.src} alt="ProJyotish" className="w-20 h-20 mx-auto rounded-2xl shadow-elevated" />
             </motion.div>
             <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-10 leading-tight">
               Looking for{" "}<RotatingText texts={heroRotatingTexts} />?

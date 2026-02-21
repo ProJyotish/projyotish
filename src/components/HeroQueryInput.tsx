@@ -1,6 +1,7 @@
+"use client";
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { trackMetaEvent } from "@/lib/tracking";
+import { trackMetaEvent } from "@/src/lib/tracking";
 
 const suggestions = [
   "When to schedule salary hike meeting with boss",

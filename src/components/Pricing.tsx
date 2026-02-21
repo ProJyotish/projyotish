@@ -1,8 +1,10 @@
+"use client";
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, Crown, Sparkles, MessageCircle, Users, Globe } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { trackMetaEvent } from "@/lib/tracking";
+import { Button } from "@/src/components/ui/button";
+import { trackMetaEvent } from "@/src/lib/tracking";
 
 const plansData = {
   india: [

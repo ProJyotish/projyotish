@@ -1,7 +1,8 @@
+"use client";
 import { motion } from "framer-motion";
 import { MessageCircle, Sparkles } from "lucide-react";
 
-import { trackMetaEvent } from "@/lib/tracking";
+import { trackMetaEvent } from "@/src/lib/tracking";
 const CTA = () => {
   return (
     <section className="py-24 bg-primary relative overflow-hidden">

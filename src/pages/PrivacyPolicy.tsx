@@ -1,7 +1,8 @@
+"use client";
 import { motion } from "framer-motion";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import EmailReveal from "@/components/EmailReveal";
+import Navbar from "@/src/components/Navbar";
+import Footer from "@/src/components/Footer";
+import EmailReveal from "@/src/components/EmailReveal";
 
 const PrivacyPolicy = () => {
   return (

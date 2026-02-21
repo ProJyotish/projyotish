@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { Briefcase, Heart, TrendingUp, Clock, Users, Star } from "lucide-react";
 

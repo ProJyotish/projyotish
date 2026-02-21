@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { MessageSquare, Sparkles, Calendar, Sun, TrendingUp, Heart } from "lucide-react";
 

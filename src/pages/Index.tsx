@@ -1,14 +1,15 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import HowItWorks from "@/components/HowItWorks";
-import UseCases from "@/components/UseCases";
+"use client";
+import Navbar from "@/src/components/Navbar";
+import Hero from "@/src/components/Hero";
+import HowItWorks from "@/src/components/HowItWorks";
+import UseCases from "@/src/components/UseCases";
 
- import Testimonials from "@/components/Testimonials";
-import Founders from "@/components/Founders";
-import CTA from "@/components/CTA";
-import Footer from "@/components/Footer";
+ import Testimonials from "@/src/components/Testimonials";
+import Founders from "@/src/components/Founders";
+import CTA from "@/src/components/CTA";
+import Footer from "@/src/components/Footer";
 import { MessageCircle } from "lucide-react";
-import { trackMetaEvent } from "@/lib/tracking";
+import { trackMetaEvent } from "@/src/lib/tracking";
 
 const Index = () => {
   return (

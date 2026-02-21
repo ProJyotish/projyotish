@@ -1,6 +1,7 @@
-import Navbar from "@/components/Navbar";
-import Pricing from "@/components/Pricing";
-import Footer from "@/components/Footer";
+"use client";
+import Navbar from "@/src/components/Navbar";
+import Pricing from "@/src/components/Pricing";
+import Footer from "@/src/components/Footer";
 
 const PricingPage = () => {
   return (

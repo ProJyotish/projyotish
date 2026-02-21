@@ -1,9 +1,11 @@
+"use client";
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
-import logo from "@/assets/projyotish-logo-new.jpeg";
-import { trackMetaEvent } from "@/lib/tracking";
+import Link from "next/link";
+import logo from "@/src/assets/projyotish-logo-new.jpeg";
+import { trackMetaEvent } from "@/src/lib/tracking";
 
 const navLinks = [
   { name: "How It Works", href: "/#how-it-works" },
@@ -20,9 +22,9 @@ const Navbar = () => {
       <div className="container px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <img
-              src={logo}
+              src={logo.src}
               alt="ProJyotish"
               className="w-9 h-9 rounded-lg"
             />

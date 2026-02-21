@@ -1,6 +1,7 @@
+"use client";
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
-import logo from "@/assets/projyotish-logo-new.jpeg";
+import logo from "@/src/assets/projyotish-logo-new.jpeg";
 import HeroQueryInput from "./HeroQueryInput";
 
 const Hero = () => {
@@ -23,7 +24,7 @@ const Hero = () => {
             className="mb-8"
           >
             <img
-              src={logo}
+              src={logo.src}
               alt="ProJyotish Logo"
               className="w-40 h-40 md:w-52 md:h-52 mx-auto rounded-2xl shadow-elevated animate-float"
             />
