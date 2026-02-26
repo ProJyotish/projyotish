@@ -4,7 +4,7 @@ backend:
   branch: main
   # After the deploy-auth GitHub Actions workflow runs for the first time,
   # replace the placeholder below with your actual worker URL from the workflow logs.
-  base_url: https://projyotish-cms-auth.YOUR-SUBDOMAIN.workers.dev
+  base_url: https://projyotish-cms-auth.rana-048.workers.dev
 
 # Editorial workflow lets you save drafts before publishing
 publish_mode: editorial_workflow
