@@ -66,8 +66,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google Tag Manager */}
-        <Script id="gtm" strategy="beforeInteractive">
+                {/* Google Tag Manager */}
+        <Script id="gtm" strategy="lazyOnload">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -75,20 +75,20 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-PRVMWX5W');`}
         </Script>
 
-        {/* Google Analytics */}
+                {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-MSRSJ04P4T"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="ga4" strategy="afterInteractive">
+        <Script id="ga4" strategy="lazyOnload">
           {`window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-MSRSJ04P4T');`}
         </Script>
 
-        {/* Meta Pixel */}
-        <Script id="meta-pixel" strategy="afterInteractive">
+                {/* Meta Pixel */}
+        <Script id="meta-pixel" strategy="lazyOnload">
           {`!function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
           n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -111,8 +111,8 @@ export default function RootLayout({
           />
         </noscript>
 
-        {/* Microsoft Clarity */}
-        <Script id="clarity" strategy="afterInteractive">
+                {/* Microsoft Clarity */}
+        <Script id="clarity" strategy="lazyOnload">
           {`(function(c,l,a,r,i,t,y){
           c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
           t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
@@ -120,8 +120,8 @@ export default function RootLayout({
           })(window, document, "clarity", "script", "v9f9xqikhz");`}
         </Script>
 
-        {/* gtag delayed navigation helper */}
-        <Script id="gtag-helper" strategy="afterInteractive">
+                {/* gtag delayed navigation helper */}
+        <Script id="gtag-helper" strategy="lazyOnload">
           {`function gtagSendEvent(url) {
           var callback = function () {
             if (typeof url === 'string') { window.open(url, '_blank'); }
