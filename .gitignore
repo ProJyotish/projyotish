@@ -1,3 +1,6 @@
+# Cloudflare OAuth proxy
+cloudflare-oauth/node_modules
+
 # Logs
 logs
 *.log

@@ -2,74 +2,23 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Crown, Sparkles, MessageCircle, Users, Globe } from "lucide-react";
+import { Check, Crown, Sparkles, MessageCircle, Users, Globe, Star } from "lucide-react";
 import { Button } from "@/src/components/ui/button";
 import { trackMetaEvent } from "@/src/lib/tracking";
+import pricingData from "@/content/pricing.json";
+import settingsData from "@/content/settings.json";
 
-const plansData = {
-  india: [
-    {
-      name: "Premium",
-      icon: Crown,
-      monthly: { price: "₹499", total: "₹499/month", whatsapp: "Send me Premium Monthly subscription link" },
-      quarterly: { price: "₹366", total: "₹1,099/quarter", whatsapp: "Send me Premium Quarterly subscription link", savings: "Save 27%" },
-      features: [
-        "Unlimited Questions",
-        "Daily Favourable Time Reports",
-        "Customised for Your Kundli",
-        "Personalised for Your Profession",
-      ],
-      popular: false,
-      badge: null,
-    },
-    {
-      name: "Power User",
-      icon: Users,
-      monthly: { price: "₹599", total: "₹599/month", whatsapp: "Send me Power User Monthly subscription link" },
-      quarterly: { price: "₹446", total: "₹1,339/quarter", whatsapp: "Send me Power User Quarterly subscription link", savings: "Save 25%" },
-      features: [
-        "Everything in Premium",
-        "Support for multiple profiles",
-      ],
-      popular: true,
-      badge: "Most Popular",
-    },
-  ],
-  international: [
-    {
-      name: "Premium",
-      icon: Crown,
-      monthly: { price: "$19.99", total: "$19.99/month", whatsapp: "Send me Premium Monthly subscription link (International)" },
-      quarterly: { price: "$16.00", total: "$47.99/quarter", whatsapp: "Send me Premium Quarterly subscription link (International)", savings: "Save 20%" },
-      features: [
-        "Unlimited Questions",
-        "Daily Favourable Time Reports",
-        "Customised for Your Kundli",
-        "Personalised for Your Profession",
-      ],
-      popular: false,
-      badge: null,
-    },
-    {
-      name: "Power User",
-      icon: Users,
-      monthly: { price: "$24.99", total: "$24.99/month", whatsapp: "Send me Power User Monthly subscription link (International)" },
-      quarterly: { price: "$20.00", total: "$59.99/quarter", whatsapp: "Send me Power User Quarterly subscription link (International)", savings: "Save 20%" },
-      features: [
-        "Everything in Premium",
-        "Support for multiple profiles",
-      ],
-      popular: true,
-      badge: "Most Popular",
-    },
-  ],
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  crown: Crown,
+  users: Users,
+  star: Star,
 };
 
 const Pricing = () => {
   const [isQuarterly, setIsQuarterly] = useState(false);
   const [region, setRegion] = useState<"india" | "international">("india");
 
-  const plans = plansData[region];
+  const plans = pricingData[region];
 
   return (
     <section id="pricing" className="py-24 bg-card">
@@ -82,14 +31,14 @@ const Pricing = () => {
           className="text-center mb-16"
         >
           <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">
-            Choose Your Plan
+            {pricingData.heading}
           </h2>
           <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
-            Start with a 3-day free trial. Complete Vedic astrology guidance.
+            {pricingData.description}
           </p>
           <div className="inline-flex items-center gap-2 bg-accent/20 text-accent-foreground px-4 py-2 rounded-full mb-8">
             <Sparkles className="w-4 h-4 text-accent" />
-            <span className="font-body text-sm font-medium">3 Days Free Trial - No Limits</span>
+            <span className="font-body text-sm font-medium">{pricingData.trialBadge}</span>
           </div>
 
           {/* Region Toggle */}
@@ -104,7 +53,7 @@ const Pricing = () => {
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                🇮🇳 India
+                India
               </button>
               <button
                 onClick={() => setRegion("international")}
@@ -114,7 +63,7 @@ const Pricing = () => {
                     : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                🌍 International
+                International
               </button>
             </div>
           </div>
@@ -143,8 +92,11 @@ const Pricing = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {plans.map((plan, index) => {
-            const billing = isQuarterly ? plan.quarterly : plan.monthly;
-            const Icon = plan.icon;
+            const price = isQuarterly ? plan.quarterlyPrice : plan.monthlyPrice;
+            const total = isQuarterly ? plan.quarterlyTotal : plan.monthlyTotal;
+            const whatsapp = isQuarterly ? plan.quarterlyWhatsapp : plan.monthlyWhatsapp;
+            const savings = isQuarterly ? plan.quarterlySavings : "";
+            const Icon = iconMap[plan.iconType] || Crown;
 
             return (
               <motion.div
@@ -180,14 +132,14 @@ const Pricing = () => {
                   <p className={`font-body text-sm ${
                     plan.popular ? "text-primary-foreground/80" : "text-muted-foreground"
                   }`}>
-                    {billing.total}
+                    {total}
                   </p>
 
                   <div className="mt-4">
                     <span className={`font-display text-4xl font-bold ${
                       plan.popular ? "" : "text-foreground"
                     }`}>
-                      {billing.price}
+                      {price}
                     </span>
                     <span className={`font-body ${
                       plan.popular ? "text-primary-foreground/80" : "text-muted-foreground"
@@ -196,9 +148,9 @@ const Pricing = () => {
                     </span>
                   </div>
 
-                  {isQuarterly && "savings" in billing && (
+                  {isQuarterly && savings && (
                     <span className="inline-block mt-2 bg-accent/20 text-accent px-3 py-1 rounded-full text-xs font-body font-semibold">
-                      {(billing as { savings: string }).savings}
+                      {savings}
                     </span>
                   )}
                 </div>
@@ -228,7 +180,7 @@ const Pricing = () => {
                   size="lg"
                 >
                   <a
-                    href={`https://wa.me/918291218234?text=${encodeURIComponent(billing.whatsapp)}`}
+                    href={`https://wa.me/${settingsData.whatsappNumber}?text=${encodeURIComponent(whatsapp)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => trackMetaEvent("Lead", { content_name: `Pricing ${plan.name} ${isQuarterly ? "Quarterly" : "Monthly"}` })}

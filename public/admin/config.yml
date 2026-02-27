@@ -1,0 +1,270 @@
+backend:
+  name: github
+  repo: ProJyotish/projyotish
+  branch: main
+  base_url: https://projyotish-cms-auth.rana-048.workers.dev
+
+# Editorial workflow lets you save drafts before publishing
+publish_mode: editorial_workflow
+
+# Where uploaded media files are stored
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+# Logo for the CMS admin panel
+site_url: https://projyotish.com
+display_url: https://projyotish.com
+logo_url: https://projyotish.com/projyotish-logo-new.jpeg
+
+collections:
+  # ==========================================
+  # BLOG POSTS
+  # ==========================================
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short description shown in blog listing" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ==========================================
+  # TESTIMONIALS
+  # ==========================================
+  - name: "testimonials"
+    label: "Testimonials"
+    files:
+      - name: "testimonials"
+        label: "Testimonials"
+        file: "content/testimonials.json"
+        format: "json"
+        fields:
+          - label: "Testimonials"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+
+  # ==========================================
+  # FOUNDERS / TEAM
+  # ==========================================
+  - name: "founders"
+    label: "Team Members"
+    files:
+      - name: "founders"
+        label: "Team Members"
+        file: "content/founders.json"
+        format: "json"
+        fields:
+          - label: "Team Members"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
+              - { label: "Instagram URL", name: "instagram", widget: "string", required: false }
+              - { label: "Website URL", name: "website", widget: "string", required: false }
+              - label: "Credentials"
+                name: "credentials"
+                widget: "list"
+                field: { label: "Credential", name: "credential", widget: "string" }
+              - label: "Icon"
+                name: "iconType"
+                widget: "select"
+                options:
+                  - { label: "Graduation Cap", value: "graduation-cap" }
+                  - { label: "Building", value: "building" }
+                  - { label: "Briefcase", value: "briefcase" }
+                  - { label: "Code", value: "code" }
+                  - { label: "Star", value: "star" }
+
+  # ==========================================
+  # PRICING
+  # ==========================================
+  - name: "pricing"
+    label: "Pricing"
+    files:
+      - name: "pricing"
+        label: "Pricing"
+        file: "content/pricing.json"
+        format: "json"
+        fields:
+          - { label: "Section Heading", name: "heading", widget: "string" }
+          - { label: "Section Description", name: "description", widget: "string" }
+          - { label: "Trial Badge Text", name: "trialBadge", widget: "string" }
+          - label: "India Plans"
+            name: "india"
+            widget: "list"
+            fields:
+              - { label: "Plan Name", name: "name", widget: "string" }
+              - label: "Icon"
+                name: "iconType"
+                widget: "select"
+                options:
+                  - { label: "Crown", value: "crown" }
+                  - { label: "Users", value: "users" }
+                  - { label: "Star", value: "star" }
+              - { label: "Monthly Price", name: "monthlyPrice", widget: "string" }
+              - { label: "Monthly Total", name: "monthlyTotal", widget: "string" }
+              - { label: "Monthly WhatsApp Message", name: "monthlyWhatsapp", widget: "string" }
+              - { label: "Quarterly Price", name: "quarterlyPrice", widget: "string" }
+              - { label: "Quarterly Total", name: "quarterlyTotal", widget: "string" }
+              - { label: "Quarterly WhatsApp Message", name: "quarterlyWhatsapp", widget: "string" }
+              - { label: "Quarterly Savings", name: "quarterlySavings", widget: "string" }
+              - label: "Features"
+                name: "features"
+                widget: "list"
+                field: { label: "Feature", name: "feature", widget: "string" }
+              - { label: "Popular", name: "popular", widget: "boolean", default: false }
+              - { label: "Badge Text", name: "badge", widget: "string", required: false }
+          - label: "International Plans"
+            name: "international"
+            widget: "list"
+            fields:
+              - { label: "Plan Name", name: "name", widget: "string" }
+              - label: "Icon"
+                name: "iconType"
+                widget: "select"
+                options:
+                  - { label: "Crown", value: "crown" }
+                  - { label: "Users", value: "users" }
+                  - { label: "Star", value: "star" }
+              - { label: "Monthly Price", name: "monthlyPrice", widget: "string" }
+              - { label: "Monthly Total", name: "monthlyTotal", widget: "string" }
+              - { label: "Monthly WhatsApp Message", name: "monthlyWhatsapp", widget: "string" }
+              - { label: "Quarterly Price", name: "quarterlyPrice", widget: "string" }
+              - { label: "Quarterly Total", name: "quarterlyTotal", widget: "string" }
+              - { label: "Quarterly WhatsApp Message", name: "quarterlyWhatsapp", widget: "string" }
+              - { label: "Quarterly Savings", name: "quarterlySavings", widget: "string" }
+              - label: "Features"
+                name: "features"
+                widget: "list"
+                field: { label: "Feature", name: "feature", widget: "string" }
+              - { label: "Popular", name: "popular", widget: "boolean", default: false }
+              - { label: "Badge Text", name: "badge", widget: "string", required: false }
+
+  # ==========================================
+  # SITE SETTINGS
+  # ==========================================
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "settings"
+        label: "Site Settings"
+        file: "content/settings.json"
+        format: "json"
+        fields:
+          - { label: "WhatsApp Number", name: "whatsappNumber", widget: "string", hint: "Country code + number, no spaces (e.g. 918291218234)" }
+          - { label: "Support Email", name: "supportEmail", widget: "string" }
+          - { label: "Copyright Year", name: "copyrightYear", widget: "string" }
+          - { label: "Company Name", name: "companyName", widget: "string" }
+
+  # ==========================================
+  # CAREER SUB-TOPICS
+  # ==========================================
+  - name: "career-topics"
+    label: "Career: Sub-topics"
+    folder: "content/topics/career"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short description shown in listings" }
+      - { label: "Publish Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "SEO Title", name: "seoTitle", widget: "string", required: false, hint: "Optional: override the browser tab title" }
+      - { label: "SEO Description", name: "seoDescription", widget: "text", required: false, hint: "Optional: override the meta description" }
+      - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ==========================================
+  # HEALTH SUB-TOPICS
+  # ==========================================
+  - name: "health-topics"
+    label: "Health: Sub-topics"
+    folder: "content/topics/health"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short description shown in listings" }
+      - { label: "Publish Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "SEO Title", name: "seoTitle", widget: "string", required: false, hint: "Optional: override the browser tab title" }
+      - { label: "SEO Description", name: "seoDescription", widget: "text", required: false, hint: "Optional: override the meta description" }
+      - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ==========================================
+  # BUSINESS SUB-TOPICS
+  # ==========================================
+  - name: "business-topics"
+    label: "Business: Sub-topics"
+    folder: "content/topics/business"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short description shown in listings" }
+      - { label: "Publish Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "SEO Title", name: "seoTitle", widget: "string", required: false, hint: "Optional: override the browser tab title" }
+      - { label: "SEO Description", name: "seoDescription", widget: "text", required: false, hint: "Optional: override the meta description" }
+      - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ==========================================
+  # LOVE & RELATIONSHIPS SUB-TOPICS
+  # ==========================================
+  - name: "love-topics"
+    label: "Love & Relationships: Sub-topics"
+    folder: "content/topics/love"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short description shown in listings" }
+      - { label: "Publish Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "SEO Title", name: "seoTitle", widget: "string", required: false, hint: "Optional: override the browser tab title" }
+      - { label: "SEO Description", name: "seoDescription", widget: "text", required: false, hint: "Optional: override the meta description" }
+      - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # ==========================================
+  # WEALTH SUB-TOPICS
+  # ==========================================
+  - name: "wealth-topics"
+    label: "Wealth: Sub-topics"
+    folder: "content/topics/wealth"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "text", hint: "Short description shown in listings" }
+      - { label: "Publish Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: "SEO Title", name: "seoTitle", widget: "string", required: false, hint: "Optional: override the browser tab title" }
+      - { label: "SEO Description", name: "seoDescription", widget: "text", required: false, hint: "Optional: override the meta description" }
+      - { label: "Cover Image", name: "coverImage", widget: "image", required: false }
+      - { label: "Published", name: "published", widget: "boolean", default: true }
+      - { label: "Body", name: "body", widget: "markdown" }

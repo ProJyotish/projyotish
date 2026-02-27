@@ -1,0 +1,4 @@
+name = "projyotish-cms-auth"
+main = "src/index.js"
+compatibility_date = "2023-03-24"
+account_id = "048a53270b1e4820337415c4aa1619ef"

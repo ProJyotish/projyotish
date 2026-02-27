@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "name": "Abhimanyu",
+      "role": "Co-Founder & Chief Astrologer",
+      "description": "IIT graduate and practicing Vedic Astrologer. Has developed proprietary techniques honed over thousands of cases, bringing ancient wisdom into the AI age.",
+      "linkedin": "https://www.linkedin.com/in/arana/",
+      "instagram": "https://instagram.com/agni108_",
+      "website": "https://www.pinpointjyotish.com",
+      "credentials": ["IIT Graduate", "Vedic Astrologer"],
+      "iconType": "graduation-cap"
+    },
+    {
+      "name": "Nishant Kyal",
+      "role": "Co-Founder & Tech Lead",
+      "description": "Built tech at Amazon and Freecharge. Brings years of experience building LLM models across sectors, ensuring ProJyotish delivers accurate and instant insights.",
+      "linkedin": "https://www.linkedin.com/in/nishant-kyal/",
+      "instagram": "",
+      "website": "",
+      "credentials": ["IIT Graduate", "Ex-Amazon", "Ex-Freecharge", "LLM Expert"],
+      "iconType": "building"
+    }
+  ]
+}

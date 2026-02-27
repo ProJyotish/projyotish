@@ -1,0 +1,81 @@
+{
+  "heading": "Choose Your Plan",
+  "description": "Start with a 3-day free trial. Complete Vedic astrology guidance.",
+  "trialBadge": "3 Days Free Trial - No Limits",
+  "india": [
+    {
+      "name": "Premium",
+      "iconType": "crown",
+      "monthlyPrice": "₹499",
+      "monthlyTotal": "₹499/month",
+      "monthlyWhatsapp": "Send me Premium Monthly subscription link",
+      "quarterlyPrice": "₹366",
+      "quarterlyTotal": "₹1,099/quarter",
+      "quarterlyWhatsapp": "Send me Premium Quarterly subscription link",
+      "quarterlySavings": "Save 27%",
+      "features": [
+        "Unlimited Questions",
+        "Daily Favourable Time Reports",
+        "Customised for Your Kundli",
+        "Personalised for Your Profession"
+      ],
+      "popular": false,
+      "badge": ""
+    },
+    {
+      "name": "Power User",
+      "iconType": "users",
+      "monthlyPrice": "₹599",
+      "monthlyTotal": "₹599/month",
+      "monthlyWhatsapp": "Send me Power User Monthly subscription link",
+      "quarterlyPrice": "₹446",
+      "quarterlyTotal": "₹1,339/quarter",
+      "quarterlyWhatsapp": "Send me Power User Quarterly subscription link",
+      "quarterlySavings": "Save 25%",
+      "features": [
+        "Everything in Premium",
+        "Support for multiple profiles"
+      ],
+      "popular": true,
+      "badge": "Most Popular"
+    }
+  ],
+  "international": [
+    {
+      "name": "Premium",
+      "iconType": "crown",
+      "monthlyPrice": "$19.99",
+      "monthlyTotal": "$19.99/month",
+      "monthlyWhatsapp": "Send me Premium Monthly subscription link (International)",
+      "quarterlyPrice": "$16.00",
+      "quarterlyTotal": "$47.99/quarter",
+      "quarterlyWhatsapp": "Send me Premium Quarterly subscription link (International)",
+      "quarterlySavings": "Save 20%",
+      "features": [
+        "Unlimited Questions",
+        "Daily Favourable Time Reports",
+        "Customised for Your Kundli",
+        "Personalised for Your Profession"
+      ],
+      "popular": false,
+      "badge": ""
+    },
+    {
+      "name": "Power User",
+      "iconType": "users",
+      "monthlyPrice": "$24.99",
+      "monthlyTotal": "$24.99/month",
+      "monthlyWhatsapp": "Send me Power User Monthly subscription link (International)",
+      "quarterlyPrice": "$20.00",
+      "quarterlyTotal": "$59.99/quarter",
+      "quarterlyWhatsapp": "Send me Power User Quarterly subscription link (International)",
+      "quarterlySavings": "Save 20%",
+      "features": [
+        "Everything in Premium",
+        "Support for multiple profiles"
+      ],
+      "popular": true,
+      "badge": "Most Popular"
+    }
+  ]
+}

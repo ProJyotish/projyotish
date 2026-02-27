@@ -1,31 +1,19 @@
 "use client";
 import { motion } from "framer-motion";
-import { Linkedin, GraduationCap, Building, Instagram, Globe } from "lucide-react";
+import { Linkedin, GraduationCap, Building, Instagram, Globe, Briefcase, Code, Star } from "lucide-react";
+import foundersData from "@/content/founders.json";
 
-const founders = [
-  {
-    name: "Abhimanyu",
-    role: "Co-Founder & Chief Astrologer",
-    description:
-      "IIT graduate and practicing Vedic Astrologer. Has developed proprietary techniques honed over thousands of cases, bringing ancient wisdom into the AI age.",
-    linkedin: "https://www.linkedin.com/in/arana/",
-    instagram: "https://instagram.com/agni108_",
-    website: "https://www.pinpointjyotish.com",
-    credentials: ["IIT Graduate", "Vedic Astrologer"],
-    icon: GraduationCap,
-  },
-  {
-    name: "Nishant Kyal",
-    role: "Co-Founder & Tech Lead",
-    description:
-      "Built tech at Amazon and Freecharge. Brings years of experience building LLM models across sectors, ensuring ProJyotish delivers accurate and instant insights.",
-    linkedin: "https://www.linkedin.com/in/nishant-kyal/",
-    credentials: ["IIT Graduate", "Ex-Amazon", "Ex-Freecharge", "LLM Expert"],
-    icon: Building,
-  },
-];
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  "graduation-cap": GraduationCap,
+  "building": Building,
+  "briefcase": Briefcase,
+  "code": Code,
+  "star": Star,
+};
 
 const Founders = () => {
+  const founders = foundersData.items;
+
   return (
     <section id="founders" className="py-24 bg-background">
       <div className="container px-4">
@@ -45,79 +33,82 @@ const Founders = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {founders.map((founder, index) => (
-            <motion.div
-              key={founder.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-card rounded-2xl p-8 shadow-soft border border-border hover:shadow-elevated transition-all duration-300"
-            >
-              <div className="flex items-start gap-4 mb-4">
-                <div className="w-16 h-16 bg-accent/20 rounded-xl flex items-center justify-center shrink-0">
-                  <founder.icon className="w-8 h-8 text-primary" />
+          {founders.map((founder, index) => {
+            const IconComponent = iconMap[founder.iconType] || GraduationCap;
+            return (
+              <motion.div
+                key={founder.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="bg-card rounded-2xl p-8 shadow-soft border border-border hover:shadow-elevated transition-all duration-300"
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="w-16 h-16 bg-accent/20 rounded-xl flex items-center justify-center shrink-0">
+                    <IconComponent className="w-8 h-8 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-display text-2xl font-bold text-foreground">
+                      {founder.name}
+                    </h3>
+                    <p className="font-body text-sm text-primary font-medium">
+                      {founder.role}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="font-display text-2xl font-bold text-foreground">
-                    {founder.name}
-                  </h3>
-                  <p className="font-body text-sm text-primary font-medium">
-                    {founder.role}
-                  </p>
+
+                <p className="font-body text-muted-foreground leading-relaxed mb-6">
+                  {founder.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {founder.credentials.map((credential) => (
+                    <span
+                      key={credential}
+                      className="px-3 py-1 bg-muted rounded-full text-xs font-body font-medium text-muted-foreground"
+                    >
+                      {credential}
+                    </span>
+                  ))}
                 </div>
-              </div>
 
-              <p className="font-body text-muted-foreground leading-relaxed mb-6">
-                {founder.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-6">
-                {founder.credentials.map((credential) => (
-                  <span
-                    key={credential}
-                    className="px-3 py-1 bg-muted rounded-full text-xs font-body font-medium text-muted-foreground"
-                  >
-                    {credential}
-                  </span>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-4">
-                <a
-                  href={founder.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-body font-medium transition-colors"
-                >
-                  <Linkedin className="w-5 h-5" />
-                  LinkedIn
-                </a>
-                {founder.instagram && (
+                <div className="flex flex-wrap gap-4">
                   <a
-                    href={founder.instagram}
+                    href={founder.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-body font-medium transition-colors"
                   >
-                    <Instagram className="w-5 h-5" />
-                    Instagram
+                    <Linkedin className="w-5 h-5" />
+                    LinkedIn
                   </a>
-                )}
-                {founder.website && (
-                  <a
-                    href={founder.website}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-body font-medium transition-colors"
-                  >
-                    <Globe className="w-5 h-5" />
-                    Website
-                  </a>
-                )}
-              </div>
-            </motion.div>
-          ))}
+                  {founder.instagram && (
+                    <a
+                      href={founder.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-body font-medium transition-colors"
+                    >
+                      <Instagram className="w-5 h-5" />
+                      Instagram
+                    </a>
+                  )}
+                  {founder.website && (
+                    <a
+                      href={founder.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-body font-medium transition-colors"
+                    >
+                      <Globe className="w-5 h-5" />
+                      Website
+                    </a>
+                  )}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
