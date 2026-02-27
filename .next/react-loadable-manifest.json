@@ -1,0 +1,38 @@
+{
+  "src\\page-components\\Index.tsx -> @/src/components/CTA": {
+    "id": 685,
+    "files": [
+      "static/chunks/685.409adb0814d830da.js"
+    ]
+  },
+  "src\\page-components\\Index.tsx -> @/src/components/Footer": {
+    "id": 6813,
+    "files": [
+      "static/chunks/813.6f3fcd031d2371b2.js"
+    ]
+  },
+  "src\\page-components\\Index.tsx -> @/src/components/Founders": {
+    "id": 8860,
+    "files": [
+      "static/chunks/860.d7041360fb2763d0.js"
+    ]
+  },
+  "src\\page-components\\Index.tsx -> @/src/components/HowItWorks": {
+    "id": 3982,
+    "files": [
+      "static/chunks/982.c044da242b6f7603.js"
+    ]
+  },
+  "src\\page-components\\Index.tsx -> @/src/components/Testimonials": {
+    "id": 7655,
+    "files": [
+      "static/chunks/655.b36cd5a29da2d438.js"
+    ]
+  },
+  "src\\page-components\\Index.tsx -> @/src/components/UseCases": {
+    "id": 2647,
+    "files": [
+      "static/chunks/647.dd3742539044eaab.js"
+    ]
+  }
+}

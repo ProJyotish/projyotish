@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import TermsAndConditions from "@/src/pages/TermsAndConditions";
+import TermsAndConditions from "@/src/page-components/TermsAndConditions";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions - ProJyotish",

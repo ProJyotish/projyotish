@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import PrivacyPolicy from "@/src/pages/PrivacyPolicy";
+import PrivacyPolicy from "@/src/page-components/PrivacyPolicy";
 
 export const metadata: Metadata = {
   title: "Privacy Policy - ProJyotish",

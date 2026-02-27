@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import PricingPage from "@/src/pages/PricingPage";
+import PricingPage from "@/src/page-components/PricingPage";
 
 export const metadata: Metadata = {
   title: "Pricing - ProJyotish",

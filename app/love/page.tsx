@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import LoveLanding from "@/src/pages/LoveLanding";
+import LoveLanding from "@/src/page-components/LoveLanding";
 
 export const metadata: Metadata = {
   title: "Love & Relationship Astrology - ProJyotish",

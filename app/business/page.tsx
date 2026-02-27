@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import BusinessLanding from "@/src/pages/BusinessLanding";
+import BusinessLanding from "@/src/page-components/BusinessLanding";
 
 export const metadata: Metadata = {
   title: "Business Astrology - ProJyotish",

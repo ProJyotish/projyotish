@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Index from "@/src/pages/Index";
+import Index from "@/src/page-components/Index";
 
 export const metadata: Metadata = {
   title: "ProJyotish - Astrologer developed by IITians trained in Astrology",

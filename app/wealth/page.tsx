@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import WealthLanding from "@/src/pages/WealthLanding";
+import WealthLanding from "@/src/page-components/WealthLanding";
 
 export const metadata: Metadata = {
   title: "Wealth & Finance Astrology - ProJyotish",

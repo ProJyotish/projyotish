@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import CareerLanding from "@/src/pages/CareerLanding";
+import CareerLanding from "@/src/page-components/CareerLanding";
 
 export const metadata: Metadata = {
   title: "Career Astrology - ProJyotish",

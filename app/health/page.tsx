@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import HealthLanding from "@/src/pages/HealthLanding";
+import HealthLanding from "@/src/page-components/HealthLanding";
 
 export const metadata: Metadata = {
   title: "Health Astrology - ProJyotish",

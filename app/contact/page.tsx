@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ContactUs from "@/src/pages/ContactUs";
+import ContactUs from "@/src/page-components/ContactUs";
 
 export const metadata: Metadata = {
   title: "Contact Us - ProJyotish",

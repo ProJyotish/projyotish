@@ -1,0 +1,59 @@
+# ProJyotish - AI-Powered Vedic Astrology
+
+> ProJyotish provides instant, personalized Vedic astrology readings powered by AI technology. Get accurate horoscope predictions, birth chart analysis, and spiritual guidance via WhatsApp.
+
+## About ProJyotish
+
+ProJyotish is an innovative astrology service that combines ancient Vedic wisdom with modern AI technology. Our platform delivers personalized astrological insights directly through WhatsApp, making spiritual guidance accessible to everyone.
+
+### Key Features
+
+- **Instant Readings**: Get your Vedic horoscope analysis within minutes via WhatsApp
+- **AI-Powered Accuracy**: Advanced algorithms trained on authentic Vedic astrology principles
+- **Birth Chart Analysis**: Comprehensive Kundli generation with detailed planetary positions
+- **Daily Predictions**: Personalized daily, weekly, and monthly horoscope forecasts
+- **Compatibility Analysis**: Relationship and marriage compatibility assessments
+- **Career Guidance**: Professional and financial astrology insights
+- **Remedial Measures**: Personalized gemstone, mantra, and ritual recommendations
+
+### How It Works
+
+1. Message us on WhatsApp with your birth details (date, time, place)
+2. Our AI analyzes your Vedic birth chart using traditional calculations
+3. Receive detailed, personalized astrological insights instantly
+4. Ask follow-up questions for deeper understanding
+
+### Vedic Astrology Expertise
+
+Our system is built on authentic Jyotish Shastra principles including:
+- Rashi (Moon Sign) analysis
+- Nakshatra (Lunar Mansion) interpretations
+- Dasha system predictions
+- Planetary transit effects
+- Divisional chart analysis (D1-D60)
+
+### Contact
+
+- Website: https://projyotish.com
+- WhatsApp: +91 8291218234
+
+### Pricing
+
+Simple, transparent pricing with pay-per-reading model. No subscriptions required.
+
+## Documentation
+
+This is a single-page web application showcasing ProJyotish's astrology services.
+
+### Main Sections
+
+- Hero: Introduction and call-to-action
+- How It Works: Step-by-step guide to using the service
+- Use Cases: Different types of astrological readings available
+- Pricing: Service costs and payment information
+- Founders: Team behind ProJyotish
+- CTA: Contact and get started options
+
+## License
+
+All rights reserved. ProJyotish 2026.
