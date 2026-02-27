@@ -52,6 +52,8 @@ collections:
             widget: "list"
             fields:
               - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Name", name: "name", widget: "string", required: false, hint: "First name or full name (e.g. Priya S.)" }
+              - { label: "Location / Role", name: "location", widget: "string", required: false, hint: "e.g. Mumbai, or Software Engineer, Bengaluru" }
 
   # ==========================================
   # FOUNDERS / TEAM
@@ -70,6 +72,7 @@ collections:
             fields:
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Role", name: "role", widget: "string" }
+              - { label: "Photo", name: "photo", widget: "image", required: false, hint: "Headshot photo of the team member" }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "LinkedIn URL", name: "linkedin", widget: "string" }
               - { label: "Instagram URL", name: "instagram", widget: "string", required: false }

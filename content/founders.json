@@ -8,7 +8,8 @@
       "instagram": "https://instagram.com/agni108_",
       "website": "https://www.pinpointjyotish.com",
       "credentials": ["IIT Graduate", "Vedic Astrologer"],
-      "iconType": "graduation-cap"
+      "iconType": "graduation-cap",
+      "photo": "/images/founders/abhimanyu.jpg"
     },
     {
       "name": "Nishant Kyal",
@@ -18,7 +19,8 @@
       "instagram": "",
       "website": "",
       "credentials": ["IIT Graduate", "Ex-Amazon", "Ex-Freecharge", "LLM Expert"],
-      "iconType": "building"
+      "iconType": "building",
+      "photo": "/images/founders/nishant.jpg"
     }
   ]
 }

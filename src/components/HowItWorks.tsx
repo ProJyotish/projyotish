@@ -100,9 +100,39 @@ const HowItWorks = () => {
               How to Get Started
             </h3>
           </div>
-          <p className="font-body text-lg text-muted-foreground leading-relaxed">
-            It's incredibly straightforward. Just <a href="https://wa.me/918291218234?text=Namaste" target="_blank" rel="noopener noreferrer" onClick={() => trackMetaEvent("Lead", { content_name: "HowItWorks WhatsApp Link" })} className="text-primary font-semibold hover:underline">send a "Namaste" to ProJyotish on WhatsApp</a>, and you're in. From there, share your queries, birth details, or any questions - we handle the rest with expert precision.
+          <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
+            It's incredibly straightforward. Just <a href="https://wa.me/918291218234?text=Namaste" target="_blank" rel="noopener noreferrer" onClick={() => trackMetaEvent("Lead", { content_name: "HowItWorks WhatsApp Link" })} className="text-primary font-semibold hover:underline">send a "Namaste" to ProJyotish on WhatsApp</a>, and you're in.
           </p>
+          {/* What to expect steps */}
+          <div className="space-y-4">
+            {[
+              {
+                step: "1",
+                title: "Say Namaste",
+                desc: "Tap the WhatsApp button. \"Namaste\" is pre-typed — just press Send.",
+              },
+              {
+                step: "2",
+                title: "Share your birth details",
+                desc: "We'll ask for your date, time, and place of birth to build your Kundli.",
+              },
+              {
+                step: "3",
+                title: "Get your first reading instantly",
+                desc: "Ask any question — career, health, relationships, timing — and receive a precise, personalised answer.",
+              },
+            ].map((item) => (
+              <div key={item.step} className="flex items-start gap-4 bg-background/60 rounded-2xl px-5 py-4">
+                <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center shrink-0 font-display font-bold text-sm">
+                  {item.step}
+                </div>
+                <div>
+                  <p className="font-body font-semibold text-foreground text-sm">{item.title}</p>
+                  <p className="font-body text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Honesty & Fairness */}

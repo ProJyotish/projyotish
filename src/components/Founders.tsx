@@ -45,8 +45,16 @@ const Founders = () => {
                 className="bg-card rounded-2xl p-8 shadow-soft border border-border hover:shadow-elevated transition-all duration-300"
               >
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-16 h-16 bg-accent/20 rounded-xl flex items-center justify-center shrink-0">
-                    <IconComponent className="w-8 h-8 text-primary" />
+                  <div className="w-20 h-20 rounded-2xl shrink-0 overflow-hidden bg-accent/20 flex items-center justify-center">
+                    {founder.photo ? (
+                      <img
+                        src={founder.photo}
+                        alt={founder.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <IconComponent className="w-8 h-8 text-primary" />
+                    )}
                   </div>
                   <div>
                     <h3 className="font-display text-2xl font-bold text-foreground">

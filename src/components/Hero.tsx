@@ -132,7 +132,20 @@ const Hero = () => {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="mt-12 pt-8 border-t border-border/50"
           >
-            <p className="text-sm text-muted-foreground mb-4">Built by IIT alumni • Trusted by professionals</p>
+            {/* Founder face + "trained by" line */}
+            <div className="flex items-center justify-center gap-3 mb-5">
+              <div className="w-10 h-10 rounded-full overflow-hidden bg-accent/30 shrink-0 border-2 border-primary/20">
+                <img
+                  src="/images/founders/abhimanyu.jpg"
+                  alt="Abhimanyu, Chief Astrologer"
+                  className="w-full h-full object-cover"
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                />
+              </div>
+              <p className="text-sm text-muted-foreground">
+                <span className="font-semibold text-foreground">Abhimanyu</span> — IIT Delhi · Vedic Astrologer · 1000s of readings
+              </p>
+            </div>
             <div className="flex justify-center gap-6 items-center text-muted-foreground/60">
               <span className="font-body text-sm">WhatsApp</span>
               <span className="text-border">•</span>
