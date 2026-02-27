@@ -9,7 +9,7 @@
       "website": "https://www.pinpointjyotish.com",
       "credentials": ["IIT Graduate", "Vedic Astrologer"],
       "iconType": "graduation-cap",
-      "photo": "/images/founders/abhimanyu.jpg"
+      "photo": "/images/founders/abhimanyu.png"
     },
     {
       "name": "Nishant Kyal",
@@ -20,7 +20,7 @@
       "website": "",
       "credentials": ["IIT Graduate", "Ex-Amazon", "Ex-Freecharge", "LLM Expert"],
       "iconType": "building",
-      "photo": "/images/founders/nishant.jpg"
+      "photo": "/images/founders/nishant.png"
     }
   ]
 }

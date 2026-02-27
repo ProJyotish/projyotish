@@ -136,7 +136,7 @@ const Hero = () => {
             <div className="flex items-center justify-center gap-3 mb-5">
               <div className="w-10 h-10 rounded-full overflow-hidden bg-accent/30 shrink-0 border-2 border-primary/20">
                 <img
-                  src="/images/founders/abhimanyu.jpg"
+                  src="/images/founders/abhimanyu.png"
                   alt="Abhimanyu, Chief Astrologer"
                   className="w-full h-full object-cover"
                   onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
