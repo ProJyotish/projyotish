@@ -4,9 +4,6 @@ backend:
   branch: main
   base_url: https://projyotish-cms-auth.rana-048.workers.dev
 
-# Editorial workflow lets you save drafts before publishing
-publish_mode: editorial_workflow
-
 # Where uploaded media files are stored
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
