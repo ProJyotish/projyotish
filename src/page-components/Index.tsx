@@ -53,7 +53,7 @@ const Index = () => {
       
       {/* Floating Get Started button - mobile only */}
       <a
-        href="https://wa.me/918291218234?text=Namaste"
+        href="https://wa.me/919821956888?text=Namaste"
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => trackMetaEvent("Lead", { content_name: "Floating WhatsApp CTA" })}

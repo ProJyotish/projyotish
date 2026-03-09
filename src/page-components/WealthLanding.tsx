@@ -13,7 +13,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const WHATSAPP_URL = "https://wa.me/918291218234?text=I%20have%20a%20wealth%20question";
+const WHATSAPP_URL = "https://wa.me/919821956888?text=I%20have%20a%20wealth%20question";
 
 const WhatsAppButton = ({ text = "Ask Your Free Question", className = "" }: { text?: string; className?: string }) => (
   <motion.a

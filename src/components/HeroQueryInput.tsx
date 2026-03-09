@@ -31,7 +31,7 @@ const HeroQueryInput = () => {
   const whatsappUrl = useMemo(() => {
     const message = query.trim() || "Namaste";
     const encodedMessage = encodeURIComponent(message);
-    return `https://wa.me/918291218234?text=${encodedMessage}`;
+    return `https://wa.me/919821956888?text=${encodedMessage}`;
   }, [query]);
 
   const handleChipClick = (suggestion: string) => {

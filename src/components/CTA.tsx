@@ -33,7 +33,7 @@ const CTA = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="https://wa.me/918291218234?text=Namaste"
+              href="https://wa.me/919821956888?text=Namaste"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackMetaEvent("Lead", { content_name: "CTA Get Started" })}

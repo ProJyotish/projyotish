@@ -164,7 +164,7 @@ collections:
         file: "content/settings.json"
         format: "json"
         fields:
-          - { label: "WhatsApp Number", name: "whatsappNumber", widget: "string", hint: "Country code + number, no spaces (e.g. 918291218234)" }
+          - { label: "WhatsApp Number", name: "whatsappNumber", widget: "string", hint: "Country code + number, no spaces (e.g. 919821956888)" }
           - { label: "Support Email", name: "supportEmail", widget: "string" }
           - { label: "Copyright Year", name: "copyrightYear", widget: "string" }
           - { label: "Company Name", name: "companyName", widget: "string" }
