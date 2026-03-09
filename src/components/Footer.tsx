@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Instagram, Facebook } from "lucide-react";
 import logo from "@/src/assets/file.svg";
 
 const Footer = () => {
@@ -8,12 +9,38 @@ const Footer = () => {
         <div className="flex flex-col gap-8">
           {/* Grid layout */}
           <div className="grid grid-cols-3 md:grid-cols-4 gap-8">
-            {/* Logo + Brand */}
-            <div className="col-span-3 md:col-span-1">
+            {/* Logo + Brand + Social — icons under logo, labels under brand name */}
+            <div className="col-span-3 md:col-span-1 flex flex-col gap-4">
               <Link href="/" className="flex items-center gap-3">
-                <img src={logo.src} alt="ProJyotish" className="w-10 h-10 rounded-lg" />
+                <img src={logo.src} alt="ProJyotish" className="w-10 h-10 shrink-0 rounded-lg" />
                 <span className="font-display text-xl font-semibold text-foreground">ProJyotish</span>
               </Link>
+              <div className="flex flex-col gap-2">
+                <a
+                  href="https://instagram.com/projyotish_official"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 font-body text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="ProJyotish on Instagram"
+                >
+                  <span className="w-10 shrink-0 flex justify-center">
+                    <Instagram className="w-4 h-4" />
+                  </span>
+                  Instagram
+                </a>
+                <a
+                  href="https://www.facebook.com/ProJyotish"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 font-body text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="ProJyotish on Facebook"
+                >
+                  <span className="w-10 shrink-0 flex justify-center">
+                    <Facebook className="w-4 h-4" />
+                  </span>
+                  Facebook
+                </a>
+              </div>
             </div>
 
             {/* Navigation */}
