@@ -130,9 +130,9 @@ export default function RootLayout({
 
 
         {/* Reddit Pixel */}
-        <Script id="reddit-pixel" strategy="lazyOnload">
+        {/* <Script id="reddit-pixel" strategy="lazyOnload">
           {`!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_inhxatfmgann",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_inhxatfmgann');rdt('track', 'PageVisit');`}
-        </Script>
+        </Script> */}
 
 
         {/* gtag delayed navigation helper */}
@@ -163,7 +163,13 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {/* GTM noscript */}
+        <noscript>
+          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KRGPDT77"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-PRVMWX5W"
