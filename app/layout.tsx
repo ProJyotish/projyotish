@@ -66,7 +66,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-                {/* Google Tag Manager */}
+        {/* Google Tag Manager */}
         <Script id="gtm" strategy="lazyOnload">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -75,7 +75,7 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-PRVMWX5W');`}
         </Script>
 
-                {/* Google Analytics */}
+        {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-MSRSJ04P4T"
           strategy="lazyOnload"
@@ -87,7 +87,7 @@ export default function RootLayout({
           gtag('config', 'G-MSRSJ04P4T');`}
         </Script>
 
-                {/* Meta Pixel */}
+        {/* Meta Pixel */}
         <Script id="meta-pixel" strategy="lazyOnload">
           {`!function(f,b,e,v,n,t,s)
           {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -111,7 +111,7 @@ export default function RootLayout({
           />
         </noscript>
 
-                {/* Microsoft Clarity */}
+        {/* Microsoft Clarity */}
         <Script id="clarity" strategy="lazyOnload">
           {`(function(c,l,a,r,i,t,y){
           c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -120,7 +120,14 @@ export default function RootLayout({
           })(window, document, "clarity", "script", "v9f9xqikhz");`}
         </Script>
 
-                {/* gtag delayed navigation helper */}
+
+        {/* Reddit Pixel */}
+        <Script id="reddit-pixel" strategy="lazyOnload">
+          {`!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_inhxatfmgann",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_inhxatfmgann');rdt('track', 'PageVisit');`}
+        </Script>
+
+
+        {/* gtag delayed navigation helper */}
         <Script id="gtag-helper" strategy="lazyOnload">
           {`function gtagSendEvent(url) {
           var callback = function () {
