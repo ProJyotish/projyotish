@@ -66,13 +66,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-          <Script id="gtm" strategy="lazyOnload">
+          {/* <Script id="gtm" strategy="lazyOnload">
             {`(function(w,d,s,l,i){w[l] = w[l] || [];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-KRGPDT77');`}
-          </Script>
+          </Script> */}
 
         {/* Google Tag Manager */}
         <Script id="gtm" strategy="lazyOnload">
@@ -130,9 +130,9 @@ export default function RootLayout({
 
 
         {/* Reddit Pixel */}
-        {/* <Script id="reddit-pixel" strategy="lazyOnload">
+        <Script id="reddit-pixel" strategy="lazyOnload">
           {`!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_inhxatfmgann",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_inhxatfmgann');rdt('track', 'PageVisit');`}
-        </Script> */}
+        </Script>
 
 
         {/* gtag delayed navigation helper */}
@@ -163,13 +163,13 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <noscript>
+        {/* <noscript>
           <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KRGPDT77"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
           />
-        </noscript>
+        </noscript> */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-PRVMWX5W"
