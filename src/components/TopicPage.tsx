@@ -25,7 +25,7 @@ interface TopicPageProps {
 export default function TopicPage({ post, pillar }: TopicPageProps) {
   const pillarLabel = PILLAR_LABELS[pillar] ?? pillar;
   const waMessage = WHATSAPP_MESSAGES[pillar] ?? "I%20have%20a%20question";
-  const waUrl = `https://wa.me/918291218234?text=${waMessage}`;
+  const waUrl = `https://wa.me/919821956888?text=${waMessage}`;
 
   return (
     <main className="min-h-screen bg-background py-24">
