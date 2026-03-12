@@ -15,7 +15,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 const WHATSAPP_URL = "https://wa.me/919821956888?text=I%20have%20a%20question%20about%20my%20child%27s%20future";
 
-const WhatsAppButton = ({ text = "Ask About Your Child", className = "" }: { text?: string; className?: string }) => (
+const WhatsAppButton = ({ text = "Start with 10 free questions", className = "" }: { text?: string; className?: string }) => (
   <motion.a
     href={WHATSAPP_URL}
     target="_blank"
@@ -119,14 +119,14 @@ const testimonials = [
   {
     messages: [
       { text: "My son is in 10th. He doesn't study at all. I'm losing hope. Will he even pass?", sent: false, time: "Feb 10, 8:45 PM" },
-      { text: "His 5th house activates strongly after April. He will surprise you. Encourage, don't pressure — his chart shows late blooming talent.", sent: true, time: "Feb 10, 9:00 PM" },
+      { text: "His 5th house activates strongly after April. He will surprise you. Encourage, don't pressure  - his chart shows late blooming talent.", sent: true, time: "Feb 10, 9:00 PM" },
       { text: "He got 87%! I'm crying. You were right about not pressuring him 🙏", sent: false, time: "May 28, 11:30 AM" },
     ],
   },
   {
     messages: [
       { text: "My daughter wants to do arts but I think she should do science. What does her chart say?", sent: false, time: "Jun 5, 4:15 PM" },
-      { text: "Venus and Moon dominate her chart — creative fields are her strength. She will excel in design, media, or psychology. Let her follow her calling.", sent: true, time: "Jun 5, 4:30 PM" },
+      { text: "Venus and Moon dominate her chart  - creative fields are her strength. She will excel in design, media, or psychology. Let her follow her calling.", sent: true, time: "Jun 5, 4:30 PM" },
       { text: "She got into NID! Top rank in design entrance. So happy we listened to you 🙏", sent: false, time: "Oct 20, 6:00 PM" },
     ],
   },
@@ -280,7 +280,7 @@ const ChildFutureLanding = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-2xl mx-auto">
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">Your child&apos;s bright future is written in the stars</h2>
             <p className="font-body text-lg text-muted-foreground mb-10">Chat with our Astrologer and understand your child&apos;s true potential</p>
-            <WhatsAppButton text="Chat on WhatsApp" />
+            <WhatsAppButton text="Start with 10 free questions" />
             <div className="flex flex-wrap justify-center gap-4 mt-6 text-muted-foreground font-body text-sm">
               <span>100% private</span><span className="text-border">•</span><span>Instant reply</span><span className="text-border">•</span><span>No calls required</span>
             </div>

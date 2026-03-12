@@ -15,7 +15,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 const WHATSAPP_URL = "https://wa.me/919821956888?text=I%20have%20a%20question%20about%20my%20husband%27s%20health";
 
-const WhatsAppButton = ({ text = "Ask Your Free Question", className = "" }: { text?: string; className?: string }) => (
+const WhatsAppButton = ({ text = "Start with 10 free questions", className = "" }: { text?: string; className?: string }) => (
   <motion.a
     href={WHATSAPP_URL}
     target="_blank"
@@ -126,21 +126,21 @@ const testimonials = [
   {
     messages: [
       { text: "My husband drinks every night. It's destroying our family. Will he ever stop?", sent: false, time: "Aug 3, 11:00 PM" },
-      { text: "Rahu's influence on his Moon is strong now — this fuels the habit. This transit weakens after January. With the right remedies and your support, he can break free.", sent: true, time: "Aug 3, 11:18 PM" },
+      { text: "Rahu's influence on his Moon is strong now  - this fuels the habit. This transit weakens after January. With the right remedies and your support, he can break free.", sent: true, time: "Aug 3, 11:18 PM" },
       { text: "It's March now. He hasn't touched alcohol in 6 weeks. The remedies worked. Our home is peaceful again 🙏", sent: false, time: "Mar 10, 7:30 PM" },
     ],
   },
   {
     messages: [
       { text: "Husband has diabetes and it's getting worse. What kind of food should he eat? Is there any astrological remedy?", sent: false, time: "May 20, 3:00 PM" },
-      { text: "Venus is weak in his chart — sugar-related issues are indicated. Reduce sweet and fried foods. Include bitter gourd and fenugreek. Wearing a diamond substitute will help strengthen Venus.", sent: true, time: "May 20, 3:20 PM" },
+      { text: "Venus is weak in his chart  - sugar-related issues are indicated. Reduce sweet and fried foods. Include bitter gourd and fenugreek. Wearing a diamond substitute will help strengthen Venus.", sent: true, time: "May 20, 3:20 PM" },
       { text: "His sugar levels have come down so much! Doctor reduced his medication. The diet changes + remedy really helped 🙏", sent: false, time: "Oct 5, 11:00 AM" },
     ],
   },
   {
     messages: [
       { text: "My husband works 14 hours a day. No rest, no exercise. I'm worried he'll collapse. What does his chart say?", sent: false, time: "Nov 12, 8:45 PM" },
-      { text: "Saturn is heavily influencing his 6th house — burnout risk is high until March. He must take breaks and walk daily. A Shani remedy will reduce the pressure on his body.", sent: true, time: "Nov 12, 9:00 PM" },
+      { text: "Saturn is heavily influencing his 6th house  - burnout risk is high until March. He must take breaks and walk daily. A Shani remedy will reduce the pressure on his body.", sent: true, time: "Nov 12, 9:00 PM" },
       { text: "He started morning walks and the remedy. His energy is so much better. Even his BP normalized. Thank you 🙏", sent: false, time: "Apr 18, 6:30 PM" },
     ],
   },
@@ -280,7 +280,7 @@ const HusbandHealthLanding = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-2xl mx-auto">
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">His health and happiness are written in the stars</h2>
             <p className="font-body text-lg text-muted-foreground mb-10">Chat with our Astrologer and learn how to protect the one you love</p>
-            <WhatsAppButton text="Chat on WhatsApp" />
+            <WhatsAppButton text="Start with 10 free questions" />
             <div className="flex flex-wrap justify-center gap-4 mt-6 text-muted-foreground font-body text-sm">
               <span>100% private</span><span className="text-border">•</span><span>Instant reply</span><span className="text-border">•</span><span>No calls required</span>
             </div>

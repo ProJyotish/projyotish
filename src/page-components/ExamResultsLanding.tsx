@@ -15,7 +15,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 const WHATSAPP_URL = "https://wa.me/919821956888?text=I%20have%20a%20question%20about%20exam%20results%20and%20college%20admission";
 
-const WhatsAppButton = ({ text = "Ask Your Free Question", className = "" }: { text?: string; className?: string }) => (
+const WhatsAppButton = ({ text = "Start with 10 free questions", className = "" }: { text?: string; className?: string }) => (
   <motion.a
     href={WHATSAPP_URL}
     target="_blank"
@@ -126,14 +126,14 @@ const testimonials = [
   {
     messages: [
       { text: "I want to do medicine but everyone says I should do engineering. What does my chart say?", sent: false, time: "May 18, 3:20 PM" },
-      { text: "Your 5th lord connects with the 6th house — healing professions suit you naturally. Medicine is strongly indicated. Follow your heart.", sent: true, time: "May 18, 3:38 PM" },
+      { text: "Your 5th lord connects with the 6th house  - healing professions suit you naturally. Medicine is strongly indicated. Follow your heart.", sent: true, time: "May 18, 3:38 PM" },
       { text: "Got NEET seat! Starting MBBS next month. So glad I didn't listen to the crowd 🙏", sent: false, time: "Sep 8, 6:00 PM" },
     ],
   },
   {
     messages: [
       { text: "I want to study abroad but my family can't afford much. Will I get a scholarship?", sent: false, time: "Jan 22, 9:10 AM" },
-      { text: "9th house lord is very well placed — foreign education is strongly indicated. Apply between March and May. Financial support will come through.", sent: true, time: "Jan 22, 9:28 AM" },
+      { text: "9th house lord is very well placed  - foreign education is strongly indicated. Apply between March and May. Financial support will come through.", sent: true, time: "Jan 22, 9:28 AM" },
       { text: "Got full scholarship to University of Toronto!! Leaving in September 🎉🙏", sent: false, time: "Jun 15, 4:45 PM" },
     ],
   },
@@ -214,7 +214,7 @@ const ExamResultsLanding = () => {
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-6 min-h-[3.5rem] md:min-h-[4rem]">
               <RotatingText texts={empathyRotatingTexts} />
             </h2>
-            <p className="font-body text-lg text-muted-foreground mb-10">Your Kundli holds answers about your academic destiny — and the right path forward.</p>
+            <p className="font-body text-lg text-muted-foreground mb-10">Your Kundli holds answers about your academic destiny  - and the right path forward.</p>
             <WhatsAppButton />
           </motion.div>
         </div>
@@ -280,7 +280,7 @@ const ExamResultsLanding = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-2xl mx-auto">
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">Your academic future is written in the stars</h2>
             <p className="font-body text-lg text-muted-foreground mb-10">Chat with our Astrologer and get clarity on exams, college, and career path</p>
-            <WhatsAppButton text="Chat on WhatsApp" />
+            <WhatsAppButton text="Start with 10 free questions" />
             <div className="flex flex-wrap justify-center gap-4 mt-6 text-muted-foreground font-body text-sm">
               <span>100% private</span><span className="text-border">•</span><span>Instant reply</span><span className="text-border">•</span><span>No calls required</span>
             </div>
