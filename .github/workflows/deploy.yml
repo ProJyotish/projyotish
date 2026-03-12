@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [main, staging]
   workflow_dispatch:
   repository_dispatch:
     types: [sanity-publish]  # triggered by Sanity webhook on publish
