@@ -231,12 +231,22 @@ const CareerLanding = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-10 leading-tight"
+              className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight"
             >
               Looking for{" "}
               <RotatingText texts={heroRotatingTexts} />
               ?
             </motion.h1>
+
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg text-muted-foreground mb-3">
+              We understand what you're going through
+            </motion.p>
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-display text-xl md:text-2xl font-semibold text-foreground/80 mb-2 min-h-[2rem]">
+              <RotatingText texts={empathyRotatingTexts} />
+            </motion.p>
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.28 }} className="font-body text-base text-muted-foreground mb-8">
+              Your Kundli will explain why - and show you the way forward.
+            </motion.p>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="mb-8">
               <WhatsAppButton />
@@ -258,27 +268,6 @@ const CareerLanding = () => {
               <span>Built by IIT graduates</span>
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* ===== EMPATHY SECTION ===== */}
-      <section className="py-20 md:py-28 bg-card">
-        <div className="container px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-2xl mx-auto text-center"
-          >
-            <p className="font-body text-muted-foreground text-lg mb-4">We understand what you're going through</p>
-            <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-6 min-h-[3.5rem] md:min-h-[4rem]">
-              <RotatingText texts={empathyRotatingTexts} />
-            </h2>
-            <p className="font-body text-lg text-muted-foreground mb-10">
-              Your Kundli will explain why — and show you the way forward.
-            </p>
-            <WhatsAppButton />
-          </motion.div>
         </div>
       </section>
 
