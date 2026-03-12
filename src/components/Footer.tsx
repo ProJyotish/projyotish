@@ -42,6 +42,9 @@ const Footer = () => {
               <Link href="/health" className="font-body text-xs text-muted-foreground/80 hover:text-foreground transition-colors">Health</Link>
               <Link href="/love" className="font-body text-xs text-muted-foreground/80 hover:text-foreground transition-colors">Love</Link>
               <Link href="/wealth" className="font-body text-xs text-muted-foreground/80 hover:text-foreground transition-colors">Wealth</Link>
+              <Link href="/exam-results" className="font-body text-xs text-muted-foreground/80 hover:text-foreground transition-colors">Exam & Admission</Link>
+              <Link href="/child-future" className="font-body text-xs text-muted-foreground/80 hover:text-foreground transition-colors">Child&apos;s Future</Link>
+              <Link href="/husband-health" className="font-body text-xs text-muted-foreground/80 hover:text-foreground transition-colors">Husband&apos;s Health</Link>
             </div>
           </div>
 
