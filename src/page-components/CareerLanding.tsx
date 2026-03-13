@@ -64,32 +64,49 @@ const RotatingText = ({ texts, className = "" }: { texts: string[]; className?: 
 };
 
 // WhatsApp chat bubble mockup
-const WhatsAppChat = ({ messages }: { messages: { text: string; sent: boolean; time?: string }[] }) => (
-  <div className="bg-[#ECE5DD] rounded-2xl p-4 shadow-elevated max-w-sm w-full">
-    {/* Header */}
-    <div className="flex items-center gap-3 pb-3 border-b border-[#D1C7B7] mb-3">
+type ChatMsg = { text?: string; sent?: boolean; time?: string; remedy?: string; screenshotBreak?: boolean };
+
+const WhatsAppChat = ({ messages }: { messages: ChatMsg[] }) => (
+  <div className="bg-[#ECE5DD] rounded-2xl overflow-hidden shadow-elevated max-w-sm w-full">
+    <div className="flex items-center gap-3 px-4 py-3 border-b border-[#D1C7B7]">
       <img src={logo.src} alt="ProJyotish" className="w-10 h-10 rounded-full" />
       <div>
         <p className="font-body font-semibold text-sm text-[#111B21]">ProJyotish</p>
         <p className="font-body text-xs text-[#667781]">online</p>
       </div>
     </div>
-    {/* Messages */}
-    <div className="space-y-2">
-      {messages.map((msg, i) => (
-        <div key={i} className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}>
-          <div
-            className={`max-w-[85%] px-3 py-2 rounded-lg font-body text-sm leading-relaxed ${
-              msg.sent
-                ? "bg-[#DCF8C6] text-[#111B21]"
-                : "bg-white text-[#111B21]"
-            }`}
-          >
-            <p>{msg.text}</p>
-            {msg.time && <p className="text-[10px] text-[#667781] text-right mt-1">{msg.time}</p>}
+    <div className="px-4 pb-4 pt-2 space-y-2">
+      {messages.map((msg, i) => {
+        if (msg.screenshotBreak) {
+          return (
+            <div key={i} className="flex items-center gap-2 py-2 my-1">
+              <div className="flex-1 border-t border-dashed border-[#B0A898]" />
+              <span className="text-[10px] text-[#667781] whitespace-nowrap px-1.5">📷 later</span>
+              <div className="flex-1 border-t border-dashed border-[#B0A898]" />
+            </div>
+          );
+        }
+        const parts = (msg.text || "").split("[remedy]");
+        return (
+          <div key={i} className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}>
+            <div className={`max-w-[85%] px-3 py-2 rounded-lg font-body text-sm leading-relaxed ${msg.sent ? "bg-[#DCF8C6] text-[#111B21]" : "bg-white text-[#111B21]"}`}>
+              <p>
+                {parts.length === 1 ? msg.text : parts.map((part, j) => (
+                  <span key={j}>
+                    {part}
+                    {j < parts.length - 1 && (
+                      <span style={{ filter: "blur(4px)" }} className="select-none inline-block mx-0.5 rounded text-[#111B21]">
+                        {msg.remedy || "ॐ ऐं नमः"}
+                      </span>
+                    )}
+                  </span>
+                ))}
+              </p>
+              {msg.time && <p className="text-[10px] text-[#667781] text-right mt-1">{msg.time}</p>}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   </div>
 );
@@ -124,35 +141,50 @@ const carouselQuestions = [
 const testimonials = [
   {
     messages: [
-      { text: "6 months jobless. Applied to 200+ places. Nothing. Should I just change my field entirely?", sent: false, time: "Nov 14, 2:30 PM" },
-      { text: "Jupiter aspects your 10th house. A strong period is coming in March. Don't change fields yet.", sent: true, time: "Nov 14, 2:45 PM" },
-      { text: "But what do I do till March? My savings are running out", sent: false, time: "Nov 14, 2:51 PM" },
-      { text: "Apply to finance and education companies specifically this week - they align with your chart right now.", sent: true, time: "Nov 14, 3:02 PM" },
-      { text: "Sir I got placed on Feb 2 🙏 Finance company only", sent: false, time: "Feb 3, 9:10 AM" },
+      { text: "Stuck in the same role for 3 years. Every promotion cycle I get passed over. I don't know what I'm doing wrong", sent: false, time: "Sep 14, 10:20 PM" },
+      { text: "Saturn is sitting on your 10th house lord right now. This is a delay, not a denial. The cycle shifts after January.", sent: true, time: "Sep 14, 10:34 PM" },
+      { text: "January feels so far. Is there anything that helps before that", sent: false, time: "Sep 14, 10:37 PM" },
+      { text: "Yes. Meera, chant [remedy] every morning, 11 times. It activates the 10th house for career recognition.", sent: true, time: "Sep 14, 10:42 PM", remedy: "ॐ शं शनिश्चराय नमः" },
+      { text: "Is this a common mantra or something specific to my chart", sent: false, time: "Sep 14, 10:45 PM" },
+      { text: "Specific to your Saturn placement. Don't pair it with other mantras right now.", sent: true, time: "Sep 14, 10:47 PM" },
+      { screenshotBreak: true },
+      { text: "Got promoted in February - skipped a grade. My manager said it had been in the pipeline but I didn't know 🙏", sent: false, time: "Feb 28, 7:15 PM" },
     ],
   },
   {
     messages: [
-      { text: "Stuck without promotion for 2 years. I work hard but nothing. My junior got promoted over me.", sent: false, time: "Apr 7, 10:15 AM" },
-      { text: "Saturn is testing you in the 10th. This phase ends in 4 months. Document your work and make the request in August.", sent: true, time: "Apr 7, 10:32 AM" },
-      { text: "I've tried asking before and it never worked. But okay I'll try again", sent: false, time: "Apr 7, 10:38 AM" },
-      { text: "Got promoted last week. I almost didn't bother asking. Thank you 🙏", sent: false, time: "Aug 22, 6:48 PM" },
+      { text: "Have an offer to join a startup but it means leaving a stable corporate job. I'm scared", sent: false, time: "Nov 2, 2:10 PM" },
+      { text: "Your 10th and 11th houses show strong entrepreneurial energy. The startup is better aligned. But timing the move matters.", sent: true, time: "Nov 2, 2:27 PM" },
+      { text: "When should I make the jump", sent: false, time: "Nov 2, 2:30 PM" },
+      { text: "After the 18th of this month. Also Vikram - [remedy] strictly this month. Don't sign anything new before that window.", sent: true, time: "Nov 2, 2:35 PM", remedy: "avoid signing contracts or starting work on Tuesdays and Saturdays" },
+      { text: "What happens if I do sign on those days", sent: false, time: "Nov 2, 2:38 PM" },
+      { text: "Mars and Saturn both create friction on those days in your chart. Not superstition - it's a pattern I see repeatedly with your ascendant.", sent: true, time: "Nov 2, 2:41 PM" },
+      { screenshotBreak: true },
+      { text: "Joined on the 20th. 4 months in and already leading a team. Best decision I've made 🙏", sent: false, time: "Mar 5, 9:00 AM" },
     ],
   },
   {
     messages: [
-      { text: "Everyone says government job is not in my fate. Should I stop trying?", sent: false, time: "Jul 19, 11:00 AM" },
-      { text: "Your chart shows a strong 10th lord. Keep applying. A window opens between October and December.", sent: true, time: "Jul 19, 11:18 AM" },
-      { text: "Which exam should I focus on? I'm spread thin right now", sent: false, time: "Jul 19, 11:25 AM" },
-      { text: "State PSC over UPSC for now. The state-level alignment is stronger in your chart this year.", sent: true, time: "Jul 19, 11:31 AM" },
-      { text: "Selection list came out. My name is there 😭🙏", sent: false, time: "Dec 4, 3:22 PM" },
+      { text: "Job offer in Dubai. Good package but means leaving family. Another offer in Pune but lower pay. What should I do", sent: false, time: "Jul 8, 6:45 PM" },
+      { text: "Your 12th house is strongly activated - foreign work is favoured right now, not just possible. Dubai timing aligns well.", sent: true, time: "Jul 8, 7:02 PM" },
+      { text: "My parents are against it. Will it create family conflict", sent: false, time: "Jul 8, 7:05 PM" },
+      { text: "Short-term friction yes, long-term they'll understand once results show. Also Prerna - [remedy] before you accept. It clears the path for big decisions.", sent: true, time: "Jul 8, 7:10 PM", remedy: "donate red lentils at a Hanuman temple this Saturday" },
+      { text: "I've never done something like that. Do I do it personally or can someone else", sent: false, time: "Jul 8, 7:13 PM" },
+      { text: "Personally. Takes 10 minutes. The intent matters more than the act.", sent: true, time: "Jul 8, 7:15 PM" },
+      { screenshotBreak: true },
+      { text: "In Dubai now. Package doubled, parents came around after 2 months. Thank you 🙏", sent: false, time: "Dec 3, 11:30 AM" },
     ],
   },
   {
     messages: [
-      { text: "Same salary for 3 years. Feel like I'm going nowhere. Should I switch or negotiate first?", sent: false, time: "Jun 3, 9:40 AM" },
-      { text: "Venus in your 2nd house is weak but strengthens after September. Try negotiating in July first - if nothing by August end, switch.", sent: true, time: "Jun 3, 9:55 AM" },
-      { text: "Negotiated last week. They matched. 35% hike without switching 🙏 Didn't even need to leave", sent: false, time: "Jul 28, 7:15 PM" },
+      { text: "Lost my job 4 months ago. Nothing is converting despite 50+ applications. Starting to lose confidence", sent: false, time: "Mar 22, 9:00 AM" },
+      { text: "Rahu is transiting your 6th house - this creates exactly this kind of delay in employment. It lifts in about 6 weeks.", sent: true, time: "Mar 22, 9:18 AM" },
+      { text: "6 weeks is too long. Is there anything I can do to speed this up", sent: false, time: "Mar 22, 9:21 AM" },
+      { text: "Keep applying but focus on Wednesday and Friday interviews. And Siddharth - chant [remedy] 21 times daily. Ganesha rules new beginnings and blocked paths.", sent: true, time: "Mar 22, 9:27 PM", remedy: "ॐ गं गणपतये नमः" },
+      { text: "Morning or evening", sent: false, time: "Mar 22, 9:29 AM" },
+      { text: "Morning, before 8am. Before you open your phone.", sent: true, time: "Mar 22, 9:31 AM" },
+      { screenshotBreak: true },
+      { text: "Offer letter accepted yesterday. Senior role, better pay than before. Your 6-week prediction was almost exact 🙏", sent: false, time: "May 8, 4:40 PM" },
     ],
   },
 ];

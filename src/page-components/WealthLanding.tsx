@@ -45,21 +45,49 @@ const RotatingText = ({ texts, className = "" }: { texts: string[]; className?: 
   );
 };
 
-const WhatsAppChat = ({ messages }: { messages: { text: string; sent: boolean; time?: string }[] }) => (
-  <div className="bg-[#ECE5DD] rounded-2xl p-4 shadow-elevated max-w-sm w-full">
-    <div className="flex items-center gap-3 pb-3 border-b border-[#D1C7B7] mb-3">
+type ChatMsg = { text?: string; sent?: boolean; time?: string; remedy?: string; screenshotBreak?: boolean };
+
+const WhatsAppChat = ({ messages }: { messages: ChatMsg[] }) => (
+  <div className="bg-[#ECE5DD] rounded-2xl overflow-hidden shadow-elevated max-w-sm w-full">
+    <div className="flex items-center gap-3 px-4 py-3 border-b border-[#D1C7B7]">
       <img src={logo.src} alt="ProJyotish" className="w-10 h-10 rounded-full" />
-      <div><p className="font-body font-semibold text-sm text-[#111B21]">ProJyotish</p><p className="font-body text-xs text-[#667781]">online</p></div>
+      <div>
+        <p className="font-body font-semibold text-sm text-[#111B21]">ProJyotish</p>
+        <p className="font-body text-xs text-[#667781]">online</p>
+      </div>
     </div>
-    <div className="space-y-2">
-      {messages.map((msg, i) => (
-        <div key={i} className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}>
-          <div className={`max-w-[85%] px-3 py-2 rounded-lg font-body text-sm leading-relaxed ${msg.sent ? "bg-[#DCF8C6] text-[#111B21]" : "bg-white text-[#111B21]"}`}>
-            <p>{msg.text}</p>
-            {msg.time && <p className="text-[10px] text-[#667781] text-right mt-1">{msg.time}</p>}
+    <div className="px-4 pb-4 pt-2 space-y-2">
+      {messages.map((msg, i) => {
+        if (msg.screenshotBreak) {
+          return (
+            <div key={i} className="flex items-center gap-2 py-2 my-1">
+              <div className="flex-1 border-t border-dashed border-[#B0A898]" />
+              <span className="text-[10px] text-[#667781] whitespace-nowrap px-1.5">📷 later</span>
+              <div className="flex-1 border-t border-dashed border-[#B0A898]" />
+            </div>
+          );
+        }
+        const parts = (msg.text || "").split("[remedy]");
+        return (
+          <div key={i} className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}>
+            <div className={`max-w-[85%] px-3 py-2 rounded-lg font-body text-sm leading-relaxed ${msg.sent ? "bg-[#DCF8C6] text-[#111B21]" : "bg-white text-[#111B21]"}`}>
+              <p>
+                {parts.length === 1 ? msg.text : parts.map((part, j) => (
+                  <span key={j}>
+                    {part}
+                    {j < parts.length - 1 && (
+                      <span style={{ filter: "blur(4px)" }} className="select-none inline-block mx-0.5 rounded text-[#111B21]">
+                        {msg.remedy || "ॐ ऐं नमः"}
+                      </span>
+                    )}
+                  </span>
+                ))}
+              </p>
+              {msg.time && <p className="text-[10px] text-[#667781] text-right mt-1">{msg.time}</p>}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   </div>
 );
@@ -91,34 +119,50 @@ const carouselQuestions = [
 const testimonials = [
   {
     messages: [
-      { text: "I earn well but I can never save. The money just disappears. There's no real reason for it.", sent: false, time: "Jan 10, 8:30 PM" },
-      { text: "Moon in your 12th house creates an unconscious tendency to spend or lose money. This isn't a habit problem - it's a pattern in your chart. A Moon remedy and tracking expenses on Mondays specifically will help.", sent: true, time: "Jan 10, 8:47 PM" },
-      { text: "Tracking on Mondays is oddly specific. Does that actually work?", sent: false, time: "Jan 10, 8:51 PM" },
-      { text: "Moon rules Monday. Awareness on that day activates the remedy. Try it for a month.", sent: true, time: "Jan 10, 8:55 PM" },
-      { text: "It's been 3 months. I have savings for the first time in years. The Monday thing sounds superstitious but I have data now 🙏😅", sent: false, time: "Apr 8, 7:00 PM" },
+      { text: "I've been investing for 5 years. Nothing grows. Same money sitting there while everyone else seems to be doing well", sent: false, time: "Apr 7, 10:00 PM" },
+      { text: "Your 2nd house lord is weakly placed and Ketu is aspecting the 11th house - both wealth houses. This creates stagnation even when effort is there.", sent: true, time: "Apr 7, 10:18 PM" },
+      { text: "So what changes this", sent: false, time: "Apr 7, 10:21 PM" },
+      { text: "Suresh, chant [remedy] every morning, 108 times on Fridays, 21 times on other days. This is the primary Lakshmi activation mantra.", sent: true, time: "Apr 7, 10:27 PM", remedy: "ॐ श्रीं श्रीये नमः" },
+      { text: "Should I also change where I'm investing or is this separate", sent: false, time: "Apr 7, 10:30 PM" },
+      { text: "Separate but both matter. The mantra removes the karmic block. Good investment decisions then stick.", sent: true, time: "Apr 7, 10:32 PM" },
+      { screenshotBreak: true },
+      { text: "Portfolio up 34% this year. Also got an unexpected bonus at work. Whatever shifted, I'm grateful 🙏", sent: false, time: "Dec 20, 9:15 AM" },
     ],
   },
   {
     messages: [
-      { text: "I've been trying to buy a flat for 2 years. Every deal falls apart at the last minute. What's happening?", sent: false, time: "Mar 7, 4:00 PM" },
-      { text: "Ketu is transiting your 4th house of property - this creates delays and last-minute disruptions until August. Avoid any property registration before September.", sent: true, time: "Mar 7, 4:18 PM" },
-      { text: "So I just wait?", sent: false, time: "Mar 7, 4:21 PM" },
-      { text: "Use this time to finalize the property and paperwork - just don't register. The September window is very strong for property in your chart.", sent: true, time: "Mar 7, 4:26 PM" },
-      { text: "Registered in October. The smoothest transaction I've had. Even the loan came through faster than expected 🙏", sent: false, time: "Oct 28, 6:00 PM" },
+      { text: "In debt for 4 years. Make decent money but it just disappears. I can't figure out where it goes", sent: false, time: "Jul 3, 8:30 PM" },
+      { text: "Rahu in your 2nd house is classic - money comes but doesn't stay. It creates an invisible leak in the wealth house.", sent: true, time: "Jul 3, 8:49 PM" },
+      { text: "Is this fixable or is this just how it is for me", sent: false, time: "Jul 3, 8:52 PM" },
+      { text: "Fully fixable with the right approach. Lakshmi, [remedy] - don't move it for 40 days. It anchors the 2nd house energy.", sent: true, time: "Jul 3, 8:57 PM", remedy: "place a copper coin in a bowl of rice on your kitchen shelf" },
+      { text: "Does the rice or bowl type matter", sent: false, time: "Jul 3, 9:00 PM" },
+      { text: "Raw uncooked rice. Copper or brass bowl. Position matters - it should face east. Don't touch or move it.", sent: true, time: "Jul 3, 9:02 PM" },
+      { screenshotBreak: true },
+      { text: "Cleared two loans in 5 months. I still don't fully understand how things aligned but the money stopped slipping 🙏", sent: false, time: "Dec 8, 3:00 PM" },
     ],
   },
   {
     messages: [
-      { text: "Lost a lot of money in stocks last year. Wondering if I should invest again or is my chart against it?", sent: false, time: "May 20, 10:00 AM" },
-      { text: "Rahu was in your 5th house (speculation) last year - losses in that period are very common. It has moved now. Your chart is not against investment, just against speculation. Mutual funds over direct stocks for now.", sent: true, time: "May 20, 10:18 AM" },
-      { text: "Switched to mutual funds. Portfolio up 28% in 10 months and I'm sleeping better 🙏", sent: false, time: "Mar 15, 9:30 AM" },
+      { text: "Trying to sell a property for 8 months. Many viewers, no buyers. Price is fair according to the market", sent: false, time: "Feb 18, 5:00 PM" },
+      { text: "Mercury - the planet of transactions - is retrograde in your 4th house of property. Wait until it goes direct in March. Buyers will show up.", sent: true, time: "Feb 18, 5:19 PM" },
+      { text: "What can I do before March to not lose more time", sent: false, time: "Feb 18, 5:22 PM" },
+      { text: "Nikhil, [remedy] before you list it again in March. Mercury responds to green offerings on Wednesdays.", sent: true, time: "Feb 18, 5:27 PM", remedy: "donate green moong dal at a temple on a Wednesday" },
+      { text: "Is one time enough or should I do it every Wednesday", sent: false, time: "Feb 18, 5:30 PM" },
+      { text: "Once before listing. Then one more after you get a serious buyer. That's enough.", sent: true, time: "Feb 18, 5:32 PM" },
+      { screenshotBreak: true },
+      { text: "Sold in March - first serious buyer who came became the buyer. Closed in 3 weeks 🙏", sent: false, time: "Apr 10, 12:30 PM" },
     ],
   },
   {
     messages: [
-      { text: "I have a big financial decision to make. Should I take this loan for my business?", sent: false, time: "Sep 5, 2:00 PM" },
-      { text: "Your 8th house (loans and debt) is well-supported right now. The loan is fine, but sign before October 20th - after that a Saturn transit complicates the terms.", sent: true, time: "Sep 5, 2:18 PM" },
-      { text: "Signed on October 14th. Got a better rate than expected. The deadline push made me move faster which was actually good 🙏", sent: false, time: "Oct 21, 5:45 PM" },
+      { text: "Bank is offering a loan. Good terms. But last time I took a loan it went badly. Should I take it", sent: false, time: "Nov 12, 4:00 PM" },
+      { text: "Your 8th house - which governs borrowed money - is much better positioned now than 2-3 years ago. The prior loan issue was timing. This one is different.", sent: true, time: "Nov 12, 4:18 PM" },
+      { text: "How different. Enough to risk it", sent: false, time: "Nov 12, 4:21 PM" },
+      { text: "Yes. But Geeta - [remedy] before you sign. Mars creates aggression around debt - avoiding those days is protective.", sent: true, time: "Nov 12, 4:26 PM", remedy: "avoid finalising financial commitments on Tuesdays and Saturdays for this month" },
+      { text: "The bank wants to close by Tuesday. Can I push", sent: false, time: "Nov 12, 4:29 PM" },
+      { text: "Push to Wednesday or Thursday. One day delay is trivial for a major financial commitment.", sent: true, time: "Nov 12, 4:31 PM" },
+      { screenshotBreak: true },
+      { text: "Moved to Thursday. Loan is going smoothly - 8 months in, no issues. Completely different experience from before 🙏", sent: false, time: "Jul 20, 2:00 PM" },
     ],
   },
 ];

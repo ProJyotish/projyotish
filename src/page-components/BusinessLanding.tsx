@@ -64,30 +64,49 @@ const RotatingText = ({ texts, className = "" }: { texts: string[]; className?: 
 };
 
 // WhatsApp chat bubble mockup
-const WhatsAppChat = ({ messages }: { messages: { text: string; sent: boolean; time?: string }[] }) => (
-  <div className="bg-[#ECE5DD] rounded-2xl p-4 shadow-elevated max-w-sm w-full">
-    <div className="flex items-center gap-3 pb-3 border-b border-[#D1C7B7] mb-3">
+type ChatMsg = { text?: string; sent?: boolean; time?: string; remedy?: string; screenshotBreak?: boolean };
+
+const WhatsAppChat = ({ messages }: { messages: ChatMsg[] }) => (
+  <div className="bg-[#ECE5DD] rounded-2xl overflow-hidden shadow-elevated max-w-sm w-full">
+    <div className="flex items-center gap-3 px-4 py-3 border-b border-[#D1C7B7]">
       <img src={logo.src} alt="ProJyotish" className="w-10 h-10 rounded-full" />
       <div>
         <p className="font-body font-semibold text-sm text-[#111B21]">ProJyotish</p>
         <p className="font-body text-xs text-[#667781]">online</p>
       </div>
     </div>
-    <div className="space-y-2">
-      {messages.map((msg, i) => (
-        <div key={i} className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}>
-          <div
-            className={`max-w-[85%] px-3 py-2 rounded-lg font-body text-sm leading-relaxed ${
-              msg.sent
-                ? "bg-[#DCF8C6] text-[#111B21]"
-                : "bg-white text-[#111B21]"
-            }`}
-          >
-            <p>{msg.text}</p>
-            {msg.time && <p className="text-[10px] text-[#667781] text-right mt-1">{msg.time}</p>}
+    <div className="px-4 pb-4 pt-2 space-y-2">
+      {messages.map((msg, i) => {
+        if (msg.screenshotBreak) {
+          return (
+            <div key={i} className="flex items-center gap-2 py-2 my-1">
+              <div className="flex-1 border-t border-dashed border-[#B0A898]" />
+              <span className="text-[10px] text-[#667781] whitespace-nowrap px-1.5">📷 later</span>
+              <div className="flex-1 border-t border-dashed border-[#B0A898]" />
+            </div>
+          );
+        }
+        const parts = (msg.text || "").split("[remedy]");
+        return (
+          <div key={i} className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}>
+            <div className={`max-w-[85%] px-3 py-2 rounded-lg font-body text-sm leading-relaxed ${msg.sent ? "bg-[#DCF8C6] text-[#111B21]" : "bg-white text-[#111B21]"}`}>
+              <p>
+                {parts.length === 1 ? msg.text : parts.map((part, j) => (
+                  <span key={j}>
+                    {part}
+                    {j < parts.length - 1 && (
+                      <span style={{ filter: "blur(4px)" }} className="select-none inline-block mx-0.5 rounded text-[#111B21]">
+                        {msg.remedy || "ॐ ऐं नमः"}
+                      </span>
+                    )}
+                  </span>
+                ))}
+              </p>
+              {msg.time && <p className="text-[10px] text-[#667781] text-right mt-1">{msg.time}</p>}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   </div>
 );
@@ -122,32 +141,49 @@ const carouselQuestions = [
 const testimonials = [
   {
     messages: [
-      { text: "I've been trying to launch my business for a year. Funding keeps falling through. Is this just not for me?", sent: false, time: "Aug 12, 3:00 PM" },
-      { text: "It's not about you - it's about timing. Jupiter is blocking your 11th house (income and gains) until November. December onwards is significantly better for funding conversations.", sent: true, time: "Aug 12, 3:18 PM" },
-      { text: "So I should do nothing till December?", sent: false, time: "Aug 12, 3:22 PM" },
-      { text: "Use this time to build the product and relationships. Don't pitch for investment before December.", sent: true, time: "Aug 12, 3:27 PM" },
-      { text: "Closed seed round in January. One of the investors I met in October - I almost didn't stay in touch 🙏", sent: false, time: "Feb 3, 11:00 AM" },
+      { text: "Business partner of 6 years wants to split. It could destroy what we've built. Is there a way to hold this together", sent: false, time: "Mar 10, 9:00 PM" },
+      { text: "Your 7th house governs partnerships - it's under a difficult Saturn aspect right now. This tension will ease after May. Don't make final decisions before then.", sent: true, time: "Mar 10, 9:18 PM" },
+      { text: "He's already talking to lawyers. How do I slow this down", sent: false, time: "Mar 10, 9:21 PM" },
+      { text: "Don't match his urgency. And Rajiv - [remedy] this Saturday. Saturn-related obstacles in business respond to this specific offering.", sent: true, time: "Mar 10, 9:27 PM", remedy: "donate black sesame and mustard oil at a Shani temple" },
+      { text: "I'm not very religious. Will this still work", sent: false, time: "Mar 10, 9:30 PM" },
+      { text: "The act of donating in itself creates a shift. Intent matters, not ritual belief.", sent: true, time: "Mar 10, 9:32 PM" },
+      { screenshotBreak: true },
+      { text: "Partner backed down in May. We restructured instead of splitting. Business is actually stronger now 🙏", sent: false, time: "Jul 15, 4:30 PM" },
     ],
   },
   {
     messages: [
-      { text: "Business partner and I are having serious conflicts. Should I dissolve the partnership?", sent: false, time: "Apr 18, 5:30 PM" },
-      { text: "Mars is activating your 7th house of partnerships - this friction is temporary, peaking now and easing by end of June. Don't make permanent decisions in this window.", sent: true, time: "Apr 18, 5:48 PM" },
-      { text: "It's July now. Things genuinely calmed down after June. We renegotiated terms and the partnership is stronger now. I'm glad I didn't act in anger 🙏", sent: false, time: "Jul 9, 4:15 PM" },
+      { text: "About to sign a big contract. Client is ready. I want to time this right - any guidance", sent: false, time: "Aug 5, 2:00 PM" },
+      { text: "Mercury is strong this week - good for contracts. But Pooja, [remedy] - this is important for any major agreement you sign this month.", sent: true, time: "Aug 5, 2:17 PM", remedy: "avoid Tuesdays and Saturdays for signings - Wednesday after 10am is ideal" },
+      { text: "Wednesday after 10am. That's very specific. What happens if the client can only do Tuesday", sent: false, time: "Aug 5, 2:20 PM" },
+      { text: "Push gently for Wednesday or Thursday. A one or two day delay on a major contract is worth it. Clients are usually flexible when asked professionally.", sent: true, time: "Aug 5, 2:23 PM" },
+      { text: "Moved it to Thursday morning. They didn't mind at all", sent: false, time: "Aug 5, 2:40 PM" },
+      { screenshotBreak: true },
+      { text: "Contract came through cleanly. No disputes, no delays, payment on time. First major deal that went 100% smooth 🙏", sent: false, time: "Oct 3, 6:00 PM" },
     ],
   },
   {
     messages: [
-      { text: "I want to expand to a new city but not sure of timing. Should I go now or wait?", sent: false, time: "Feb 5, 10:00 AM" },
-      { text: "Your 9th house (expansion) activates strongly from April. March is good for groundwork - scouting, hiring. Don't sign leases before April 15th.", sent: true, time: "Feb 5, 10:18 AM" },
-      { text: "New city office opened April 20th. We broke even in month 2 which our CFO said was unusually fast 🙏", sent: false, time: "Jul 1, 2:30 PM" },
+      { text: "Business has been stagnant for 2 years. Same revenue, no growth. I'm doing everything right but nothing moves", sent: false, time: "Jan 15, 11:00 AM" },
+      { text: "Jupiter is not aspecting your 11th house right now - that's the gains house. When it moves into position in April, things will accelerate. You're in a holding pattern, not a failing one.", sent: true, time: "Jan 15, 11:19 AM" },
+      { text: "April is 3 months away. Anything that helps before that", sent: false, time: "Jan 15, 11:22 AM" },
+      { text: "Arun, chant [remedy] every morning, 108 times. Lakshmi mantra for consistent business energy. Start Fridays, then daily.", sent: true, time: "Jan 15, 11:27 AM", remedy: "ॐ श्रीं महालक्ष्म्यै नमः" },
+      { text: "108 is a lot. Can I do fewer", sent: false, time: "Jan 15, 11:30 AM" },
+      { text: "Start with 21 if 108 feels like too much. Consistency over quantity. Same time every day.", sent: true, time: "Jan 15, 11:32 AM" },
+      { screenshotBreak: true },
+      { text: "March brought two new clients out of nowhere. April I closed the biggest deal in the company's history. You predicted this almost exactly 🙏", sent: false, time: "May 2, 8:00 AM" },
     ],
   },
   {
     messages: [
-      { text: "My business has been stuck at the same revenue for 18 months. Nothing I try is working.", sent: false, time: "Nov 8, 9:15 AM" },
-      { text: "Saturn is sitting on your 2nd house of wealth. This is a plateau phase, not a failure phase. It lifts in March. What you build now will compound after that.", sent: true, time: "Nov 8, 9:32 AM" },
-      { text: "Revenue jumped 60% in April. It was like a switch flipped. The groundwork we laid in December made all the difference 🙏", sent: false, time: "May 12, 3:00 PM" },
+      { text: "Expanding to a new city. Considering Bangalore or Pune. Which is better for my business", sent: false, time: "Oct 22, 3:30 PM" },
+      { text: "Your 9th house and current Jupiter transit both favour southward expansion strongly. Bangalore is the right call.", sent: true, time: "Oct 22, 3:48 PM" },
+      { text: "What timing should I target for the move", sent: false, time: "Oct 22, 3:51 PM" },
+      { text: "Between January 10 and February 15. Also Deepika - [remedy] before your first official day there. It sets good foundation energy.", sent: true, time: "Oct 22, 3:56 PM", remedy: "donate yellow sweets at a Vishnu temple on the Ekadashi before you open" },
+      { text: "Which Ekadashi - there are two a month", sent: false, time: "Oct 22, 3:59 PM" },
+      { text: "The one closest to your opening date. Either is fine - the intent and the day matter more than the exact Ekadashi.", sent: true, time: "Oct 22, 4:01 PM" },
+      { screenshotBreak: true },
+      { text: "Bangalore office is thriving. Hit targets in month 3. Never doubted Pune vs Bangalore until you explained it 🙏", sent: false, time: "Apr 8, 5:00 PM" },
     ],
   },
 ];

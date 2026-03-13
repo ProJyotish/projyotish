@@ -61,24 +61,49 @@ const RotatingText = ({ texts, className = "" }: { texts: string[]; className?: 
   );
 };
 
-const WhatsAppChat = ({ messages }: { messages: { text: string; sent: boolean; time?: string }[] }) => (
-  <div className="bg-[#ECE5DD] rounded-2xl p-4 shadow-elevated max-w-sm w-full">
-    <div className="flex items-center gap-3 pb-3 border-b border-[#D1C7B7] mb-3">
+type ChatMsg = { text?: string; sent?: boolean; time?: string; remedy?: string; screenshotBreak?: boolean };
+
+const WhatsAppChat = ({ messages }: { messages: ChatMsg[] }) => (
+  <div className="bg-[#ECE5DD] rounded-2xl overflow-hidden shadow-elevated max-w-sm w-full">
+    <div className="flex items-center gap-3 px-4 py-3 border-b border-[#D1C7B7]">
       <img src={logo.src} alt="ProJyotish" className="w-10 h-10 rounded-full" />
       <div>
         <p className="font-body font-semibold text-sm text-[#111B21]">ProJyotish</p>
         <p className="font-body text-xs text-[#667781]">online</p>
       </div>
     </div>
-    <div className="space-y-2">
-      {messages.map((msg, i) => (
-        <div key={i} className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}>
-          <div className={`max-w-[85%] px-3 py-2 rounded-lg font-body text-sm leading-relaxed ${msg.sent ? "bg-[#DCF8C6] text-[#111B21]" : "bg-white text-[#111B21]"}`}>
-            <p>{msg.text}</p>
-            {msg.time && <p className="text-[10px] text-[#667781] text-right mt-1">{msg.time}</p>}
+    <div className="px-4 pb-4 pt-2 space-y-2">
+      {messages.map((msg, i) => {
+        if (msg.screenshotBreak) {
+          return (
+            <div key={i} className="flex items-center gap-2 py-2 my-1">
+              <div className="flex-1 border-t border-dashed border-[#B0A898]" />
+              <span className="text-[10px] text-[#667781] whitespace-nowrap px-1.5">📷 later</span>
+              <div className="flex-1 border-t border-dashed border-[#B0A898]" />
+            </div>
+          );
+        }
+        const parts = (msg.text || "").split("[remedy]");
+        return (
+          <div key={i} className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}>
+            <div className={`max-w-[85%] px-3 py-2 rounded-lg font-body text-sm leading-relaxed ${msg.sent ? "bg-[#DCF8C6] text-[#111B21]" : "bg-white text-[#111B21]"}`}>
+              <p>
+                {parts.length === 1 ? msg.text : parts.map((part, j) => (
+                  <span key={j}>
+                    {part}
+                    {j < parts.length - 1 && (
+                      <span style={{ filter: "blur(4px)" }} className="select-none inline-block mx-0.5 rounded text-[#111B21]">
+                        {msg.remedy || "ॐ ऐं नमः"}
+                      </span>
+                    )}
+                  </span>
+                ))}
+              </p>
+              {msg.time && <p className="text-[10px] text-[#667781] text-right mt-1">{msg.time}</p>}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   </div>
 );
@@ -111,36 +136,50 @@ const carouselQuestions = [
 const testimonials = [
   {
     messages: [
-      { text: "My son is 16 and refuses to study. I don't know what to do anymore. Nothing motivates him", sent: false, time: "Feb 10, 9:00 PM" },
-      { text: "His 5th house activates strongly after April. He's in a low-interest phase right now - this is temporary. Pressure will backfire. What subjects does he actually enjoy?", sent: true, time: "Feb 10, 9:15 PM" },
-      { text: "He likes computers and drawing but we wanted him to do science", sent: false, time: "Feb 10, 9:19 PM" },
-      { text: "His chart shows creative-technical fields as his natural path. Science is fine but don't force a branch that doesn't match him.", sent: true, time: "Feb 10, 9:24 PM" },
-      { text: "He scored 87% in boards. Took CS. First in class in his college semester 🙏 I wish I had listened earlier", sent: false, time: "Dec 4, 6:30 PM" },
+      { text: "My son Aarav is 12, bright but can't focus at all. Teachers say he's distracted. Exams are suffering", sent: false, time: "Aug 6, 9:30 PM" },
+      { text: "Mercury in Aarav's chart is afflicted by Rahu - this creates exactly this kind of scattered energy. It's a chart issue, not a discipline issue.", sent: true, time: "Aug 6, 9:48 PM" },
+      { text: "So what helps Mercury in a child's chart", sent: false, time: "Aug 6, 9:51 PM" },
+      { text: "Shreya, have Aarav chant [remedy] 11 times every morning before school. It's a Saraswati mantra - it strengthens Mercury for young children.", sent: true, time: "Aug 6, 9:56 PM", remedy: "ॐ ऐं सरस्वत्यै नमः" },
+      { text: "He's 12 and not very spiritual. Will he do it", sent: false, time: "Aug 6, 9:58 PM" },
+      { text: "Do it together with him for the first 2 weeks. After that he'll do it himself if he notices a difference.", sent: true, time: "Aug 6, 10:00 PM" },
+      { screenshotBreak: true },
+      { text: "Aarav's marks went from 58% to 81% in one term. His teacher asked what changed. I didn't know what to say 🙏", sent: false, time: "Dec 3, 4:30 PM" },
     ],
   },
   {
     messages: [
-      { text: "My daughter wants to do arts but we want science. She's very talented in drawing but we're worried about career", sent: false, time: "Jun 5, 4:00 PM" },
-      { text: "Venus and Moon dominate her chart - creative fields are genuinely her strength. She will struggle in a purely technical path and excel in design, media, or psychology.", sent: true, time: "Jun 5, 4:18 PM" },
-      { text: "But design doesn't pay well, does it?", sent: false, time: "Jun 5, 4:21 PM" },
-      { text: "That's an old assumption. Her chart shows strong 2nd house - she will earn well through her creativity, more than she would through science.", sent: true, time: "Jun 5, 4:27 PM" },
-      { text: "She got into NID Ahmedabad. We couldn't be prouder. Thank you for giving us the courage to let her choose 🙏", sent: false, time: "Aug 20, 7:00 PM" },
+      { text: "My daughter Kiara has been having behavioural issues at school for 6 months. Gets upset very easily. Not like her", sent: false, time: "Mar 15, 8:00 PM" },
+      { text: "Kiara has Mars strongly placed in her 4th house - the house of emotional security. This creates emotional reactivity especially in group environments like school.", sent: true, time: "Mar 15, 8:19 PM" },
+      { text: "Is this a permanent thing in her chart or something that passes", sent: false, time: "Mar 15, 8:22 PM" },
+      { text: "It's a transit amplifying what's in her chart. Eases significantly after July. Also Amit - [remedy] on a Tuesday. It's a protective remedy for Mars in children.", sent: true, time: "Mar 15, 8:28 PM", remedy: "tie a red thread on Kiara's right wrist" },
+      { text: "Does she need to keep it on forever or just for a while", sent: false, time: "Mar 15, 8:31 PM" },
+      { text: "Until it falls off naturally. Don't remove it forcefully. Usually 2-3 months.", sent: true, time: "Mar 15, 8:33 PM" },
+      { screenshotBreak: true },
+      { text: "School called last week to say she's been much calmer since April. Thread is still on. I'm not questioning it 🙏", sent: false, time: "Jun 20, 1:00 PM" },
     ],
   },
   {
     messages: [
-      { text: "Son has been preparing for JEE for 2 years. 2nd attempt next month. He's devastated from last year", sent: false, time: "Nov 28, 8:00 PM" },
-      { text: "Jupiter enters a strong 5th house period in December. The second attempt is much better placed than the first. His confidence is the only thing to protect right now.", sent: true, time: "Nov 28, 8:18 PM" },
-      { text: "Got into NIT Trichy. Rank 3400. He cried when the result came out 🙏 Thank you for keeping hope alive", sent: false, time: "May 2, 9:00 AM" },
+      { text: "My son Dev falls sick very frequently. Every few weeks something or the other. He's 7 years old. I'm constantly worried", sent: false, time: "Nov 10, 10:00 PM" },
+      { text: "Dev's 6th house and ascendant lord are in a difficult relationship in his chart - this creates susceptibility to frequent minor illnesses. It does ease as he grows older.", sent: true, time: "Nov 10, 10:19 PM" },
+      { text: "What can I do to strengthen his constitution now", sent: false, time: "Nov 10, 10:22 PM" },
+      { text: "Pooja, [remedy] on a Thursday in Dev's name. Jupiter rules children's health and protection - yellow offerings on Thursdays are very effective.", sent: true, time: "Nov 10, 10:27 PM", remedy: "donate yellow fruits to 7 children at a temple or school" },
+      { text: "Does Dev need to be there or can I do it alone", sent: false, time: "Nov 10, 10:30 PM" },
+      { text: "Alone is fine. You're doing it in his name - your intention carries it.", sent: true, time: "Nov 10, 10:32 PM" },
+      { screenshotBreak: true },
+      { text: "This whole year Dev has only been properly sick once. Last year it was every month. Something has definitely shifted 🙏", sent: false, time: "Oct 15, 3:45 PM" },
     ],
   },
   {
     messages: [
-      { text: "My daughter is very bright but her board results don't reflect it. Teachers say she has potential but something is blocking her", sent: false, time: "Apr 12, 3:30 PM" },
-      { text: "Ketu in her 5th house creates mental blocks and exam anxiety specifically - she knows the material but performs below level in formal exams. This eases after she turns 18.", sent: true, time: "Apr 12, 3:48 PM" },
-      { text: "That's exactly what it looks like. What can we do now?", sent: false, time: "Apr 12, 3:52 PM" },
-      { text: "Reduce exam pressure at home. Let her explain answers verbally to you - it builds her confidence. A Ketu remedy will also help.", sent: true, time: "Apr 12, 3:58 PM" },
-      { text: "Her score went from 62% to 81% in one year. The verbal practice made a huge difference. We had no idea about the anxiety 🙏", sent: false, time: "Mar 18, 5:00 PM" },
+      { text: "Daughter Riya is 17. Bright girl but completely lost about what to do after school. Can the chart show a direction", sent: false, time: "May 22, 7:30 PM" },
+      { text: "Riya's 10th house has Jupiter's aspect - this gives her multiple paths that could all work, which is why it's hard to choose. Sciences and communication fields are both strong.", sent: true, time: "May 22, 7:48 PM" },
+      { text: "She's leaning towards psychology. Does that fit", sent: false, time: "May 22, 7:51 PM" },
+      { text: "Very well. Moon-Mercury combination in her chart is ideal for that field. Also Rahul - have Riya chant [remedy] daily. Jupiter mantra strengthens decision clarity for teenagers.", sent: true, time: "May 22, 7:57 PM", remedy: "ॐ बृं बृहस्पतये नमः" },
+      { text: "For how long should she do this", sent: false, time: "May 22, 7:59 PM" },
+      { text: "Through her 12th grade and application season. It keeps Jupiter's guidance active.", sent: true, time: "May 22, 8:01 PM" },
+      { screenshotBreak: true },
+      { text: "Riya got into a top psychology program. She's excited for the first time in years. Thank you for giving her direction when she had none 🙏", sent: false, time: "Jul 30, 6:00 PM" },
     ],
   },
 ];

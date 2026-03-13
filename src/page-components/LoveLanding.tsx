@@ -45,21 +45,49 @@ const RotatingText = ({ texts, className = "" }: { texts: string[]; className?: 
   );
 };
 
-const WhatsAppChat = ({ messages }: { messages: { text: string; sent: boolean; time?: string }[] }) => (
-  <div className="bg-[#ECE5DD] rounded-2xl p-4 shadow-elevated max-w-sm w-full">
-    <div className="flex items-center gap-3 pb-3 border-b border-[#D1C7B7] mb-3">
+type ChatMsg = { text?: string; sent?: boolean; time?: string; remedy?: string; screenshotBreak?: boolean };
+
+const WhatsAppChat = ({ messages }: { messages: ChatMsg[] }) => (
+  <div className="bg-[#ECE5DD] rounded-2xl overflow-hidden shadow-elevated max-w-sm w-full">
+    <div className="flex items-center gap-3 px-4 py-3 border-b border-[#D1C7B7]">
       <img src={logo.src} alt="ProJyotish" className="w-10 h-10 rounded-full" />
-      <div><p className="font-body font-semibold text-sm text-[#111B21]">ProJyotish</p><p className="font-body text-xs text-[#667781]">online</p></div>
+      <div>
+        <p className="font-body font-semibold text-sm text-[#111B21]">ProJyotish</p>
+        <p className="font-body text-xs text-[#667781]">online</p>
+      </div>
     </div>
-    <div className="space-y-2">
-      {messages.map((msg, i) => (
-        <div key={i} className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}>
-          <div className={`max-w-[85%] px-3 py-2 rounded-lg font-body text-sm leading-relaxed ${msg.sent ? "bg-[#DCF8C6] text-[#111B21]" : "bg-white text-[#111B21]"}`}>
-            <p>{msg.text}</p>
-            {msg.time && <p className="text-[10px] text-[#667781] text-right mt-1">{msg.time}</p>}
+    <div className="px-4 pb-4 pt-2 space-y-2">
+      {messages.map((msg, i) => {
+        if (msg.screenshotBreak) {
+          return (
+            <div key={i} className="flex items-center gap-2 py-2 my-1">
+              <div className="flex-1 border-t border-dashed border-[#B0A898]" />
+              <span className="text-[10px] text-[#667781] whitespace-nowrap px-1.5">📷 later</span>
+              <div className="flex-1 border-t border-dashed border-[#B0A898]" />
+            </div>
+          );
+        }
+        const parts = (msg.text || "").split("[remedy]");
+        return (
+          <div key={i} className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}>
+            <div className={`max-w-[85%] px-3 py-2 rounded-lg font-body text-sm leading-relaxed ${msg.sent ? "bg-[#DCF8C6] text-[#111B21]" : "bg-white text-[#111B21]"}`}>
+              <p>
+                {parts.length === 1 ? msg.text : parts.map((part, j) => (
+                  <span key={j}>
+                    {part}
+                    {j < parts.length - 1 && (
+                      <span style={{ filter: "blur(4px)" }} className="select-none inline-block mx-0.5 rounded text-[#111B21]">
+                        {msg.remedy || "ॐ ऐं नमः"}
+                      </span>
+                    )}
+                  </span>
+                ))}
+              </p>
+              {msg.time && <p className="text-[10px] text-[#667781] text-right mt-1">{msg.time}</p>}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   </div>
 );
@@ -91,34 +119,50 @@ const carouselQuestions = [
 const testimonials = [
   {
     messages: [
-      { text: "Been single for 4 years. I've tried everything. Is there something wrong with my chart?", sent: false, time: "Jul 8, 9:30 PM" },
-      { text: "Nothing is wrong with your chart. Venus enters a strong phase from October. There's a connection coming - likely through your existing circle, not a new platform.", sent: true, time: "Jul 8, 9:45 PM" },
-      { text: "My existing circle? I know everyone there and none of them are options 😅", sent: false, time: "Jul 8, 9:49 PM" },
-      { text: "Someone returns, or someone new enters through a known face. Stay open.", sent: true, time: "Jul 8, 9:53 PM" },
-      { text: "An old friend came back into my life in November. We've been together 3 months now. I genuinely didn't see it coming 🙏", sent: false, time: "Feb 14, 8:20 PM" },
+      { text: "Have a good rishta proposal but something feels off. Parents like him. I'm unsure", sent: false, time: "Apr 12, 9:30 PM" },
+      { text: "Your 7th house is strongly placed and the proposal timing aligns well. The hesitation you're feeling is Saturn's influence, not a real warning sign.", sent: true, time: "Apr 12, 9:48 PM" },
+      { text: "How do I know the difference between intuition and Saturn", sent: false, time: "Apr 12, 9:51 PM" },
+      { text: "Kavya, chant [remedy] 108 times on Fridays. Venus rules love and partnership - it will help clarify your inner answer.", sent: true, time: "Apr 12, 9:56 PM", remedy: "ॐ क्लीं शुक्राय नमः" },
+      { text: "Just Fridays or every day", sent: false, time: "Apr 12, 9:58 PM" },
+      { text: "Fridays specifically. Venus is strongest on Friday. Morning preferred.", sent: true, time: "Apr 12, 10:00 PM" },
+      { screenshotBreak: true },
+      { text: "Got engaged last month. The hesitation completely went away after week 3. I'm so happy I didn't walk away 🙏", sent: false, time: "Aug 5, 11:00 AM" },
     ],
   },
   {
     messages: [
-      { text: "My relationship ended 8 months ago. He left without explanation. Is he coming back?", sent: false, time: "Jan 15, 11:00 PM" },
-      { text: "His return is possible but not certain - there's a window in April where contact becomes likely. More importantly your chart shows a much stronger connection coming after June.", sent: true, time: "Jan 15, 11:18 PM" },
-      { text: "He did reach out in April. I decided not to go back. Met someone new in July and it's the healthiest relationship I've ever had 🙏", sent: false, time: "Oct 2, 7:45 PM" },
+      { text: "Long distance for 2.5 years. We both want to close the gap but nothing is working out practically", sent: false, time: "Jun 20, 8:00 PM" },
+      { text: "Your 7th and 12th houses are in dialogue - this pattern often comes with long-distance connections. The gap closes when Jupiter transits your 7th. That's about 8 months away.", sent: true, time: "Jun 20, 8:18 PM" },
+      { text: "8 months is hard to hear. What can we do to not lose each other in that time", sent: false, time: "Jun 20, 8:21 PM" },
+      { text: "Rohit, [remedy] - this fasting practice specifically strengthens Venus in your chart. It supports the relationship through the waiting period.", sent: true, time: "Jun 20, 8:26 PM", remedy: "keep a Friday fast and avoid sour foods on that day" },
+      { text: "Both of us or just me", sent: false, time: "Jun 20, 8:28 PM" },
+      { text: "Just you. Your chart is the one being read. She can choose to do it too but it isn't required.", sent: true, time: "Jun 20, 8:30 PM" },
+      { screenshotBreak: true },
+      { text: "She got a transfer to my city in month 7. We got engaged 3 weeks after. I still can't believe how it all came together 🙏", sent: false, time: "Mar 18, 6:30 PM" },
     ],
   },
   {
     messages: [
-      { text: "Been with someone for 2 years but our families are against it. Is this relationship going to survive?", sent: false, time: "Mar 22, 3:15 PM" },
-      { text: "7th house is strong in both your charts. This relationship has longevity. Family opposition softens after July - that's when to push for the conversation.", sent: true, time: "Mar 22, 3:33 PM" },
-      { text: "What if they still say no in July?", sent: false, time: "Mar 22, 3:37 PM" },
-      { text: "Push in August then. Saturn completing a transit makes elders more flexible. Don't have this conversation before July under any circumstances.", sent: true, time: "Mar 22, 3:42 PM" },
-      { text: "August worked. Both families agreed. Getting married in December 🙏", sent: false, time: "Sep 10, 6:00 PM" },
+      { text: "My parents are completely against the person I love. We've been together 4 years. I don't know how to handle this", sent: false, time: "Sep 1, 11:00 PM" },
+      { text: "Your 5th house shows a strong love connection. 7th house indicates eventual family acceptance - but it requires patience and the right timing.", sent: true, time: "Sep 1, 11:18 PM" },
+      { text: "Will they ever actually come around", sent: false, time: "Sep 1, 11:21 PM" },
+      { text: "Yes, but not through confrontation. Around March, a family member will become a bridge. Also Nisha - [remedy] on Friday evenings. It softens obstruction in the 7th house.", sent: true, time: "Sep 1, 11:27 PM", remedy: "offer pink flowers at a Devi temple on Friday evenings" },
+      { text: "Does it matter which temple or any Devi temple", sent: false, time: "Sep 1, 11:30 PM" },
+      { text: "Any Devi temple is fine. Durga or Lakshmi both work. The day and the flowers matter more than the specific temple.", sent: true, time: "Sep 1, 11:32 PM" },
+      { screenshotBreak: true },
+      { text: "My aunt convinced my parents to meet him in March. They approved in May. Getting married next winter 🙏", sent: false, time: "Jun 12, 2:00 PM" },
     ],
   },
   {
     messages: [
-      { text: "I like someone but I'm too scared to tell them. What if I ruin the friendship?", sent: false, time: "May 5, 10:00 PM" },
-      { text: "Venus is well placed in your chart right now. The feeling is likely mutual. The risk of saying nothing is greater than the risk of saying something.", sent: true, time: "May 5, 10:15 PM" },
-      { text: "I told them last week. They felt the same way. I wasted 8 months being scared 🙏😅", sent: false, time: "May 19, 8:30 PM" },
+      { text: "Separation for 8 months. Wife and I both want to reconcile but keep fighting when we try", sent: false, time: "Dec 4, 7:00 PM" },
+      { text: "The conflict pattern you're describing is Rahu in the 7th - it creates misunderstanding even when both people want peace. It lifts after February.", sent: true, time: "Dec 4, 7:20 PM" },
+      { text: "That's still 2 months away. Are we supposed to just wait", sent: false, time: "Dec 4, 7:23 PM" },
+      { text: "Don't force big conversations until February. Small gestures only. And Sameer - chant [remedy] daily for 40 days. It's a reconciliation remedy for the 7th house.", sent: true, time: "Dec 4, 7:29 PM", remedy: "ॐ ह्रीं क्लीं श्रीं नमः" },
+      { text: "40 days is specific. Does it have to be exact", sent: false, time: "Dec 4, 7:31 PM" },
+      { text: "Yes. If you break the chain restart from day 1. That continuity is what makes it work.", sent: true, time: "Dec 4, 7:33 PM" },
+      { screenshotBreak: true },
+      { text: "Back together since March. It's not perfect but we're talking differently now. The 40 days taught me patience more than anything 🙏", sent: false, time: "May 20, 10:00 AM" },
     ],
   },
 ];

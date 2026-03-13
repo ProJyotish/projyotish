@@ -61,24 +61,49 @@ const RotatingText = ({ texts, className = "" }: { texts: string[]; className?: 
   );
 };
 
-const WhatsAppChat = ({ messages }: { messages: { text: string; sent: boolean; time?: string }[] }) => (
-  <div className="bg-[#ECE5DD] rounded-2xl p-4 shadow-elevated max-w-sm w-full">
-    <div className="flex items-center gap-3 pb-3 border-b border-[#D1C7B7] mb-3">
+type ChatMsg = { text?: string; sent?: boolean; time?: string; remedy?: string; screenshotBreak?: boolean };
+
+const WhatsAppChat = ({ messages }: { messages: ChatMsg[] }) => (
+  <div className="bg-[#ECE5DD] rounded-2xl overflow-hidden shadow-elevated max-w-sm w-full">
+    <div className="flex items-center gap-3 px-4 py-3 border-b border-[#D1C7B7]">
       <img src={logo.src} alt="ProJyotish" className="w-10 h-10 rounded-full" />
       <div>
         <p className="font-body font-semibold text-sm text-[#111B21]">ProJyotish</p>
         <p className="font-body text-xs text-[#667781]">online</p>
       </div>
     </div>
-    <div className="space-y-2">
-      {messages.map((msg, i) => (
-        <div key={i} className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}>
-          <div className={`max-w-[85%] px-3 py-2 rounded-lg font-body text-sm leading-relaxed ${msg.sent ? "bg-[#DCF8C6] text-[#111B21]" : "bg-white text-[#111B21]"}`}>
-            <p>{msg.text}</p>
-            {msg.time && <p className="text-[10px] text-[#667781] text-right mt-1">{msg.time}</p>}
+    <div className="px-4 pb-4 pt-2 space-y-2">
+      {messages.map((msg, i) => {
+        if (msg.screenshotBreak) {
+          return (
+            <div key={i} className="flex items-center gap-2 py-2 my-1">
+              <div className="flex-1 border-t border-dashed border-[#B0A898]" />
+              <span className="text-[10px] text-[#667781] whitespace-nowrap px-1.5">📷 later</span>
+              <div className="flex-1 border-t border-dashed border-[#B0A898]" />
+            </div>
+          );
+        }
+        const parts = (msg.text || "").split("[remedy]");
+        return (
+          <div key={i} className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}>
+            <div className={`max-w-[85%] px-3 py-2 rounded-lg font-body text-sm leading-relaxed ${msg.sent ? "bg-[#DCF8C6] text-[#111B21]" : "bg-white text-[#111B21]"}`}>
+              <p>
+                {parts.length === 1 ? msg.text : parts.map((part, j) => (
+                  <span key={j}>
+                    {part}
+                    {j < parts.length - 1 && (
+                      <span style={{ filter: "blur(4px)" }} className="select-none inline-block mx-0.5 rounded text-[#111B21]">
+                        {msg.remedy || "ॐ ऐं नमः"}
+                      </span>
+                    )}
+                  </span>
+                ))}
+              </p>
+              {msg.time && <p className="text-[10px] text-[#667781] text-right mt-1">{msg.time}</p>}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   </div>
 );
@@ -111,36 +136,50 @@ const carouselQuestions = [
 const testimonials = [
   {
     messages: [
-      { text: "My husband has chest pains but refuses to see a doctor. He says it's just stress", sent: false, time: "Apr 15, 10:30 PM" },
-      { text: "Sun and Mars are under pressure in his chart until August. This is not something to wait on. Please push for a cardiac check before July.", sent: true, time: "Apr 15, 10:48 PM" },
-      { text: "He literally won't go. How do I convince him?", sent: false, time: "Apr 15, 10:52 PM" },
-      { text: "Frame it as a routine check, not an emergency. Book for something else and mention it to the doctor there.", sent: true, time: "Apr 15, 10:57 PM" },
-      { text: "We did exactly that. Early blockage detection. Doctor said we caught it in time. I can't thank you enough 🙏😭", sent: false, time: "Jun 22, 9:15 AM" },
+      { text: "My husband has been having heart palpitations. Tests are inconclusive. I'm terrified and he won't take it seriously", sent: false, time: "Feb 2, 10:30 PM" },
+      { text: "In your husband's chart, the Sun and Mars are in difficult positions - heart and blood pressure issues often manifest this way. Push for more detailed cardiac tests.", sent: true, time: "Feb 2, 10:49 PM" },
+      { text: "He won't go. Says he's fine. What can I do from my side", sent: false, time: "Feb 2, 10:52 PM" },
+      { text: "Meena, chant [remedy] 108 times daily on his behalf. This is a health protection mantra - a wife chanting for her husband amplifies it significantly.", sent: true, time: "Feb 2, 10:57 PM", remedy: "ॐ ह्रौं जूं सः पुरुषाय नमः" },
+      { text: "Can I do this even without him knowing", sent: false, time: "Feb 2, 11:00 PM" },
+      { text: "Yes. In Vedic tradition, a wife's prayer for her husband is considered one of the most powerful remedies.", sent: true, time: "Feb 2, 11:02 PM" },
+      { screenshotBreak: true },
+      { text: "He finally agreed to see a specialist in March. They found a minor valve issue - early stage, fully manageable. If we'd waited longer it would've been worse 🙏", sent: false, time: "Apr 18, 9:00 AM" },
     ],
   },
   {
     messages: [
-      { text: "My husband drinks every night and gets aggressive. Will he ever stop? I don't know how much longer I can do this", sent: false, time: "Aug 3, 11:00 PM" },
-      { text: "Rahu's influence on his Moon is strong right now - this fuels both the habit and the aggression. This transit weakens after January.", sent: true, time: "Aug 3, 11:18 PM" },
-      { text: "That's 5 months away. I don't know if I can manage", sent: false, time: "Aug 3, 11:21 PM" },
-      { text: "I understand. The remedies soften the intensity in the meantime. Reduce stress triggers at home as much as possible. You're doing more than you know.", sent: true, time: "Aug 3, 11:28 PM" },
-      { text: "It's been 6 weeks since he had a drink. The home is peaceful for the first time in years 🙏", sent: false, time: "Mar 10, 7:30 PM" },
+      { text: "My husband's blood pressure is dangerously high. Stress from work is making it worse. Medication is barely helping", sent: false, time: "Sep 8, 9:15 PM" },
+      { text: "Saturn is transiting your husband's ascendant - this is creating sustained pressure on both health and professional life. It will ease in about 4 months.", sent: true, time: "Sep 8, 9:33 PM" },
+      { text: "4 months is too long to wait for BP to come down. Is there anything that helps now", sent: false, time: "Sep 8, 9:36 PM" },
+      { text: "Shalini, [remedy] for the next month. Do this yourself, on his behalf - it helps Saturn's grip on the health house.", sent: true, time: "Sep 8, 9:41 PM", remedy: "keep a Monday fast and offer water on a Shivling every Monday morning" },
+      { text: "I've never fasted for someone else before. Is this something I do until things improve or fixed duration", sent: false, time: "Sep 8, 9:44 PM" },
+      { text: "4 Mondays is the standard cycle. After that you'll see a shift. Continue if you choose to, but 4 is the minimum.", sent: true, time: "Sep 8, 9:46 PM" },
+      { screenshotBreak: true },
+      { text: "His BP readings have stabilised after 6 weeks. Doctor reduced medication dosage. He's also less angry at home 🙏", sent: false, time: "Nov 2, 4:00 PM" },
     ],
   },
   {
     messages: [
-      { text: "Husband has diabetes and it keeps getting worse despite medication. The doctor is confused", sent: false, time: "May 20, 3:00 PM" },
-      { text: "Venus is weak in his chart - sugar-related issues are indicated. Reduce sweet and fried foods. Bitter gourd and fenugreek daily. A Venus remedy will help over the next 3 months.", sent: true, time: "May 20, 3:20 PM" },
-      { text: "His sugar levels have come down so much the doctor reduced his medication. The diet changes helped immediately 🙏", sent: false, time: "Oct 5, 11:00 AM" },
+      { text: "Husband was diagnosed with Type 2 diabetes 2 years ago. Despite medication and diet changes it's not coming under control well", sent: false, time: "May 14, 3:30 PM" },
+      { text: "Jupiter in your husband's chart rules the pancreas and sugar metabolism in Vedic astrology. It's afflicted right now which explains why the response to treatment has been slower than expected.", sent: true, time: "May 14, 3:49 PM" },
+      { text: "What can be done to help Jupiter in his chart", sent: false, time: "May 14, 3:52 PM" },
+      { text: "Priya, [remedy] on Wednesdays in Ravi's name. Mercury-Jupiter remedies for chronic conditions respond well to this specific offering.", sent: true, time: "May 14, 3:57 PM", remedy: "donate green vegetables to a temple or a family in need" },
+      { text: "How many Wednesdays", sent: false, time: "May 14, 4:00 PM" },
+      { text: "Start with 11 consecutive Wednesdays. Don't skip even one - continuity is what creates the karmic correction.", sent: true, time: "May 14, 4:02 PM" },
+      { screenshotBreak: true },
+      { text: "His HbA1c came down to 6.8 after being stuck at 8+ for nearly a year. Doctor was surprised. I was not 🙏", sent: false, time: "Sep 5, 11:30 AM" },
     ],
   },
   {
     messages: [
-      { text: "My husband works 14-hour days. No rest, no exercise. I'm scared he'll collapse. He won't slow down", sent: false, time: "Nov 12, 8:45 PM" },
-      { text: "Saturn is heavily influencing his 6th house - burnout risk is high until March. He must take proper breaks or his body will force it. Daily walks matter more than anything.", sent: true, time: "Nov 12, 9:00 PM" },
-      { text: "What's the remedy?", sent: false, time: "Nov 12, 9:03 PM" },
-      { text: "A Shani remedy on Saturdays and 20 minute walks daily. Show him this conversation if it helps.", sent: true, time: "Nov 12, 9:08 PM" },
-      { text: "He started walking. His energy is better, BP normalized, and he's actually home for dinner now. Thank you 🙏", sent: false, time: "Apr 18, 6:30 PM" },
+      { text: "My husband is exhausted all the time. Sleeping 10 hours and still tired. Tests are all normal. He's lost interest in everything", sent: false, time: "Jan 20, 8:00 PM" },
+      { text: "This sounds like Ketu in the 1st or 6th house pattern - it creates profound fatigue and detachment that doesn't show up on medical tests.", sent: true, time: "Jan 20, 8:19 PM" },
+      { text: "Yes that's exactly it. Detachment is the perfect word. What helps this", sent: false, time: "Jan 20, 8:22 PM" },
+      { text: "Rekha, [remedy] near his sleeping area. Change it every morning. Ketu responds to water-based remedies placed near the head.", sent: true, time: "Jan 20, 8:27 PM", remedy: "place a silver bowl of water by his bed each night" },
+      { text: "Does the bowl have to be silver or can it be another material", sent: false, time: "Jan 20, 8:30 PM" },
+      { text: "Silver is ideal. Stainless steel works too. Avoid plastic. The water absorbs energy - change it every morning without fail.", sent: true, time: "Jan 20, 8:32 PM" },
+      { screenshotBreak: true },
+      { text: "After about 3 weeks he started waking up at normal times. 6 weeks in and he signed up for a badminton class. I have my husband back 🙏", sent: false, time: "Apr 1, 7:30 PM" },
     ],
   },
 ];

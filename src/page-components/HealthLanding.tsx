@@ -61,24 +61,49 @@ const RotatingText = ({ texts, className = "" }: { texts: string[]; className?: 
   );
 };
 
-const WhatsAppChat = ({ messages }: { messages: { text: string; sent: boolean; time?: string }[] }) => (
-  <div className="bg-[#ECE5DD] rounded-2xl p-4 shadow-elevated max-w-sm w-full">
-    <div className="flex items-center gap-3 pb-3 border-b border-[#D1C7B7] mb-3">
+type ChatMsg = { text?: string; sent?: boolean; time?: string; remedy?: string; screenshotBreak?: boolean };
+
+const WhatsAppChat = ({ messages }: { messages: ChatMsg[] }) => (
+  <div className="bg-[#ECE5DD] rounded-2xl overflow-hidden shadow-elevated max-w-sm w-full">
+    <div className="flex items-center gap-3 px-4 py-3 border-b border-[#D1C7B7]">
       <img src={logo.src} alt="ProJyotish" className="w-10 h-10 rounded-full" />
       <div>
         <p className="font-body font-semibold text-sm text-[#111B21]">ProJyotish</p>
         <p className="font-body text-xs text-[#667781]">online</p>
       </div>
     </div>
-    <div className="space-y-2">
-      {messages.map((msg, i) => (
-        <div key={i} className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}>
-          <div className={`max-w-[85%] px-3 py-2 rounded-lg font-body text-sm leading-relaxed ${msg.sent ? "bg-[#DCF8C6] text-[#111B21]" : "bg-white text-[#111B21]"}`}>
-            <p>{msg.text}</p>
-            {msg.time && <p className="text-[10px] text-[#667781] text-right mt-1">{msg.time}</p>}
+    <div className="px-4 pb-4 pt-2 space-y-2">
+      {messages.map((msg, i) => {
+        if (msg.screenshotBreak) {
+          return (
+            <div key={i} className="flex items-center gap-2 py-2 my-1">
+              <div className="flex-1 border-t border-dashed border-[#B0A898]" />
+              <span className="text-[10px] text-[#667781] whitespace-nowrap px-1.5">📷 later</span>
+              <div className="flex-1 border-t border-dashed border-[#B0A898]" />
+            </div>
+          );
+        }
+        const parts = (msg.text || "").split("[remedy]");
+        return (
+          <div key={i} className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}>
+            <div className={`max-w-[85%] px-3 py-2 rounded-lg font-body text-sm leading-relaxed ${msg.sent ? "bg-[#DCF8C6] text-[#111B21]" : "bg-white text-[#111B21]"}`}>
+              <p>
+                {parts.length === 1 ? msg.text : parts.map((part, j) => (
+                  <span key={j}>
+                    {part}
+                    {j < parts.length - 1 && (
+                      <span style={{ filter: "blur(4px)" }} className="select-none inline-block mx-0.5 rounded text-[#111B21]">
+                        {msg.remedy || "ॐ ऐं नमः"}
+                      </span>
+                    )}
+                  </span>
+                ))}
+              </p>
+              {msg.time && <p className="text-[10px] text-[#667781] text-right mt-1">{msg.time}</p>}
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   </div>
 );
@@ -110,34 +135,50 @@ const carouselQuestions = [
 const testimonials = [
   {
     messages: [
-      { text: "I've had stomach issues for 2 years. Every test comes back normal. Doctors say it's stress but it doesn't feel like stress", sent: false, time: "Feb 10, 4:20 PM" },
-      { text: "Mercury ruling your 6th is in a difficult position right now. Digestive issues are indicated - especially linked to food timing, not just food type. Avoid eating after 8pm.", sent: true, time: "Feb 10, 4:38 PM" },
-      { text: "Is that it? That seems too simple", sent: false, time: "Feb 10, 4:42 PM" },
-      { text: "Try it for 3 weeks. Also a Mercury remedy will help. The issues should ease significantly by April.", sent: true, time: "Feb 10, 4:47 PM" },
-      { text: "It's April. I haven't had a single episode in 6 weeks. I can't believe it was the timing 🙏", sent: false, time: "Apr 18, 9:00 AM" },
+      { text: "I've had chronic back pain for 2 years. Doctors find nothing. Could it be in my chart", sent: false, time: "Feb 14, 8:30 PM" },
+      { text: "Saturn in your 6th house is creating a persistent condition - this often shows up as chronic pain that standard tests miss. You need both treatment and some chart correction.", sent: true, time: "Feb 14, 8:47 PM" },
+      { text: "What kind of chart correction", sent: false, time: "Feb 14, 8:50 PM" },
+      { text: "Anita, chant [remedy] 108 times on Saturdays. It's directly linked to Saturn's placement in your chart.", sent: true, time: "Feb 14, 8:55 PM", remedy: "ॐ शं शनिश्चराय नमः" },
+      { text: "I had no idea Saturn could affect physical health like this", sent: false, time: "Feb 14, 8:58 PM" },
+      { text: "The 6th house governs chronic illness. When Saturn sits there, it creates delays in healing. The mantra helps shift that energy over 3-4 months.", sent: true, time: "Feb 14, 9:01 PM" },
+      { screenshotBreak: true },
+      { text: "Pain is about 70% better. Also finally found a doctor who identified a spinal alignment issue. It all makes sense now 🙏", sent: false, time: "Jun 10, 5:30 PM" },
     ],
   },
   {
     messages: [
-      { text: "My anxiety has been crippling lately. I've tried therapy, medication. Nothing is fully working.", sent: false, time: "Sep 3, 11:15 PM" },
-      { text: "Moon is afflicted by Rahu in your chart - this creates mental restlessness that's hard to explain medically. This transit runs until February.", sent: true, time: "Sep 3, 11:30 PM" },
-      { text: "So I just have to wait 5 months?", sent: false, time: "Sep 3, 11:33 PM" },
-      { text: "Not just wait - there are Moon remedies that can soften the intensity. Also Monday fasting helps. The peak of this transit passes in November.", sent: true, time: "Sep 3, 11:40 PM" },
-      { text: "November came. Something genuinely shifted. Still in therapy but the dread is so much lighter now 🙏", sent: false, time: "Nov 22, 8:30 AM" },
+      { text: "My father's health is declining. Doctors are doing tests but nothing conclusive yet. I'm scared", sent: false, time: "Oct 3, 11:15 PM" },
+      { text: "Looking at your chart, the 9th house - which represents father - is under a difficult transit right now. It will ease after mid-December. The tests will show something by then.", sent: true, time: "Oct 3, 11:32 PM" },
+      { text: "Is there anything I can do from my side to help him", sent: false, time: "Oct 3, 11:35 PM" },
+      { text: "Yes. Rajesh, [remedy] every Monday for 4 weeks. Do it on behalf of your father - it helps the 9th house energy.", sent: true, time: "Oct 3, 11:40 PM", remedy: "pour water mixed with raw milk on a Shivling" },
+      { text: "I'm not very religious. Is this something I need to believe in for it to work", sent: false, time: "Oct 3, 11:44 PM" },
+      { text: "Intention matters more than belief. You're doing it out of love for your father - that's enough.", sent: true, time: "Oct 3, 11:46 PM" },
+      { screenshotBreak: true },
+      { text: "Tests came back in December. Early-stage, fully treatable. He started treatment and is doing well. I never expected it to turn out okay 🙏", sent: false, time: "Jan 7, 2:15 PM" },
     ],
   },
   {
     messages: [
-      { text: "My father needs surgery. We're scared. Will he be okay?", sent: false, time: "Mar 14, 3:30 PM" },
-      { text: "His chart shows a difficult period until the 22nd. If possible, schedule the surgery after the 25th of this month - the planetary support is much better.", sent: true, time: "Mar 14, 3:48 PM" },
-      { text: "Surgery was on the 27th. He recovered faster than the doctors expected. We're so relieved 🙏", sent: false, time: "Apr 5, 10:20 AM" },
+      { text: "My thyroid has been off for 3 years. Medication keeps changing but not stabilising. Is this a planetary thing", sent: false, time: "May 5, 4:00 PM" },
+      { text: "Moon is weakly placed in your chart and afflicted - thyroid, hormonal issues, and emotional health all connect to Moon in Vedic astrology. This is very consistent with what you're describing.", sent: true, time: "May 5, 4:18 PM" },
+      { text: "So what can help the Moon placement", sent: false, time: "May 5, 4:21 PM" },
+      { text: "Sunita, [remedy] on Mondays for 6 weeks. Moon responds to white offerings and acts of giving.", sent: true, time: "May 5, 4:26 PM", remedy: "donate white cloth or rice to a widow on Monday mornings" },
+      { text: "Where do I find someone to donate to - is this literal or symbolic", sent: false, time: "May 5, 4:29 PM" },
+      { text: "Literal. A temple near you will usually have a list of people in need. The act of giving is what activates the remedy.", sent: true, time: "May 5, 4:32 PM" },
+      { screenshotBreak: true },
+      { text: "TSH finally in normal range after 3 years. Doctor reduced my medication. I honestly don't know what helped more - the new specialist or this 🙏", sent: false, time: "Aug 22, 6:45 PM" },
     ],
   },
   {
     messages: [
-      { text: "BP keeps going up despite medication. Doctor is confused. What does my chart say?", sent: false, time: "Oct 7, 6:45 PM" },
-      { text: "Sun is under pressure in your chart - this impacts the heart and circulation. Reduce salt and anger. This phase eases in December.", sent: true, time: "Oct 7, 7:00 PM" },
-      { text: "BP normalized by December. Doctor reduced the dose 🙏 It was the Sun all along apparently", sent: false, time: "Jan 3, 11:00 AM" },
+      { text: "Constant anxiety and can't sleep properly. On medication but it only helps partially. Everything checks out medically", sent: false, time: "Jan 18, 10:45 PM" },
+      { text: "Rahu in your 4th house is a classic indicator of sleep disturbance and mental restlessness. It's strong in your chart right now.", sent: true, time: "Jan 18, 11:02 PM" },
+      { text: "What would help shift this", sent: false, time: "Jan 18, 11:05 PM" },
+      { text: "Manish, try [remedy] every night before bed. It grounds Rahu's restless energy. Simple but consistent.", sent: true, time: "Jan 18, 11:09 PM", remedy: "place a copper vessel of water beside your bed and change it each morning" },
+      { text: "That's surprisingly simple. How long does it take to notice a difference", sent: false, time: "Jan 18, 11:12 PM" },
+      { text: "Most people notice something within 2 weeks. The key is doing it every single night without gaps.", sent: true, time: "Jan 18, 11:14 PM" },
+      { screenshotBreak: true },
+      { text: "Sleep improved significantly after about 3 weeks. Still on low-dose medication but anxiety is much more manageable 🙏", sent: false, time: "Mar 5, 9:30 AM" },
     ],
   },
 ];

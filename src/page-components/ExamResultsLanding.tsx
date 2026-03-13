@@ -61,7 +61,7 @@ const RotatingText = ({ texts, className = "" }: { texts: string[]; className?: 
   );
 };
 
-type ChatMsg = { text?: string; sent?: boolean; time?: string; mantra?: string; screenshotBreak?: boolean };
+type ChatMsg = { text?: string; sent?: boolean; time?: string; remedy?: string; screenshotBreak?: boolean };
 
 const WhatsAppChat = ({ messages }: { messages: ChatMsg[] }) => (
   <div className="bg-[#ECE5DD] rounded-2xl overflow-hidden shadow-elevated max-w-sm w-full">
@@ -83,7 +83,7 @@ const WhatsAppChat = ({ messages }: { messages: ChatMsg[] }) => (
             </div>
           );
         }
-        const parts = (msg.text || "").split("[mantra]");
+        const parts = (msg.text || "").split("[remedy]");
         return (
           <div key={i} className={`flex ${msg.sent ? "justify-end" : "justify-start"}`}>
             <div className={`max-w-[85%] px-3 py-2 rounded-lg font-body text-sm leading-relaxed ${msg.sent ? "bg-[#DCF8C6] text-[#111B21]" : "bg-white text-[#111B21]"}`}>
@@ -93,7 +93,7 @@ const WhatsAppChat = ({ messages }: { messages: ChatMsg[] }) => (
                     {part}
                     {j < parts.length - 1 && (
                       <span style={{ filter: "blur(4px)" }} className="select-none inline-block mx-0.5 rounded text-[#111B21]">
-                        {msg.mantra || "ॐ ऐं नमः"}
+                        {msg.remedy || "ॐ ऐं नमः"}
                       </span>
                     )}
                   </span>
@@ -139,7 +139,7 @@ const testimonials = [
       { text: "Board exams in 10 days. Studied hard but I'm terrified. Last year I underperformed badly", sent: false, time: "Mar 5, 11:30 PM" },
       { text: "Mercury and Jupiter are both strong in your 5th house this cycle. You're better positioned than last year - the effort will show.", sent: true, time: "Mar 5, 11:43 PM" },
       { text: "I just don't want to disappoint my parents again. Is there anything I should do", sent: false, time: "Mar 5, 11:46 PM" },
-      { text: "Write morning papers first where possible - your chart shows sharper focus before noon. Also Priya, chant [mantra] 11 times every morning. It strengthens Mercury for concentration.", sent: true, time: "Mar 5, 11:51 PM", mantra: "ॐ ऐं सरस्वत्यै नमः" },
+      { text: "Write morning papers first where possible - your chart shows sharper focus before noon. Also Priya, chant [remedy] 11 times every morning. It strengthens Mercury for concentration.", sent: true, time: "Mar 5, 11:51 PM", remedy: "ॐ ऐं सरस्वत्यै नमः" },
       { text: "11 times every day or just before exam days", sent: false, time: "Mar 5, 11:53 PM" },
       { text: "Every day until results. First thing in the morning, before you open a book.", sent: true, time: "Mar 5, 11:55 PM" },
       { screenshotBreak: true },
@@ -149,11 +149,11 @@ const testimonials = [
   {
     messages: [
       { text: "I want medicine but everyone says engineering. I'm so confused", sent: false, time: "May 18, 3:20 PM" },
-      { text: "Your 5th lord connects with the 6th house - healing professions suit you naturally. Medicine is strongly indicated. Engineering is not wrong but won't fulfil you the same way.", sent: true, time: "May 18, 3:38 PM" },
+      { text: "Your 5th lord connects with the 6th house - healing professions suit you naturally. Medicine is strongly indicated.", sent: true, time: "May 18, 3:38 PM" },
       { text: "What if I don't clear NEET this attempt. Already feel like I'll fail", sent: false, time: "May 18, 3:41 PM" },
-      { text: "Your best window is this attempt and next year. Don't skip even if you feel underprepared. Also Arjun - do [mantra] daily, 108 times. It's aligned with your chart's education house.", sent: true, time: "May 18, 3:46 PM", mantra: "ॐ ह्रां ह्रीं बुधाय नमः" },
-      { text: "I've never done mantras before. Does it actually work", sent: false, time: "May 18, 3:50 PM" },
-      { text: "It works when the planet is already well-placed and needs activation. Yours is. Morning is best. Before study, not after.", sent: true, time: "May 18, 3:53 PM" },
+      { text: "Your best window is this attempt and next year. Don't skip. Also Arjun - [remedy] for the 3 weeks before your exam. It strengthens your focus house.", sent: true, time: "May 18, 3:46 PM", remedy: "fast on Ekadashi and avoid non-veg" },
+      { text: "I've never fasted before. Is it specifically tied to my chart or general", sent: false, time: "May 18, 3:50 PM" },
+      { text: "Specific to your Jupiter-Moon placement. General fasting won't give the same result. Try it for just 3 Tuesdays first.", sent: true, time: "May 18, 3:53 PM" },
       { screenshotBreak: true },
       { text: "Got NEET seat! Starting MBBS in August. So glad I didn't listen to the crowd 🙏", sent: false, time: "Sep 8, 6:00 PM" },
     ],
@@ -163,9 +163,9 @@ const testimonials = [
       { text: "I want to study abroad but family can't afford much. Is there any real chance for me", sent: false, time: "Jan 22, 9:10 AM" },
       { text: "Your 9th house lord is strongly placed - foreign education is indicated. Apply between March and May. Financial support will come through scholarship or sponsorship.", sent: true, time: "Jan 22, 9:28 AM" },
       { text: "Which country should I target", sent: false, time: "Jan 22, 9:31 AM" },
-      { text: "English-speaking countries with strong technical programs. Canada and UK are well-aspected. Also Neha, do [mantra] every Thursday - Jupiter rules the 9th house and foreign opportunities.", sent: true, time: "Jan 22, 9:36 AM", mantra: "ॐ बृं बृहस्पतये नमः" },
-      { text: "Just Thursdays?", sent: false, time: "Jan 22, 9:38 AM" },
-      { text: "Yes. 21 times. Start this week, not next.", sent: true, time: "Jan 22, 9:40 AM" },
+      { text: "Canada and UK are well-aspected in your chart. Also Neha - [remedy] on Thursdays for 5 weeks. Jupiter rules foreign opportunities in your chart.", sent: true, time: "Jan 22, 9:36 AM", remedy: "donate yellow sweets and bananas to 5 children" },
+      { text: "This sounds unusual but ok. Any specific Thursday or from this week", sent: false, time: "Jan 22, 9:39 AM" },
+      { text: "Start this Thursday, not next. Timing matters with Jupiter transits.", sent: true, time: "Jan 22, 9:41 AM" },
       { screenshotBreak: true },
       { text: "Full scholarship to University of Toronto!! Leaving in September 🎉🙏", sent: false, time: "Jun 15, 4:45 PM" },
     ],
@@ -175,8 +175,8 @@ const testimonials = [
       { text: "Failed entrance exam twice. Parents losing patience. Should I even try a third time", sent: false, time: "Aug 3, 7:30 PM" },
       { text: "Saturn is testing patience right now - this is very typical. But your 5th house gets strong support after November. Third attempt will be different. Don't stop before that.", sent: true, time: "Aug 3, 7:48 PM" },
       { text: "Honestly I don't fully believe this. But what can I do in the meantime", sent: false, time: "Aug 3, 7:52 PM" },
-      { text: "Solid preparation, past papers. And Rohan - start chanting [mantra] daily, 21 times. Saturn is blocking your focus - this will calm that energy in your chart.", sent: true, time: "Aug 3, 7:58 PM", mantra: "ॐ शं शनैश्चराय नमः" },
-      { text: "Is this mantra for everyone or specific to me", sent: false, time: "Aug 3, 8:01 PM" },
+      { text: "Solid preparation, past papers. And Rohan - chant [remedy] daily, 21 times. Saturn is blocking your focus - this will calm that energy in your chart.", sent: true, time: "Aug 3, 7:58 PM", remedy: "ॐ शं शनैश्चराय नमः" },
+      { text: "Is this mantra for everyone or specific to my chart", sent: false, time: "Aug 3, 8:01 PM" },
       { text: "Specific to your Saturn placement. Don't mix it with other mantras for now.", sent: true, time: "Aug 3, 8:04 PM" },
       { screenshotBreak: true },
       { text: "CLEARED IT!! Rank 847. Joining NIT next year. You kept me going when I had nothing 🙏🙏", sent: false, time: "Jan 18, 12:30 PM" },
