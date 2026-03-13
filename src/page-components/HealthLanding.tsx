@@ -15,7 +15,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 const WHATSAPP_URL = "https://wa.me/919821956888?text=I%20have%20a%20health%20question";
 
-const WhatsAppButton = ({ text = "Ask Your Free Question", className = "" }: { text?: string; className?: string }) => (
+const WhatsAppButton = ({ text = "Start with 10 free questions", className = "" }: { text?: string; className?: string }) => (
   <motion.a
     href={WHATSAPP_URL}
     target="_blank"
@@ -96,13 +96,6 @@ const QuestionCard = ({ question }: { question: string }) => (
 );
 
 const heroRotatingTexts = ["relief from chronic pain", "answers about your health", "mental peace and clarity", "a path to recovery"];
-const empathyRotatingTexts = [
-  "Doctors can't find what's wrong",
-  "Anxiety that never goes away",
-  "Health issues running in the family",
-  "Tried everything, nothing is working",
-  "Sleepless nights, endless worry?",
-];
 
 const carouselQuestions = [
   "When will my health improve?",
@@ -117,30 +110,34 @@ const carouselQuestions = [
 const testimonials = [
   {
     messages: [
-      { text: "I've been dealing with stomach issues for 2 years. No doctor can figure it out. Will it ever get better?", sent: false, time: "Mar 22, 11:15 AM" },
-      { text: "Ketu is afflicting your 6th house. This phase eases after June. A change in diet and specific remedies will help.", sent: true, time: "Mar 22, 11:30 AM" },
-      { text: "Sir, started feeling so much better since last month. Finally sleeping well 🙏", sent: false, time: "Jul 15, 10:30 AM" },
+      { text: "I've had stomach issues for 2 years. Every test comes back normal. Doctors say it's stress but it doesn't feel like stress", sent: false, time: "Feb 10, 4:20 PM" },
+      { text: "Mercury ruling your 6th is in a difficult position right now. Digestive issues are indicated - especially linked to food timing, not just food type. Avoid eating after 8pm.", sent: true, time: "Feb 10, 4:38 PM" },
+      { text: "Is that it? That seems too simple", sent: false, time: "Feb 10, 4:42 PM" },
+      { text: "Try it for 3 weeks. Also a Mercury remedy will help. The issues should ease significantly by April.", sent: true, time: "Feb 10, 4:47 PM" },
+      { text: "It's April. I haven't had a single episode in 6 weeks. I can't believe it was the timing 🙏", sent: false, time: "Apr 18, 9:00 AM" },
     ],
   },
   {
     messages: [
-      { text: "My anxiety is out of control. I can't focus on anything. Is there any astrological reason?", sent: false, time: "May 8, 9:20 AM" },
-      { text: "Moon and Rahu conjunction in your chart is causing mental turbulence. This transit weakens after August. Chanting and meditation will bring relief sooner.", sent: true, time: "May 8, 9:40 AM" },
-      { text: "Started the remedies. My mind is so much calmer now. Thank you 🙏", sent: false, time: "Sep 14, 8:05 PM" },
+      { text: "My anxiety has been crippling lately. I've tried therapy, medication. Nothing is fully working.", sent: false, time: "Sep 3, 11:15 PM" },
+      { text: "Moon is afflicted by Rahu in your chart - this creates mental restlessness that's hard to explain medically. This transit runs until February.", sent: true, time: "Sep 3, 11:30 PM" },
+      { text: "So I just have to wait 5 months?", sent: false, time: "Sep 3, 11:33 PM" },
+      { text: "Not just wait - there are Moon remedies that can soften the intensity. Also Monday fasting helps. The peak of this transit passes in November.", sent: true, time: "Sep 3, 11:40 PM" },
+      { text: "November came. Something genuinely shifted. Still in therapy but the dread is so much lighter now 🙏", sent: false, time: "Nov 22, 8:30 AM" },
     ],
   },
   {
     messages: [
-      { text: "Doctor is recommending surgery but I'm scared. Is this the right time?", sent: false, time: "Jun 10, 2:00 PM" },
-      { text: "Your 6th lord is strong and Mars supports medical intervention right now. The next 2 months are favorable. Don't delay.", sent: true, time: "Jun 10, 2:18 PM" },
-      { text: "Surgery went perfectly. Recovery is going great. So glad I didn't postpone 😅🙏", sent: false, time: "Jul 28, 5:30 PM" },
+      { text: "My father needs surgery. We're scared. Will he be okay?", sent: false, time: "Mar 14, 3:30 PM" },
+      { text: "His chart shows a difficult period until the 22nd. If possible, schedule the surgery after the 25th of this month - the planetary support is much better.", sent: true, time: "Mar 14, 3:48 PM" },
+      { text: "Surgery was on the 27th. He recovered faster than the doctors expected. We're so relieved 🙏", sent: false, time: "Apr 5, 10:20 AM" },
     ],
   },
   {
     messages: [
-      { text: "My father has been unwell for months. Will he recover?", sent: false, time: "Apr 3, 7:45 PM" },
-      { text: "His chart shows Saturn's transit lifting in October. Recovery will be slow but steady. Support him with the remedies I'll share.", sent: true, time: "Apr 3, 8:02 PM" },
-      { text: "Papa is walking again. The whole family is relieved. God bless you 🙏", sent: false, time: "Nov 19, 11:10 AM" },
+      { text: "BP keeps going up despite medication. Doctor is confused. What does my chart say?", sent: false, time: "Oct 7, 6:45 PM" },
+      { text: "Sun is under pressure in your chart - this impacts the heart and circulation. Reduce salt and anger. This phase eases in December.", sent: true, time: "Oct 7, 7:00 PM" },
+      { text: "BP normalized by December. Doctor reduced the dose 🙏 It was the Sun all along apparently", sent: false, time: "Jan 3, 11:00 AM" },
     ],
   },
 ];
@@ -151,7 +148,7 @@ const HealthLanding = () => {
       <Navbar />
       {/* ===== HERO ===== */}
       <section className="relative pt-20 pb-8 flex items-center justify-center bg-gradient-hero">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30 md:opacity-40">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-15 md:opacity-20">
           <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[500px] h-[500px] md:w-[700px] md:h-[700px]">
             <defs>
               <filter id="sun-glow-health" x="-50%" y="-50%" width="200%" height="200%">
@@ -190,17 +187,11 @@ const HealthLanding = () => {
             <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="mb-8">
               <img src={logo.src} alt="ProJyotish" className="w-20 h-20 mx-auto rounded-2xl shadow-elevated" />
             </motion.div>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-5 leading-tight">
               Looking for{" "}<RotatingText texts={heroRotatingTexts} />?
             </motion.h1>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg text-muted-foreground mb-3">
-              We understand what you're going through
-            </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-display text-xl md:text-2xl font-semibold text-foreground/80 mb-2 min-h-[2rem]">
-              <RotatingText texts={empathyRotatingTexts} />
-            </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.28 }} className="font-body text-base text-muted-foreground mb-8">
-              Your Kundli will explain why - and show you the way forward.
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto">
+              Doctors treat the body. Your Kundli explains why it keeps happening.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="mb-8">
               <WhatsAppButton />
@@ -249,19 +240,34 @@ const HealthLanding = () => {
         </div>
       </section>
 
-      {/* ===== STATS SECTION ===== */}
+      {/* ===== POST-TESTIMONIALS CTA ===== */}
+      <section className="py-14 bg-card border-t border-border">
+        <div className="container px-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-xl mx-auto">
+            <p className="font-body text-muted-foreground mb-5 text-lg">Thousands have found answers. Your turn.</p>
+            <WhatsAppButton />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== HOW IT WORKS ===== */}
       <section className="py-20 md:py-28 bg-primary">
         <div className="container px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground">How it works</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             {[
-              { icon: CheckCircle, label: "100,000+ Questions Answered" },
-              { icon: Shield, label: "100% Confidential" },
-              { icon: Clock, label: "24/7 Availability" },
-              { icon: Globe, label: "Many Languages Supported" },
-            ].map(({ icon: Icon, label }, i) => (
-              <motion.div key={label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center gap-3">
-                <Icon className="w-8 h-8 text-primary-foreground" />
-                <p className="font-body font-semibold text-primary-foreground text-sm md:text-base">{label}</p>
+              { step: "1", title: "Share your birth details", desc: "Date, time, and place of birth. Takes 30 seconds." },
+              { step: "2", title: "Get your reading", desc: "Our Vedic astrologer analyses your Kundli. First reply in under 2 minutes." },
+              { step: "3", title: "Ask your 10 questions free", desc: "No card needed. No call. No catch." },
+            ].map(({ step, title, desc }, i) => (
+              <motion.div key={step} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center text-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-primary-foreground/20 flex items-center justify-center">
+                  <span className="font-display text-xl font-bold text-primary-foreground">{step}</span>
+                </div>
+                <p className="font-body font-semibold text-primary-foreground text-base">{title}</p>
+                <p className="font-body text-primary-foreground/80 text-sm">{desc}</p>
               </motion.div>
             ))}
           </div>
@@ -274,7 +280,7 @@ const HealthLanding = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-2xl mx-auto">
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">Your path to wellness is written in the stars</h2>
             <p className="font-body text-lg text-muted-foreground mb-10">Chat with our Astrologer and get your answers in minutes</p>
-            <WhatsAppButton text="Chat on WhatsApp" />
+            <WhatsAppButton text="Start with 10 free questions" />
             <div className="flex flex-wrap justify-center gap-4 mt-6 text-muted-foreground font-body text-sm">
               <span>100% private</span><span className="text-border">•</span><span>Instant reply</span><span className="text-border">•</span><span>No calls required</span>
             </div>

@@ -16,7 +16,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 const WHATSAPP_URL = "https://wa.me/919821956888?text=I%20have%20a%20career%20question";
 
-const WhatsAppButton = ({ text = "Ask Your Free Question", className = "" }: { text?: string; className?: string }) => (
+const WhatsAppButton = ({ text = "Start with 10 free questions", className = "" }: { text?: string; className?: string }) => (
   <motion.a
     href={WHATSAPP_URL}
     target="_blank"
@@ -110,13 +110,6 @@ const QuestionCard = ({ question }: { question: string }) => (
 );
 
 const heroRotatingTexts = ["a promotion", "a salary hike", "a new job", "a government job"];
-const empathyRotatingTexts = [
-  "Another HR ghosted you",
-  "Still stuck at same job role",
-  "Same salary for 3 years",
-  "Toxic workplace draining you",
-  "Interview went well, still waiting?",
-];
 
 const carouselQuestions = [
   "Should I change my job right now?",
@@ -131,30 +124,35 @@ const carouselQuestions = [
 const testimonials = [
   {
     messages: [
-      { text: "Its been 6 months. I have applied everywhere, but no job. Will I even get a job?", sent: false, time: "Nov 14, 2:30 PM" },
-      { text: "Jupiter aspects your 10th house. A strong period is coming in March.", sent: true, time: "Nov 14, 2:45 PM" },
-      { text: "Sir I got placed on Feb 2 🙏", sent: false, time: "Feb 3, 9:10 AM" },
+      { text: "6 months jobless. Applied to 200+ places. Nothing. Should I just change my field entirely?", sent: false, time: "Nov 14, 2:30 PM" },
+      { text: "Jupiter aspects your 10th house. A strong period is coming in March. Don't change fields yet.", sent: true, time: "Nov 14, 2:45 PM" },
+      { text: "But what do I do till March? My savings are running out", sent: false, time: "Nov 14, 2:51 PM" },
+      { text: "Apply to finance and education companies specifically this week - they align with your chart right now.", sent: true, time: "Nov 14, 3:02 PM" },
+      { text: "Sir I got placed on Feb 2 🙏 Finance company only", sent: false, time: "Feb 3, 9:10 AM" },
     ],
   },
   {
     messages: [
-      { text: "Stuck without promotion. I work hard but no recognition.", sent: false, time: "Apr 7, 10:15 AM" },
-      { text: "Saturn is testing you in the 10th. This phase ends in 4 months. Document everything and request in August.", sent: true, time: "Apr 7, 10:32 AM" },
-      { text: "Got promoted last week. Exactly as you said 🙏", sent: false, time: "Aug 22, 6:48 PM" },
+      { text: "Stuck without promotion for 2 years. I work hard but nothing. My junior got promoted over me.", sent: false, time: "Apr 7, 10:15 AM" },
+      { text: "Saturn is testing you in the 10th. This phase ends in 4 months. Document your work and make the request in August.", sent: true, time: "Apr 7, 10:32 AM" },
+      { text: "I've tried asking before and it never worked. But okay I'll try again", sent: false, time: "Apr 7, 10:38 AM" },
+      { text: "Got promoted last week. I almost didn't bother asking. Thank you 🙏", sent: false, time: "Aug 22, 6:48 PM" },
     ],
   },
   {
     messages: [
       { text: "Everyone says government job is not in my fate. Should I stop trying?", sent: false, time: "Jul 19, 11:00 AM" },
-      { text: "Your chart shows strong 10th lord. Keep applying. A window opens between October and December.", sent: true, time: "Jul 19, 11:18 AM" },
+      { text: "Your chart shows a strong 10th lord. Keep applying. A window opens between October and December.", sent: true, time: "Jul 19, 11:18 AM" },
+      { text: "Which exam should I focus on? I'm spread thin right now", sent: false, time: "Jul 19, 11:25 AM" },
+      { text: "State PSC over UPSC for now. The state-level alignment is stronger in your chart this year.", sent: true, time: "Jul 19, 11:31 AM" },
       { text: "Selection list came out. My name is there 😭🙏", sent: false, time: "Dec 4, 3:22 PM" },
     ],
   },
   {
     messages: [
-      { text: "Same salary for 3 years. Feel like I'm going nowhere.", sent: false, time: "Jun 3, 9:40 AM" },
-      { text: "Venus in your 2nd house is weak but gets stronger after September. A switch now will bring the hike.", sent: true, time: "Jun 3, 9:55 AM" },
-      { text: "Switched jobs. 40% hike. Thank you so much 🙏", sent: false, time: "Oct 11, 7:15 PM" },
+      { text: "Same salary for 3 years. Feel like I'm going nowhere. Should I switch or negotiate first?", sent: false, time: "Jun 3, 9:40 AM" },
+      { text: "Venus in your 2nd house is weak but strengthens after September. Try negotiating in July first - if nothing by August end, switch.", sent: true, time: "Jun 3, 9:55 AM" },
+      { text: "Negotiated last week. They matched. 35% hike without switching 🙏 Didn't even need to leave", sent: false, time: "Jul 28, 7:15 PM" },
     ],
   },
 ];
@@ -167,7 +165,7 @@ const CareerLanding = () => {
       <section className="relative pt-20 pb-8 flex items-center justify-center bg-gradient-hero">
 
         {/* Solar system SVG background */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30 md:opacity-40">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-15 md:opacity-20">
           <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[500px] h-[500px] md:w-[700px] md:h-[700px]">
             <defs>
               <filter id="sun-glow" x="-50%" y="-50%" width="200%" height="200%">
@@ -231,21 +229,15 @@ const CareerLanding = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight"
+              className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-5 leading-tight"
             >
               Looking for{" "}
               <RotatingText texts={heroRotatingTexts} />
               ?
             </motion.h1>
 
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg text-muted-foreground mb-3">
-              We understand what you're going through
-            </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-display text-xl md:text-2xl font-semibold text-foreground/80 mb-2 min-h-[2rem]">
-              <RotatingText texts={empathyRotatingTexts} />
-            </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.28 }} className="font-body text-base text-muted-foreground mb-8">
-              Your Kundli will explain why - and show you the way forward.
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto">
+              Still at the same level while others get promoted? Your chart has the answer.
             </motion.p>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="mb-8">
@@ -329,26 +321,34 @@ const CareerLanding = () => {
         </div>
       </section>
 
-      {/* ===== STATS SECTION ===== */}
+      {/* ===== POST-TESTIMONIALS CTA ===== */}
+      <section className="py-14 bg-card border-t border-border">
+        <div className="container px-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-xl mx-auto">
+            <p className="font-body text-muted-foreground mb-5 text-lg">Thousands have found answers. Your turn.</p>
+            <WhatsAppButton />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== HOW IT WORKS ===== */}
       <section className="py-20 md:py-28 bg-primary">
         <div className="container px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground">How it works</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             {[
-              { icon: CheckCircle, label: "100,000+ Questions Answered" },
-              { icon: Shield, label: "100% Confidential" },
-              { icon: Clock, label: "24/7 Availability" },
-              { icon: Globe, label: "Many Languages Supported" },
-            ].map(({ icon: Icon, label }, i) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex flex-col items-center gap-3"
-              >
-                <Icon className="w-8 h-8 text-primary-foreground" />
-                <p className="font-body font-semibold text-primary-foreground text-sm md:text-base">{label}</p>
+              { step: "1", title: "Share your birth details", desc: "Date, time, and place of birth. Takes 30 seconds." },
+              { step: "2", title: "Get your reading", desc: "Our Vedic astrologer analyses your Kundli. First reply in under 2 minutes." },
+              { step: "3", title: "Ask your 10 questions free", desc: "No card needed. No call. No catch." },
+            ].map(({ step, title, desc }, i) => (
+              <motion.div key={step} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center text-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-primary-foreground/20 flex items-center justify-center">
+                  <span className="font-display text-xl font-bold text-primary-foreground">{step}</span>
+                </div>
+                <p className="font-body font-semibold text-primary-foreground text-base">{title}</p>
+                <p className="font-body text-primary-foreground/80 text-sm">{desc}</p>
               </motion.div>
             ))}
           </div>
@@ -370,7 +370,7 @@ const CareerLanding = () => {
             <p className="font-body text-lg text-muted-foreground mb-10">
               Chat with our Astrologer and get your answers in minutes
             </p>
-            <WhatsAppButton text="Chat on WhatsApp" />
+            <WhatsAppButton text="Start with 10 free questions" />
             <div className="flex flex-wrap justify-center gap-4 mt-6 text-muted-foreground font-body text-sm">
               <span>100% private</span>
               <span className="text-border">•</span>

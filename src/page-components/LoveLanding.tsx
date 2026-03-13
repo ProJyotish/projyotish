@@ -15,7 +15,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 const WHATSAPP_URL = "https://wa.me/919821956888?text=I%20have%20a%20love%20life%20question";
 
-const WhatsAppButton = ({ text = "Ask Your Free Question", className = "" }: { text?: string; className?: string }) => (
+const WhatsAppButton = ({ text = "Start with 10 free questions", className = "" }: { text?: string; className?: string }) => (
   <motion.a
     href={WHATSAPP_URL}
     target="_blank"
@@ -77,13 +77,6 @@ const QuestionCard = ({ question }: { question: string }) => (
 );
 
 const heroRotatingTexts = ["your true soulmate", "clarity in your love life", "a committed relationship", "answers about your ex"];
-const empathyRotatingTexts = [
-  "They said they loved you, then disappeared",
-  "Tired of situationships",
-  "Everyone around you is getting committed",
-  "Family pressuring, heart not ready",
-  "Still thinking about your ex?",
-];
 
 const carouselQuestions = [
   "Will I find true love this year?",
@@ -98,30 +91,34 @@ const carouselQuestions = [
 const testimonials = [
   {
     messages: [
-      { text: "I've been single for 4 years. Everyone says I'm too picky. Will I ever find someone?", sent: false, time: "Apr 12, 4:30 PM" },
-      { text: "Venus enters your 7th house in May. A meaningful connection is very likely. Stay open.", sent: true, time: "Apr 12, 4:48 PM" },
-      { text: "Sir, I met someone last month. It feels different this time 🙏", sent: false, time: "Jun 8, 7:45 PM" },
+      { text: "Been single for 4 years. I've tried everything. Is there something wrong with my chart?", sent: false, time: "Jul 8, 9:30 PM" },
+      { text: "Nothing is wrong with your chart. Venus enters a strong phase from October. There's a connection coming - likely through your existing circle, not a new platform.", sent: true, time: "Jul 8, 9:45 PM" },
+      { text: "My existing circle? I know everyone there and none of them are options 😅", sent: false, time: "Jul 8, 9:49 PM" },
+      { text: "Someone returns, or someone new enters through a known face. Stay open.", sent: true, time: "Jul 8, 9:53 PM" },
+      { text: "An old friend came back into my life in November. We've been together 3 months now. I genuinely didn't see it coming 🙏", sent: false, time: "Feb 14, 8:20 PM" },
     ],
   },
   {
     messages: [
-      { text: "My boyfriend and I keep fighting. I don't know if we should stay together.", sent: false, time: "Jan 25, 9:10 AM" },
-      { text: "Mars is creating friction in your 7th house. This phase passes in 3 months. Communicate openly now, don't make permanent decisions.", sent: true, time: "Jan 25, 9:28 AM" },
-      { text: "Things got so much better. We're stronger than ever 🙏", sent: false, time: "May 2, 8:15 PM" },
+      { text: "My relationship ended 8 months ago. He left without explanation. Is he coming back?", sent: false, time: "Jan 15, 11:00 PM" },
+      { text: "His return is possible but not certain - there's a window in April where contact becomes likely. More importantly your chart shows a much stronger connection coming after June.", sent: true, time: "Jan 15, 11:18 PM" },
+      { text: "He did reach out in April. I decided not to go back. Met someone new in July and it's the healthiest relationship I've ever had 🙏", sent: false, time: "Oct 2, 7:45 PM" },
     ],
   },
   {
     messages: [
-      { text: "My ex left me 8 months ago. I still can't move on. Will they come back?", sent: false, time: "Jun 17, 11:45 PM" },
-      { text: "Your 5th lord shows a reconnection window in September. But your chart also shows a new, better match coming in December. Keep your heart open.", sent: true, time: "Jun 18, 8:10 AM" },
-      { text: "You were right. Met someone new. I'm actually happy again 😅🙏", sent: false, time: "Dec 20, 6:30 PM" },
+      { text: "Been with someone for 2 years but our families are against it. Is this relationship going to survive?", sent: false, time: "Mar 22, 3:15 PM" },
+      { text: "7th house is strong in both your charts. This relationship has longevity. Family opposition softens after July - that's when to push for the conversation.", sent: true, time: "Mar 22, 3:33 PM" },
+      { text: "What if they still say no in July?", sent: false, time: "Mar 22, 3:37 PM" },
+      { text: "Push in August then. Saturn completing a transit makes elders more flexible. Don't have this conversation before July under any circumstances.", sent: true, time: "Mar 22, 3:42 PM" },
+      { text: "August worked. Both families agreed. Getting married in December 🙏", sent: false, time: "Sep 10, 6:00 PM" },
     ],
   },
   {
     messages: [
-      { text: "I like someone but I don't know if they feel the same. Should I tell them?", sent: false, time: "Sep 5, 3:00 PM" },
-      { text: "Moon and Venus are aligned in your chart right now. This is a favorable time to express your feelings. The energy supports mutual attraction.", sent: true, time: "Sep 5, 3:20 PM" },
-      { text: "I told them. They said they felt the same way!! Thank you 🙏", sent: false, time: "Sep 12, 9:55 PM" },
+      { text: "I like someone but I'm too scared to tell them. What if I ruin the friendship?", sent: false, time: "May 5, 10:00 PM" },
+      { text: "Venus is well placed in your chart right now. The feeling is likely mutual. The risk of saying nothing is greater than the risk of saying something.", sent: true, time: "May 5, 10:15 PM" },
+      { text: "I told them last week. They felt the same way. I wasted 8 months being scared 🙏😅", sent: false, time: "May 19, 8:30 PM" },
     ],
   },
 ];
@@ -131,7 +128,7 @@ const LoveLanding = () => {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
       <section className="relative pt-20 pb-8 flex items-center justify-center bg-gradient-hero">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30 md:opacity-40">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-15 md:opacity-20">
           <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[500px] h-[500px] md:w-[700px] md:h-[700px]">
             <defs><filter id="sun-glow-love" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter></defs>
             <circle cx="200" cy="200" r="48" stroke="#C9A84C" strokeWidth="0.4" strokeDasharray="3 6" opacity="0.35" />
@@ -159,17 +156,11 @@ const LoveLanding = () => {
             <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="mb-8">
               <img src={logo.src} alt="ProJyotish" className="w-20 h-20 mx-auto rounded-2xl shadow-elevated" />
             </motion.div>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-5 leading-tight">
               Looking for{" "}<RotatingText texts={heroRotatingTexts} />?
             </motion.h1>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg text-muted-foreground mb-3">
-              We understand what you're going through
-            </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-display text-xl md:text-2xl font-semibold text-foreground/80 mb-2 min-h-[2rem]">
-              <RotatingText texts={empathyRotatingTexts} />
-            </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.28 }} className="font-body text-base text-muted-foreground mb-8">
-              Your Kundli will explain why - and show you the way forward.
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto">
+              Some connections are written before you meet. Find out what's coming.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="mb-8"><WhatsAppButton /></motion.div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.45 }} className="flex flex-wrap justify-center gap-4 text-muted-foreground font-body text-sm">
@@ -210,18 +201,34 @@ const LoveLanding = () => {
         </div>
       </section>
 
+      {/* ===== POST-TESTIMONIALS CTA ===== */}
+      <section className="py-14 bg-card border-t border-border">
+        <div className="container px-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-xl mx-auto">
+            <p className="font-body text-muted-foreground mb-5 text-lg">Thousands have found answers. Your turn.</p>
+            <WhatsAppButton />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== HOW IT WORKS ===== */}
       <section className="py-20 md:py-28 bg-primary">
         <div className="container px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground">How it works</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             {[
-              { icon: CheckCircle, label: "100,000+ Questions Answered" },
-              { icon: Shield, label: "100% Confidential" },
-              { icon: Clock, label: "24/7 Availability" },
-              { icon: Globe, label: "Many Languages Supported" },
-            ].map(({ icon: Icon, label }, i) => (
-              <motion.div key={label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center gap-3">
-                <Icon className="w-8 h-8 text-primary-foreground" />
-                <p className="font-body font-semibold text-primary-foreground text-sm md:text-base">{label}</p>
+              { step: "1", title: "Share your birth details", desc: "Date, time, and place of birth. Takes 30 seconds." },
+              { step: "2", title: "Get your reading", desc: "Our Vedic astrologer analyses your Kundli. First reply in under 2 minutes." },
+              { step: "3", title: "Ask your 10 questions free", desc: "No card needed. No call. No catch." },
+            ].map(({ step, title, desc }, i) => (
+              <motion.div key={step} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center text-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-primary-foreground/20 flex items-center justify-center">
+                  <span className="font-display text-xl font-bold text-primary-foreground">{step}</span>
+                </div>
+                <p className="font-body font-semibold text-primary-foreground text-base">{title}</p>
+                <p className="font-body text-primary-foreground/80 text-sm">{desc}</p>
               </motion.div>
             ))}
           </div>
@@ -233,7 +240,7 @@ const LoveLanding = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-2xl mx-auto">
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">Your love story is written in the stars</h2>
             <p className="font-body text-lg text-muted-foreground mb-10">Chat with our Astrologer and get your answers in minutes</p>
-            <WhatsAppButton text="Chat on WhatsApp" />
+            <WhatsAppButton text="Start with 10 free questions" />
             <div className="flex flex-wrap justify-center gap-4 mt-6 text-muted-foreground font-body text-sm">
               <span>100% private</span><span className="text-border">•</span><span>Instant reply</span><span className="text-border">•</span><span>No calls required</span>
             </div>

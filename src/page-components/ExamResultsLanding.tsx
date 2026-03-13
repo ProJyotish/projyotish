@@ -96,13 +96,6 @@ const QuestionCard = ({ question }: { question: string }) => (
 );
 
 const heroRotatingTexts = ["good exam results", "the right college", "clarity on your career path", "to study abroad"];
-const empathyRotatingTexts = [
-  "Result day anxiety keeping you up?",
-  "Confused between science and commerce?",
-  "Will I even get into a good college?",
-  "Parents want engineering, you want arts?",
-  "Should I try for abroad or stay in India?",
-];
 
 const carouselQuestions = [
   "Will I pass my board exams?",
@@ -118,30 +111,35 @@ const carouselQuestions = [
 const testimonials = [
   {
     messages: [
-      { text: "Board exam results coming next week. I'm so anxious I can't sleep. Will I score well?", sent: false, time: "Mar 5, 11:30 PM" },
-      { text: "Mercury and Jupiter are strong in your 5th house. Your effort will pay off. Expect results above your expectations.", sent: true, time: "Mar 5, 11:45 PM" },
-      { text: "Sir 94%!! I can't believe it. Thank you for calming me down 🙏😭", sent: false, time: "Mar 12, 10:15 AM" },
+      { text: "Board exams in 10 days. I've studied but I'm terrified. Last year I underperformed badly", sent: false, time: "Mar 5, 11:30 PM" },
+      { text: "Mercury and Jupiter are strong in your 5th house this cycle. You're better positioned than last year. Your effort will show.", sent: true, time: "Mar 5, 11:45 PM" },
+      { text: "I just don't want to disappoint my parents again", sent: false, time: "Mar 5, 11:48 PM" },
+      { text: "Write the morning papers first when possible - your chart shows sharper focus before noon. Don't cram the night before.", sent: true, time: "Mar 5, 11:52 PM" },
+      { text: "94%!! I can't believe it. Thank you for calming me down when I needed it most 🙏😭", sent: false, time: "Mar 12, 10:15 AM" },
     ],
   },
   {
     messages: [
-      { text: "I want to do medicine but everyone says I should do engineering. What does my chart say?", sent: false, time: "May 18, 3:20 PM" },
-      { text: "Your 5th lord connects with the 6th house  - healing professions suit you naturally. Medicine is strongly indicated. Follow your heart.", sent: true, time: "May 18, 3:38 PM" },
-      { text: "Got NEET seat! Starting MBBS next month. So glad I didn't listen to the crowd 🙏", sent: false, time: "Sep 8, 6:00 PM" },
+      { text: "I want medicine but everyone around me says engineering. I'm confused", sent: false, time: "May 18, 3:20 PM" },
+      { text: "Your 5th lord connects with the 6th house - healing professions suit you naturally. Medicine is strongly indicated. Engineering is not wrong, but it won't be as fulfilling.", sent: true, time: "May 18, 3:38 PM" },
+      { text: "What if I don't clear NEET this attempt?", sent: false, time: "May 18, 3:41 PM" },
+      { text: "Your best window is this attempt and next year. Don't skip even if you feel underprepared.", sent: true, time: "May 18, 3:46 PM" },
+      { text: "Got NEET seat! Starting MBBS in August. So glad I didn't listen to the crowd 🙏", sent: false, time: "Sep 8, 6:00 PM" },
     ],
   },
   {
     messages: [
-      { text: "I want to study abroad but my family can't afford much. Will I get a scholarship?", sent: false, time: "Jan 22, 9:10 AM" },
-      { text: "9th house lord is very well placed  - foreign education is strongly indicated. Apply between March and May. Financial support will come through.", sent: true, time: "Jan 22, 9:28 AM" },
-      { text: "Got full scholarship to University of Toronto!! Leaving in September 🎉🙏", sent: false, time: "Jun 15, 4:45 PM" },
+      { text: "I want to study abroad but my family can't afford much. Is there any chance of a scholarship?", sent: false, time: "Jan 22, 9:10 AM" },
+      { text: "9th house lord is very well placed - foreign education is strongly indicated. Apply between March and May. Financial support will come through.", sent: true, time: "Jan 22, 9:28 AM" },
+      { text: "Full scholarship to University of Toronto. Leaving in September 🎉🙏", sent: false, time: "Jun 15, 4:45 PM" },
     ],
   },
   {
     messages: [
-      { text: "Failed my entrance exam twice. Should I try again or give up?", sent: false, time: "Aug 3, 7:30 PM" },
-      { text: "Saturn is testing your patience but your 5th house gets strong support after November. Third attempt will be successful. Don't give up.", sent: true, time: "Aug 3, 7:48 PM" },
-      { text: "I CLEARED IT!! Rank 847. Joining NIT next year. You kept me going sir 🙏🙏", sent: false, time: "Jan 18, 12:30 PM" },
+      { text: "Failed the entrance exam twice. My parents are losing patience. Should I try one more time?", sent: false, time: "Aug 3, 7:30 PM" },
+      { text: "Saturn is testing your patience but your 5th house gets strong support after November. Third attempt will be successful. Don't give up before that.", sent: true, time: "Aug 3, 7:48 PM" },
+      { text: "Honestly didn't fully believe this but had nothing to lose", sent: false, time: "Aug 3, 7:52 PM" },
+      { text: "CLEARED IT!! Rank 847. Joining NIT next year. You kept me going 🙏🙏", sent: false, time: "Jan 18, 12:30 PM" },
     ],
   },
 ];
@@ -152,7 +150,7 @@ const ExamResultsLanding = () => {
       <Navbar />
       {/* ===== HERO ===== */}
       <section className="relative pt-20 pb-8 flex items-center justify-center bg-gradient-hero">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30 md:opacity-40">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-15 md:opacity-20">
           <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[500px] h-[500px] md:w-[700px] md:h-[700px]">
             <defs>
               <filter id="sun-glow-exam" x="-50%" y="-50%" width="200%" height="200%">
@@ -191,17 +189,11 @@ const ExamResultsLanding = () => {
             <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="mb-8">
               <img src={logo.src} alt="ProJyotish" className="w-20 h-20 mx-auto rounded-2xl shadow-elevated" />
             </motion.div>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-5 leading-tight">
               Worried about{" "}<RotatingText texts={heroRotatingTexts} />?
             </motion.h1>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg text-muted-foreground mb-3">
-              We understand the pressure you&apos;re feeling
-            </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-display text-xl md:text-2xl font-semibold text-foreground/80 mb-2 min-h-[2rem]">
-              <RotatingText texts={empathyRotatingTexts} />
-            </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.28 }} className="font-body text-base text-muted-foreground mb-8">
-              Your Kundli holds answers about your academic destiny - and the right path forward.
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto">
+              Which college, which stream, abroad or India - your chart already knows.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="mb-8">
               <WhatsAppButton />
@@ -250,19 +242,34 @@ const ExamResultsLanding = () => {
         </div>
       </section>
 
-      {/* ===== STATS SECTION ===== */}
+      {/* ===== POST-TESTIMONIALS CTA ===== */}
+      <section className="py-14 bg-card border-t border-border">
+        <div className="container px-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-xl mx-auto">
+            <p className="font-body text-muted-foreground mb-5 text-lg">Thousands have found answers. Your turn.</p>
+            <WhatsAppButton />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== HOW IT WORKS ===== */}
       <section className="py-20 md:py-28 bg-primary">
         <div className="container px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground">How it works</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             {[
-              { icon: CheckCircle, label: "100,000+ Questions Answered" },
-              { icon: Shield, label: "100% Confidential" },
-              { icon: Clock, label: "24/7 Availability" },
-              { icon: Globe, label: "Many Languages Supported" },
-            ].map(({ icon: Icon, label }, i) => (
-              <motion.div key={label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center gap-3">
-                <Icon className="w-8 h-8 text-primary-foreground" />
-                <p className="font-body font-semibold text-primary-foreground text-sm md:text-base">{label}</p>
+              { step: "1", title: "Share your birth details", desc: "Date, time, and place of birth. Takes 30 seconds." },
+              { step: "2", title: "Get your reading", desc: "Our Vedic astrologer analyses your Kundli. First reply in under 2 minutes." },
+              { step: "3", title: "Ask your 10 questions free", desc: "No card needed. No call. No catch." },
+            ].map(({ step, title, desc }, i) => (
+              <motion.div key={step} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center text-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-primary-foreground/20 flex items-center justify-center">
+                  <span className="font-display text-xl font-bold text-primary-foreground">{step}</span>
+                </div>
+                <p className="font-body font-semibold text-primary-foreground text-base">{title}</p>
+                <p className="font-body text-primary-foreground/80 text-sm">{desc}</p>
               </motion.div>
             ))}
           </div>

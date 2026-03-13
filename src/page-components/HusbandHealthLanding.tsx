@@ -96,13 +96,6 @@ const QuestionCard = ({ question }: { question: string }) => (
 );
 
 const heroRotatingTexts = ["your husband's health", "his well-being", "answers about his condition", "ways to help him heal"];
-const empathyRotatingTexts = [
-  "He won't go to the doctor",
-  "His drinking is getting worse",
-  "Stress is breaking him down",
-  "You're worried but he won't listen",
-  "Is something serious coming?",
-];
 
 const carouselQuestions = [
   "Will my husband's health improve soon?",
@@ -118,30 +111,36 @@ const carouselQuestions = [
 const testimonials = [
   {
     messages: [
-      { text: "My husband has been having chest pains but refuses to see a doctor. I'm so scared. Is something serious coming?", sent: false, time: "Apr 15, 10:30 PM" },
-      { text: "Sun and Mars are under pressure in his chart until August. Please get a heart check-up done before July. After that, the period eases significantly.", sent: true, time: "Apr 15, 10:48 PM" },
-      { text: "Got him checked. Early detection of a blockage. Doctor said we caught it just in time. Thank you 🙏😭", sent: false, time: "Jun 22, 9:15 AM" },
+      { text: "My husband has chest pains but refuses to see a doctor. He says it's just stress", sent: false, time: "Apr 15, 10:30 PM" },
+      { text: "Sun and Mars are under pressure in his chart until August. This is not something to wait on. Please push for a cardiac check before July.", sent: true, time: "Apr 15, 10:48 PM" },
+      { text: "He literally won't go. How do I convince him?", sent: false, time: "Apr 15, 10:52 PM" },
+      { text: "Frame it as a routine check, not an emergency. Book for something else and mention it to the doctor there.", sent: true, time: "Apr 15, 10:57 PM" },
+      { text: "We did exactly that. Early blockage detection. Doctor said we caught it in time. I can't thank you enough 🙏😭", sent: false, time: "Jun 22, 9:15 AM" },
     ],
   },
   {
     messages: [
-      { text: "My husband drinks every night. It's destroying our family. Will he ever stop?", sent: false, time: "Aug 3, 11:00 PM" },
-      { text: "Rahu's influence on his Moon is strong now  - this fuels the habit. This transit weakens after January. With the right remedies and your support, he can break free.", sent: true, time: "Aug 3, 11:18 PM" },
-      { text: "It's March now. He hasn't touched alcohol in 6 weeks. The remedies worked. Our home is peaceful again 🙏", sent: false, time: "Mar 10, 7:30 PM" },
+      { text: "My husband drinks every night and gets aggressive. Will he ever stop? I don't know how much longer I can do this", sent: false, time: "Aug 3, 11:00 PM" },
+      { text: "Rahu's influence on his Moon is strong right now - this fuels both the habit and the aggression. This transit weakens after January.", sent: true, time: "Aug 3, 11:18 PM" },
+      { text: "That's 5 months away. I don't know if I can manage", sent: false, time: "Aug 3, 11:21 PM" },
+      { text: "I understand. The remedies soften the intensity in the meantime. Reduce stress triggers at home as much as possible. You're doing more than you know.", sent: true, time: "Aug 3, 11:28 PM" },
+      { text: "It's been 6 weeks since he had a drink. The home is peaceful for the first time in years 🙏", sent: false, time: "Mar 10, 7:30 PM" },
     ],
   },
   {
     messages: [
-      { text: "Husband has diabetes and it's getting worse. What kind of food should he eat? Is there any astrological remedy?", sent: false, time: "May 20, 3:00 PM" },
-      { text: "Venus is weak in his chart  - sugar-related issues are indicated. Reduce sweet and fried foods. Include bitter gourd and fenugreek. Wearing a diamond substitute will help strengthen Venus.", sent: true, time: "May 20, 3:20 PM" },
-      { text: "His sugar levels have come down so much! Doctor reduced his medication. The diet changes + remedy really helped 🙏", sent: false, time: "Oct 5, 11:00 AM" },
+      { text: "Husband has diabetes and it keeps getting worse despite medication. The doctor is confused", sent: false, time: "May 20, 3:00 PM" },
+      { text: "Venus is weak in his chart - sugar-related issues are indicated. Reduce sweet and fried foods. Bitter gourd and fenugreek daily. A Venus remedy will help over the next 3 months.", sent: true, time: "May 20, 3:20 PM" },
+      { text: "His sugar levels have come down so much the doctor reduced his medication. The diet changes helped immediately 🙏", sent: false, time: "Oct 5, 11:00 AM" },
     ],
   },
   {
     messages: [
-      { text: "My husband works 14 hours a day. No rest, no exercise. I'm worried he'll collapse. What does his chart say?", sent: false, time: "Nov 12, 8:45 PM" },
-      { text: "Saturn is heavily influencing his 6th house  - burnout risk is high until March. He must take breaks and walk daily. A Shani remedy will reduce the pressure on his body.", sent: true, time: "Nov 12, 9:00 PM" },
-      { text: "He started morning walks and the remedy. His energy is so much better. Even his BP normalized. Thank you 🙏", sent: false, time: "Apr 18, 6:30 PM" },
+      { text: "My husband works 14-hour days. No rest, no exercise. I'm scared he'll collapse. He won't slow down", sent: false, time: "Nov 12, 8:45 PM" },
+      { text: "Saturn is heavily influencing his 6th house - burnout risk is high until March. He must take proper breaks or his body will force it. Daily walks matter more than anything.", sent: true, time: "Nov 12, 9:00 PM" },
+      { text: "What's the remedy?", sent: false, time: "Nov 12, 9:03 PM" },
+      { text: "A Shani remedy on Saturdays and 20 minute walks daily. Show him this conversation if it helps.", sent: true, time: "Nov 12, 9:08 PM" },
+      { text: "He started walking. His energy is better, BP normalized, and he's actually home for dinner now. Thank you 🙏", sent: false, time: "Apr 18, 6:30 PM" },
     ],
   },
 ];
@@ -152,7 +151,7 @@ const HusbandHealthLanding = () => {
       <Navbar />
       {/* ===== HERO ===== */}
       <section className="relative pt-20 pb-8 flex items-center justify-center bg-gradient-hero">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30 md:opacity-40">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-15 md:opacity-20">
           <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[500px] h-[500px] md:w-[700px] md:h-[700px]">
             <defs>
               <filter id="sun-glow-husband" x="-50%" y="-50%" width="200%" height="200%">
@@ -191,17 +190,11 @@ const HusbandHealthLanding = () => {
             <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="mb-8">
               <img src={logo.src} alt="ProJyotish" className="w-20 h-20 mx-auto rounded-2xl shadow-elevated" />
             </motion.div>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-5 leading-tight">
               Worried about{" "}<RotatingText texts={heroRotatingTexts} />?
             </motion.h1>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg text-muted-foreground mb-3">
-              You care more than he knows
-            </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-display text-xl md:text-2xl font-semibold text-foreground/80 mb-2 min-h-[2rem]">
-              <RotatingText texts={empathyRotatingTexts} />
-            </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.28 }} className="font-body text-base text-muted-foreground mb-8">
-              His Kundli can reveal health risks, the right diet, and remedies you can do to protect him.
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto">
+              You care more than he knows. His Kundli can show you how to help him.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="mb-8">
               <WhatsAppButton />
@@ -250,19 +243,34 @@ const HusbandHealthLanding = () => {
         </div>
       </section>
 
-      {/* ===== STATS SECTION ===== */}
+      {/* ===== POST-TESTIMONIALS CTA ===== */}
+      <section className="py-14 bg-card border-t border-border">
+        <div className="container px-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-xl mx-auto">
+            <p className="font-body text-muted-foreground mb-5 text-lg">Thousands have found answers. Your turn.</p>
+            <WhatsAppButton />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== HOW IT WORKS ===== */}
       <section className="py-20 md:py-28 bg-primary">
         <div className="container px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground">How it works</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             {[
-              { icon: CheckCircle, label: "100,000+ Questions Answered" },
-              { icon: Shield, label: "100% Confidential" },
-              { icon: Clock, label: "24/7 Availability" },
-              { icon: Globe, label: "Many Languages Supported" },
-            ].map(({ icon: Icon, label }, i) => (
-              <motion.div key={label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center gap-3">
-                <Icon className="w-8 h-8 text-primary-foreground" />
-                <p className="font-body font-semibold text-primary-foreground text-sm md:text-base">{label}</p>
+              { step: "1", title: "Share your birth details", desc: "Date, time, and place of birth. Takes 30 seconds." },
+              { step: "2", title: "Get your reading", desc: "Our Vedic astrologer analyses your Kundli. First reply in under 2 minutes." },
+              { step: "3", title: "Ask your 10 questions free", desc: "No card needed. No call. No catch." },
+            ].map(({ step, title, desc }, i) => (
+              <motion.div key={step} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center text-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-primary-foreground/20 flex items-center justify-center">
+                  <span className="font-display text-xl font-bold text-primary-foreground">{step}</span>
+                </div>
+                <p className="font-body font-semibold text-primary-foreground text-base">{title}</p>
+                <p className="font-body text-primary-foreground/80 text-sm">{desc}</p>
               </motion.div>
             ))}
           </div>

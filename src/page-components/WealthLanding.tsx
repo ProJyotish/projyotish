@@ -15,7 +15,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 const WHATSAPP_URL = "https://wa.me/919821956888?text=I%20have%20a%20wealth%20question";
 
-const WhatsAppButton = ({ text = "Ask Your Free Question", className = "" }: { text?: string; className?: string }) => (
+const WhatsAppButton = ({ text = "Start with 10 free questions", className = "" }: { text?: string; className?: string }) => (
   <motion.a
     href={WHATSAPP_URL}
     target="_blank"
@@ -77,13 +77,6 @@ const QuestionCard = ({ question }: { question: string }) => (
 );
 
 const heroRotatingTexts = ["financial stability", "the right investment", "debt-free life", "a sudden windfall"];
-const empathyRotatingTexts = [
-  "Money comes in, but never stays",
-  "Loans piling up with no end in sight",
-  "Invested and lost everything",
-  "Working hard but still broke",
-  "Everyone around you is growing, why not you?",
-];
 
 const carouselQuestions = [
   "When will my financial situation improve?",
@@ -98,30 +91,34 @@ const carouselQuestions = [
 const testimonials = [
   {
     messages: [
-      { text: "I earn well but savings are always zero. Money just disappears. What's wrong with my chart?", sent: false, time: "Apr 10, 3:15 PM" },
-      { text: "Rahu in your 2nd house is causing unexpected expenses. After July, this transit ends. Start a fixed deposit in August for best results.", sent: true, time: "Apr 10, 3:32 PM" },
-      { text: "Sir, first time in my life I have 2 lakhs saved. Your advice worked 🙏", sent: false, time: "Sep 5, 8:20 AM" },
+      { text: "I earn well but I can never save. The money just disappears. There's no real reason for it.", sent: false, time: "Jan 10, 8:30 PM" },
+      { text: "Moon in your 12th house creates an unconscious tendency to spend or lose money. This isn't a habit problem - it's a pattern in your chart. A Moon remedy and tracking expenses on Mondays specifically will help.", sent: true, time: "Jan 10, 8:47 PM" },
+      { text: "Tracking on Mondays is oddly specific. Does that actually work?", sent: false, time: "Jan 10, 8:51 PM" },
+      { text: "Moon rules Monday. Awareness on that day activates the remedy. Try it for a month.", sent: true, time: "Jan 10, 8:55 PM" },
+      { text: "It's been 3 months. I have savings for the first time in years. The Monday thing sounds superstitious but I have data now 🙏😅", sent: false, time: "Apr 8, 7:00 PM" },
     ],
   },
   {
     messages: [
-      { text: "I have a chance to invest in property but I'm scared of losing money again. Should I go ahead?", sent: false, time: "Jan 22, 11:00 AM" },
-      { text: "Jupiter is transiting your 4th house which governs property. The next 3 months are excellent for real estate. This investment will grow.", sent: true, time: "Jan 22, 11:18 AM" },
-      { text: "Property value already up 20% in 6 months. Best decision ever 🙏", sent: false, time: "Aug 3, 5:40 PM" },
+      { text: "I've been trying to buy a flat for 2 years. Every deal falls apart at the last minute. What's happening?", sent: false, time: "Mar 7, 4:00 PM" },
+      { text: "Ketu is transiting your 4th house of property - this creates delays and last-minute disruptions until August. Avoid any property registration before September.", sent: true, time: "Mar 7, 4:18 PM" },
+      { text: "So I just wait?", sent: false, time: "Mar 7, 4:21 PM" },
+      { text: "Use this time to finalize the property and paperwork - just don't register. The September window is very strong for property in your chart.", sent: true, time: "Mar 7, 4:26 PM" },
+      { text: "Registered in October. The smoothest transaction I've had. Even the loan came through faster than expected 🙏", sent: false, time: "Oct 28, 6:00 PM" },
     ],
   },
   {
     messages: [
-      { text: "Debt of 10 lakhs. I feel trapped. Will I ever be free from this?", sent: false, time: "May 15, 9:30 AM" },
-      { text: "Saturn in your 12th house has been causing financial drain. This period ends in November. Focus on clearing high-interest debt first. Relief is coming.", sent: true, time: "May 15, 9:48 AM" },
-      { text: "Cleared all my debt last month. Finally breathing again. Thank you so much 😅🙏", sent: false, time: "Dec 8, 7:10 PM" },
+      { text: "Lost a lot of money in stocks last year. Wondering if I should invest again or is my chart against it?", sent: false, time: "May 20, 10:00 AM" },
+      { text: "Rahu was in your 5th house (speculation) last year - losses in that period are very common. It has moved now. Your chart is not against investment, just against speculation. Mutual funds over direct stocks for now.", sent: true, time: "May 20, 10:18 AM" },
+      { text: "Switched to mutual funds. Portfolio up 28% in 10 months and I'm sleeping better 🙏", sent: false, time: "Mar 15, 9:30 AM" },
     ],
   },
   {
     messages: [
-      { text: "My father left some property but family is fighting over it. Will I get my share?", sent: false, time: "Feb 28, 2:00 PM" },
-      { text: "Your 8th lord is strong which indicates inheritance. Legal matters resolve after March when Jupiter aspects your 8th house. Be patient.", sent: true, time: "Feb 28, 2:20 PM" },
-      { text: "Settlement done. Got my rightful share. Investing it wisely now 🙏", sent: false, time: "Jun 14, 10:45 AM" },
+      { text: "I have a big financial decision to make. Should I take this loan for my business?", sent: false, time: "Sep 5, 2:00 PM" },
+      { text: "Your 8th house (loans and debt) is well-supported right now. The loan is fine, but sign before October 20th - after that a Saturn transit complicates the terms.", sent: true, time: "Sep 5, 2:18 PM" },
+      { text: "Signed on October 14th. Got a better rate than expected. The deadline push made me move faster which was actually good 🙏", sent: false, time: "Oct 21, 5:45 PM" },
     ],
   },
 ];
@@ -131,7 +128,7 @@ const WealthLanding = () => {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
       <section className="relative pt-20 pb-8 flex items-center justify-center bg-gradient-hero">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30 md:opacity-40">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-15 md:opacity-20">
           <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[500px] h-[500px] md:w-[700px] md:h-[700px]">
             <defs><filter id="sun-glow-wealth" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="blur" /><feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge></filter></defs>
             <circle cx="200" cy="200" r="48" stroke="#C9A84C" strokeWidth="0.4" strokeDasharray="3 6" opacity="0.35" />
@@ -159,17 +156,11 @@ const WealthLanding = () => {
             <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="mb-8">
               <img src={logo.src} alt="ProJyotish" className="w-20 h-20 mx-auto rounded-2xl shadow-elevated" />
             </motion.div>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-5 leading-tight">
               Looking for{" "}<RotatingText texts={heroRotatingTexts} />?
             </motion.h1>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg text-muted-foreground mb-3">
-              We understand what you're going through
-            </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-display text-xl md:text-2xl font-semibold text-foreground/80 mb-2 min-h-[2rem]">
-              <RotatingText texts={empathyRotatingTexts} />
-            </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.28 }} className="font-body text-base text-muted-foreground mb-8">
-              Your Kundli will explain why - and show you the way forward.
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto">
+              Financial struggle isn't always about effort. Your Kundli shows what's blocking you.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="mb-8"><WhatsAppButton /></motion.div>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.45 }} className="flex flex-wrap justify-center gap-4 text-muted-foreground font-body text-sm">
@@ -210,18 +201,34 @@ const WealthLanding = () => {
         </div>
       </section>
 
+      {/* ===== POST-TESTIMONIALS CTA ===== */}
+      <section className="py-14 bg-card border-t border-border">
+        <div className="container px-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-xl mx-auto">
+            <p className="font-body text-muted-foreground mb-5 text-lg">Thousands have found answers. Your turn.</p>
+            <WhatsAppButton />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== HOW IT WORKS ===== */}
       <section className="py-20 md:py-28 bg-primary">
         <div className="container px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground">How it works</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             {[
-              { icon: CheckCircle, label: "100,000+ Questions Answered" },
-              { icon: Shield, label: "100% Confidential" },
-              { icon: Clock, label: "24/7 Availability" },
-              { icon: Globe, label: "Many Languages Supported" },
-            ].map(({ icon: Icon, label }, i) => (
-              <motion.div key={label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center gap-3">
-                <Icon className="w-8 h-8 text-primary-foreground" />
-                <p className="font-body font-semibold text-primary-foreground text-sm md:text-base">{label}</p>
+              { step: "1", title: "Share your birth details", desc: "Date, time, and place of birth. Takes 30 seconds." },
+              { step: "2", title: "Get your reading", desc: "Our Vedic astrologer analyses your Kundli. First reply in under 2 minutes." },
+              { step: "3", title: "Ask your 10 questions free", desc: "No card needed. No call. No catch." },
+            ].map(({ step, title, desc }, i) => (
+              <motion.div key={step} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center text-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-primary-foreground/20 flex items-center justify-center">
+                  <span className="font-display text-xl font-bold text-primary-foreground">{step}</span>
+                </div>
+                <p className="font-body font-semibold text-primary-foreground text-base">{title}</p>
+                <p className="font-body text-primary-foreground/80 text-sm">{desc}</p>
               </motion.div>
             ))}
           </div>
@@ -233,7 +240,7 @@ const WealthLanding = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-2xl mx-auto">
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">Your financial abundance is written in the stars</h2>
             <p className="font-body text-lg text-muted-foreground mb-10">Chat with our Astrologer and get your answers in minutes</p>
-            <WhatsAppButton text="Chat on WhatsApp" />
+            <WhatsAppButton text="Start with 10 free questions" />
             <div className="flex flex-wrap justify-center gap-4 mt-6 text-muted-foreground font-body text-sm">
               <span>100% private</span><span className="text-border">•</span><span>Instant reply</span><span className="text-border">•</span><span>No calls required</span>
             </div>

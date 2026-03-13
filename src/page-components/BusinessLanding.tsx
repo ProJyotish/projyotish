@@ -16,7 +16,7 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 const WHATSAPP_URL = "https://wa.me/919821956888?text=I%20have%20a%20business%20question";
 
-const WhatsAppButton = ({ text = "Ask Your Free Question", className = "" }: { text?: string; className?: string }) => (
+const WhatsAppButton = ({ text = "Start with 10 free questions", className = "" }: { text?: string; className?: string }) => (
   <motion.a
     href={WHATSAPP_URL}
     target="_blank"
@@ -108,13 +108,6 @@ const QuestionCard = ({ question }: { question: string }) => (
 );
 
 const heroRotatingTexts = ["business growth", "the right partnership", "a profitable venture", "funding for your startup"];
-const empathyRotatingTexts = [
-  "Invested everything, still no profit",
-  "Partnership turned into a nightmare",
-  "Business stuck at the same level",
-  "Competitors growing, you're falling behind",
-  "Started a venture, nothing is clicking?",
-];
 
 const carouselQuestions = [
   "Should I start my own business now?",
@@ -129,30 +122,32 @@ const carouselQuestions = [
 const testimonials = [
   {
     messages: [
-      { text: "I started a business 2 years ago. Only losses so far. Should I shut it down?", sent: false, time: "Jan 18, 3:10 PM" },
-      { text: "Mercury and Jupiter are aligning in your 7th house. A turnaround starts after April.", sent: true, time: "Jan 18, 3:28 PM" },
-      { text: "Sir, we just got our biggest client ever! Revenue doubled this month 🙏", sent: false, time: "May 12, 11:20 AM" },
+      { text: "I've been trying to launch my business for a year. Funding keeps falling through. Is this just not for me?", sent: false, time: "Aug 12, 3:00 PM" },
+      { text: "It's not about you - it's about timing. Jupiter is blocking your 11th house (income and gains) until November. December onwards is significantly better for funding conversations.", sent: true, time: "Aug 12, 3:18 PM" },
+      { text: "So I should do nothing till December?", sent: false, time: "Aug 12, 3:22 PM" },
+      { text: "Use this time to build the product and relationships. Don't pitch for investment before December.", sent: true, time: "Aug 12, 3:27 PM" },
+      { text: "Closed seed round in January. One of the investors I met in October - I almost didn't stay in touch 🙏", sent: false, time: "Feb 3, 11:00 AM" },
     ],
   },
   {
     messages: [
-      { text: "Thinking of a partnership but not sure if I can trust this person.", sent: false, time: "Mar 5, 10:00 AM" },
-      { text: "Your 7th lord is strong but Rahu creates doubt. Verify everything before July. After that, the path is clear.", sent: true, time: "Mar 5, 10:22 AM" },
-      { text: "We signed the deal. Best decision I made 🙏", sent: false, time: "Aug 9, 4:35 PM" },
+      { text: "Business partner and I are having serious conflicts. Should I dissolve the partnership?", sent: false, time: "Apr 18, 5:30 PM" },
+      { text: "Mars is activating your 7th house of partnerships - this friction is temporary, peaking now and easing by end of June. Don't make permanent decisions in this window.", sent: true, time: "Apr 18, 5:48 PM" },
+      { text: "It's July now. Things genuinely calmed down after June. We renegotiated terms and the partnership is stronger now. I'm glad I didn't act in anger 🙏", sent: false, time: "Jul 9, 4:15 PM" },
     ],
   },
   {
     messages: [
-      { text: "I want to start a new business but family says it's too risky. Is this the right time?", sent: false, time: "Feb 20, 8:45 AM" },
-      { text: "Sun in your 10th house is powerful right now. The next 6 months are ideal for a new venture. Trust your instinct.", sent: true, time: "Feb 20, 9:05 AM" },
-      { text: "Launched last month. Already profitable! Family is shocked 😅🙏", sent: false, time: "Jul 3, 6:12 PM" },
+      { text: "I want to expand to a new city but not sure of timing. Should I go now or wait?", sent: false, time: "Feb 5, 10:00 AM" },
+      { text: "Your 9th house (expansion) activates strongly from April. March is good for groundwork - scouting, hiring. Don't sign leases before April 15th.", sent: true, time: "Feb 5, 10:18 AM" },
+      { text: "New city office opened April 20th. We broke even in month 2 which our CFO said was unusually fast 🙏", sent: false, time: "Jul 1, 2:30 PM" },
     ],
   },
   {
     messages: [
-      { text: "Applied for a business loan 3 times. Rejected every time. Will I ever get funding?", sent: false, time: "Aug 14, 1:30 PM" },
-      { text: "Saturn is blocking your 11th house temporarily. Apply again after November. A different lender will say yes.", sent: true, time: "Aug 14, 1:48 PM" },
-      { text: "Loan approved! Starting construction next week. Thank you so much 🙏", sent: false, time: "Dec 2, 10:05 AM" },
+      { text: "My business has been stuck at the same revenue for 18 months. Nothing I try is working.", sent: false, time: "Nov 8, 9:15 AM" },
+      { text: "Saturn is sitting on your 2nd house of wealth. This is a plateau phase, not a failure phase. It lifts in March. What you build now will compound after that.", sent: true, time: "Nov 8, 9:32 AM" },
+      { text: "Revenue jumped 60% in April. It was like a switch flipped. The groundwork we laid in December made all the difference 🙏", sent: false, time: "May 12, 3:00 PM" },
     ],
   },
 ];
@@ -164,7 +159,7 @@ const BusinessLanding = () => {
       {/* ===== HERO ===== */}
       <section className="relative pt-20 pb-8 flex items-center justify-center bg-gradient-hero">
         {/* Solar system SVG background */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30 md:opacity-40">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-15 md:opacity-20">
           <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[500px] h-[500px] md:w-[700px] md:h-[700px]">
             <defs>
               <filter id="sun-glow-biz" x="-50%" y="-50%" width="200%" height="200%">
@@ -220,21 +215,15 @@ const BusinessLanding = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight"
+              className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-5 leading-tight"
             >
               Looking for{" "}
               <RotatingText texts={heroRotatingTexts} />
               ?
             </motion.h1>
 
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg text-muted-foreground mb-3">
-              We understand what you're going through
-            </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-display text-xl md:text-2xl font-semibold text-foreground/80 mb-2 min-h-[2rem]">
-              <RotatingText texts={empathyRotatingTexts} />
-            </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.28 }} className="font-body text-base text-muted-foreground mb-8">
-              Your Kundli will explain why - and show you the way forward.
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto">
+              The right timing changes everything in business. Your Kundli shows the window.
             </motion.p>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="mb-8">
@@ -317,26 +306,34 @@ const BusinessLanding = () => {
         </div>
       </section>
 
-      {/* ===== STATS SECTION ===== */}
+      {/* ===== POST-TESTIMONIALS CTA ===== */}
+      <section className="py-14 bg-card border-t border-border">
+        <div className="container px-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-xl mx-auto">
+            <p className="font-body text-muted-foreground mb-5 text-lg">Thousands have found answers. Your turn.</p>
+            <WhatsAppButton />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== HOW IT WORKS ===== */}
       <section className="py-20 md:py-28 bg-primary">
         <div className="container px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground">How it works</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             {[
-              { icon: CheckCircle, label: "100,000+ Questions Answered" },
-              { icon: Shield, label: "100% Confidential" },
-              { icon: Clock, label: "24/7 Availability" },
-              { icon: Globe, label: "Many Languages Supported" },
-            ].map(({ icon: Icon, label }, i) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="flex flex-col items-center gap-3"
-              >
-                <Icon className="w-8 h-8 text-primary-foreground" />
-                <p className="font-body font-semibold text-primary-foreground text-sm md:text-base">{label}</p>
+              { step: "1", title: "Share your birth details", desc: "Date, time, and place of birth. Takes 30 seconds." },
+              { step: "2", title: "Get your reading", desc: "Our Vedic astrologer analyses your Kundli. First reply in under 2 minutes." },
+              { step: "3", title: "Ask your 10 questions free", desc: "No card needed. No call. No catch." },
+            ].map(({ step, title, desc }, i) => (
+              <motion.div key={step} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center text-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-primary-foreground/20 flex items-center justify-center">
+                  <span className="font-display text-xl font-bold text-primary-foreground">{step}</span>
+                </div>
+                <p className="font-body font-semibold text-primary-foreground text-base">{title}</p>
+                <p className="font-body text-primary-foreground/80 text-sm">{desc}</p>
               </motion.div>
             ))}
           </div>
@@ -358,7 +355,7 @@ const BusinessLanding = () => {
             <p className="font-body text-lg text-muted-foreground mb-10">
               Chat with our Astrologer and get your answers in minutes
             </p>
-            <WhatsAppButton text="Chat on WhatsApp" />
+            <WhatsAppButton text="Start with 10 free questions" />
             <div className="flex flex-wrap justify-center gap-4 mt-6 text-muted-foreground font-body text-sm">
               <span>100% private</span>
               <span className="text-border">•</span>

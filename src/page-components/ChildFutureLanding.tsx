@@ -96,13 +96,6 @@ const QuestionCard = ({ question }: { question: string }) => (
 );
 
 const heroRotatingTexts = ["your child's exam results", "the right college for them", "their ideal career path", "their academic potential"];
-const empathyRotatingTexts = [
-  "Will my child clear the entrance exam?",
-  "Is coaching worth the investment?",
-  "My child is losing interest in studies",
-  "Should I push for engineering or let them choose?",
-  "Will they get into a good college?",
-];
 
 const carouselQuestions = [
   "Will my child score well in boards?",
@@ -118,30 +111,36 @@ const carouselQuestions = [
 const testimonials = [
   {
     messages: [
-      { text: "My son is in 10th. He doesn't study at all. I'm losing hope. Will he even pass?", sent: false, time: "Feb 10, 8:45 PM" },
-      { text: "His 5th house activates strongly after April. He will surprise you. Encourage, don't pressure  - his chart shows late blooming talent.", sent: true, time: "Feb 10, 9:00 PM" },
-      { text: "He got 87%! I'm crying. You were right about not pressuring him 🙏", sent: false, time: "May 28, 11:30 AM" },
+      { text: "My son is 16 and refuses to study. I don't know what to do anymore. Nothing motivates him", sent: false, time: "Feb 10, 9:00 PM" },
+      { text: "His 5th house activates strongly after April. He's in a low-interest phase right now - this is temporary. Pressure will backfire. What subjects does he actually enjoy?", sent: true, time: "Feb 10, 9:15 PM" },
+      { text: "He likes computers and drawing but we wanted him to do science", sent: false, time: "Feb 10, 9:19 PM" },
+      { text: "His chart shows creative-technical fields as his natural path. Science is fine but don't force a branch that doesn't match him.", sent: true, time: "Feb 10, 9:24 PM" },
+      { text: "He scored 87% in boards. Took CS. First in class in his college semester 🙏 I wish I had listened earlier", sent: false, time: "Dec 4, 6:30 PM" },
     ],
   },
   {
     messages: [
-      { text: "My daughter wants to do arts but I think she should do science. What does her chart say?", sent: false, time: "Jun 5, 4:15 PM" },
-      { text: "Venus and Moon dominate her chart  - creative fields are her strength. She will excel in design, media, or psychology. Let her follow her calling.", sent: true, time: "Jun 5, 4:30 PM" },
-      { text: "She got into NID! Top rank in design entrance. So happy we listened to you 🙏", sent: false, time: "Oct 20, 6:00 PM" },
+      { text: "My daughter wants to do arts but we want science. She's very talented in drawing but we're worried about career", sent: false, time: "Jun 5, 4:00 PM" },
+      { text: "Venus and Moon dominate her chart - creative fields are genuinely her strength. She will struggle in a purely technical path and excel in design, media, or psychology.", sent: true, time: "Jun 5, 4:18 PM" },
+      { text: "But design doesn't pay well, does it?", sent: false, time: "Jun 5, 4:21 PM" },
+      { text: "That's an old assumption. Her chart shows strong 2nd house - she will earn well through her creativity, more than she would through science.", sent: true, time: "Jun 5, 4:27 PM" },
+      { text: "She got into NID Ahmedabad. We couldn't be prouder. Thank you for giving us the courage to let her choose 🙏", sent: false, time: "Aug 20, 7:00 PM" },
     ],
   },
   {
     messages: [
-      { text: "We spent 5 lakhs on coaching. My son didn't clear JEE. Should we try again?", sent: false, time: "Jul 14, 10:00 AM" },
-      { text: "His chart shows the 5th lord gaining strength in the next cycle. One more attempt in the right dasha will work. Timing is everything.", sent: true, time: "Jul 14, 10:20 AM" },
-      { text: "AIR 2300 in JEE Advanced! NIT Trichy confirmed!! Thank you for keeping our faith 🙏🙏", sent: false, time: "Jan 25, 3:15 PM" },
+      { text: "Son has been preparing for JEE for 2 years. 2nd attempt next month. He's devastated from last year", sent: false, time: "Nov 28, 8:00 PM" },
+      { text: "Jupiter enters a strong 5th house period in December. The second attempt is much better placed than the first. His confidence is the only thing to protect right now.", sent: true, time: "Nov 28, 8:18 PM" },
+      { text: "Got into NIT Trichy. Rank 3400. He cried when the result came out 🙏 Thank you for keeping hope alive", sent: false, time: "May 2, 9:00 AM" },
     ],
   },
   {
     messages: [
-      { text: "My daughter wants to study in Canada. But is it safe? Will she manage alone abroad?", sent: false, time: "Sep 8, 7:30 PM" },
-      { text: "Strong 9th and 12th house placements indicate success abroad. She will adapt well. Apply before December for best results.", sent: true, time: "Sep 8, 7:45 PM" },
-      { text: "She got admission + scholarship at UBC! She's thriving there. Thank you for the guidance 🙏", sent: false, time: "Feb 14, 5:00 PM" },
+      { text: "My daughter is very bright but her board results don't reflect it. Teachers say she has potential but something is blocking her", sent: false, time: "Apr 12, 3:30 PM" },
+      { text: "Ketu in her 5th house creates mental blocks and exam anxiety specifically - she knows the material but performs below level in formal exams. This eases after she turns 18.", sent: true, time: "Apr 12, 3:48 PM" },
+      { text: "That's exactly what it looks like. What can we do now?", sent: false, time: "Apr 12, 3:52 PM" },
+      { text: "Reduce exam pressure at home. Let her explain answers verbally to you - it builds her confidence. A Ketu remedy will also help.", sent: true, time: "Apr 12, 3:58 PM" },
+      { text: "Her score went from 62% to 81% in one year. The verbal practice made a huge difference. We had no idea about the anxiety 🙏", sent: false, time: "Mar 18, 5:00 PM" },
     ],
   },
 ];
@@ -152,7 +151,7 @@ const ChildFutureLanding = () => {
       <Navbar />
       {/* ===== HERO ===== */}
       <section className="relative pt-20 pb-8 flex items-center justify-center bg-gradient-hero">
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-30 md:opacity-40">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-15 md:opacity-20">
           <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[500px] h-[500px] md:w-[700px] md:h-[700px]">
             <defs>
               <filter id="sun-glow-child" x="-50%" y="-50%" width="200%" height="200%">
@@ -191,17 +190,11 @@ const ChildFutureLanding = () => {
             <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="mb-8">
               <img src={logo.src} alt="ProJyotish" className="w-20 h-20 mx-auto rounded-2xl shadow-elevated" />
             </motion.div>
-            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight">
+            <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.15 }} className="font-display text-3xl md:text-5xl lg:text-6xl font-bold text-foreground mb-5 leading-tight">
               Concerned about{" "}<RotatingText texts={heroRotatingTexts} />?
             </motion.h1>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg text-muted-foreground mb-3">
-              Every parent worries about their child
-            </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-display text-xl md:text-2xl font-semibold text-foreground/80 mb-2 min-h-[2rem]">
-              <RotatingText texts={empathyRotatingTexts} />
-            </motion.p>
-            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.28 }} className="font-body text-base text-muted-foreground mb-8">
-              Your child&apos;s Kundli reveals their natural strengths, best timing, and destined path.
+            <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.25 }} className="font-body text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto">
+              Every child has a hidden path. Find out yours before the wrong door closes.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="mb-8">
               <WhatsAppButton />
@@ -250,19 +243,34 @@ const ChildFutureLanding = () => {
         </div>
       </section>
 
-      {/* ===== STATS SECTION ===== */}
+      {/* ===== POST-TESTIMONIALS CTA ===== */}
+      <section className="py-14 bg-card border-t border-border">
+        <div className="container px-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center max-w-xl mx-auto">
+            <p className="font-body text-muted-foreground mb-5 text-lg">Thousands have found answers. Your turn.</p>
+            <WhatsAppButton />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== HOW IT WORKS ===== */}
       <section className="py-20 md:py-28 bg-primary">
         <div className="container px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-primary-foreground">How it works</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             {[
-              { icon: CheckCircle, label: "100,000+ Questions Answered" },
-              { icon: Shield, label: "100% Confidential" },
-              { icon: Clock, label: "24/7 Availability" },
-              { icon: Globe, label: "Many Languages Supported" },
-            ].map(({ icon: Icon, label }, i) => (
-              <motion.div key={label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center gap-3">
-                <Icon className="w-8 h-8 text-primary-foreground" />
-                <p className="font-body font-semibold text-primary-foreground text-sm md:text-base">{label}</p>
+              { step: "1", title: "Share your birth details", desc: "Date, time, and place of birth. Takes 30 seconds." },
+              { step: "2", title: "Get your reading", desc: "Our Vedic astrologer analyses your Kundli. First reply in under 2 minutes." },
+              { step: "3", title: "Ask your 10 questions free", desc: "No card needed. No call. No catch." },
+            ].map(({ step, title, desc }, i) => (
+              <motion.div key={step} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex flex-col items-center text-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-primary-foreground/20 flex items-center justify-center">
+                  <span className="font-display text-xl font-bold text-primary-foreground">{step}</span>
+                </div>
+                <p className="font-body font-semibold text-primary-foreground text-base">{title}</p>
+                <p className="font-body text-primary-foreground/80 text-sm">{desc}</p>
               </motion.div>
             ))}
           </div>
