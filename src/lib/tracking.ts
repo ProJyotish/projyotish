@@ -1,8 +1,9 @@
-// Meta Pixel & Google Tag event tracking utility
+// Meta Pixel, Google Tag & Reddit Pixel event tracking utility
 declare global {
   interface Window {
     fbq?: (...args: unknown[]) => void;
     gtag?: (...args: unknown[]) => void;
+    rdt?: (...args: unknown[]) => void;
   }
 }
 
@@ -13,6 +14,9 @@ export const trackMetaEvent = (eventName: string, params?: Record<string, unknow
     }
     if (window.gtag) {
       window.gtag("event", eventName, params);
+    }
+    if (window.rdt) {
+      window.rdt("track", eventName, params);
     }
   }
 };
