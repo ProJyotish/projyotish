@@ -229,7 +229,7 @@
 
 .animate-marquee {
   /* Mobile: slow enough that a card stays visible for ~2s before another arrives */
-  animation: marquee 16s linear infinite;
+  animation: marquee 10s linear infinite;
 }
 
 /* Desktop (sm = 640px+): 3× faster as requested */
