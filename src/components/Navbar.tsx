@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import logo from "@/src/assets/file.svg";
+import logo from "@/src/assets/projyotish-logo-new.jpeg";
 import { trackMetaEvent } from "@/src/lib/tracking";
 
 const navLinks = [
@@ -23,15 +23,12 @@ const Navbar = () => {
       <div className="container px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center">
             <img
               src={logo.src}
               alt="ProJyotish"
-              className="w-9 h-9 rounded-lg"
+              className="h-11 w-11 rounded-xl object-cover"
             />
-            <span className="font-display text-lg font-semibold text-foreground hidden sm:block">
-              ProJyotish
-            </span>
           </Link>
 
           {/* Desktop Navigation */}
