@@ -185,6 +185,26 @@ const testimonials = [
 ];
 
 const HusbandHealthLanding = () => {
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveTestimonial((i) => (i + 1) % testimonials.length);
+    }, 8000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const onTouchStart = (e: React.TouchEvent) => { setTouchEnd(null); setTouchStart(e.targetTouches[0].clientX); };
+  const onTouchMove = (e: React.TouchEvent) => setTouchEnd(e.targetTouches[0].clientX);
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const dist = touchStart - touchEnd;
+    if (dist > 50) setActiveTestimonial((i) => (i + 1) % testimonials.length);
+    if (dist < -50) setActiveTestimonial((i) => (i - 1 + testimonials.length) % testimonials.length);
+  };
+
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
@@ -266,13 +286,45 @@ const HusbandHealthLanding = () => {
         </div>
       </section>
 
-      {/* ===== TESTIMONIALS GRID ===== */}
+      {/* ===== TESTIMONIALS ===== */}
       <section className="py-20 md:py-28 bg-card">
         <div className="container px-4">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground">Real conversations, real results</h2>
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+
+          {/* Mobile: swipeable carousel */}
+          <div className="sm:hidden">
+            <div
+              className="overflow-hidden"
+              onTouchStart={onTouchStart}
+              onTouchMove={onTouchMove}
+              onTouchEnd={onTouchEnd}
+            >
+              <div
+                className="flex transition-transform duration-300 ease-in-out"
+                style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
+              >
+                {testimonials.map((t, i) => (
+                  <div key={i} className="w-full flex-shrink-0 flex justify-center">
+                    <WhatsAppChat messages={t.messages} />
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex justify-center gap-2 mt-5">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveTestimonial(i)}
+                  className={`w-2.5 h-2.5 rounded-full transition-colors duration-200 ${i === activeTestimonial ? "bg-saffron" : "bg-border"}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Desktop: 2-column grid */}
+          <div className="hidden sm:grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {testimonials.map((t, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
                 <WhatsAppChat messages={t.messages} />
