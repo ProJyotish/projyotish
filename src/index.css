@@ -228,7 +228,15 @@
 }
 
 .animate-marquee {
-  animation: marquee 8s linear infinite;
+  /* Mobile: slow enough that a card stays visible for ~2s before another arrives */
+  animation: marquee 16s linear infinite;
+}
+
+/* Desktop (sm = 640px+): 3× faster as requested */
+@media (min-width: 640px) {
+  .animate-marquee {
+    animation: marquee 7s linear infinite;
+  }
 }
 
 .animate-marquee:hover,
