@@ -228,14 +228,14 @@
 }
 
 .animate-marquee {
-  /* Mobile: slow enough that a card stays visible for ~2s before another arrives */
-  animation: marquee 10s linear infinite;
+  /* Mobile: 20s covers all 8 unique cards (~2.5s each visible) */
+  animation: marquee 20s linear infinite;
 }
 
-/* Desktop (sm = 640px+): 3× faster as requested */
+/* Desktop (sm = 640px+): faster since wider viewport shows more cards at once */
 @media (min-width: 640px) {
   .animate-marquee {
-    animation: marquee 7s linear infinite;
+    animation: marquee 12s linear infinite;
   }
 }
 
