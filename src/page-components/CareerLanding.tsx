@@ -273,9 +273,6 @@ const CareerLanding = () => {
 
         <div className="container px-4 py-6 relative z-10">
           <div className="max-w-2xl mx-auto text-center">
-            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="mb-8">
-              <img src={logo.src} alt="ProJyotish" className="w-20 h-20 mx-auto rounded-2xl shadow-elevated" />
-            </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
