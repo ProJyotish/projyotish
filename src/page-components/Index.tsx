@@ -3,7 +3,7 @@ import { Suspense, lazy } from "react";
 import Navbar from "@/src/components/Navbar";
 import Hero from "@/src/components/Hero";
 import { MessageCircle } from "lucide-react";
-import { trackMetaEvent } from "@/src/lib/tracking";
+import { trackCustomEvent } from "@/src/lib/tracking";
 
 // Lazy load below-the-fold components for progressive loading
 const HowItWorks = lazy(() => import("@/src/components/HowItWorks"));
@@ -56,7 +56,7 @@ const Index = () => {
         href="https://wa.me/919821956888?text=Namaste"
         target="_blank"
         rel="noopener noreferrer"
-        onClick={() => trackMetaEvent("Lead", { content_name: "Floating WhatsApp CTA" })}
+        onClick={() => trackCustomEvent("Lead", { content_name: "Floating WhatsApp CTA" })}
         className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 bg-primary text-primary-foreground font-body font-semibold rounded-full shadow-lg hover:bg-primary/90 transition-colors md:hidden"
       >
         <MessageCircle className="w-5 h-5" />

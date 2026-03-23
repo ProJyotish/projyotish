@@ -1,7 +1,7 @@
 "use client";
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { trackMetaEvent } from "@/src/lib/tracking";
+import { trackCustomEvent } from "@/src/lib/tracking";
 
 const suggestions = [
   "When to schedule salary hike meeting with boss",
@@ -40,7 +40,7 @@ const HeroQueryInput = () => {
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      trackMetaEvent("Lead", { content_name: "Hero WhatsApp CTA" });
+      trackCustomEvent("Lead", { content_name: "Hero WhatsApp CTA" });
       window.open(whatsappUrl, "_blank", "noopener,noreferrer");
     }
   };
@@ -61,7 +61,7 @@ const HeroQueryInput = () => {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          onClick={() => trackMetaEvent("Lead", { content_name: "Hero WhatsApp CTA" })}
+          onClick={() => trackCustomEvent("Lead", { content_name: "Hero WhatsApp CTA" })}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="absolute right-2 w-10 h-10 flex items-center justify-center bg-[#25D366] text-white rounded-full shadow-elevated hover:bg-[#20BD5A] transition-all duration-300"
