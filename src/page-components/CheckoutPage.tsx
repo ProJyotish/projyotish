@@ -74,6 +74,20 @@ const parsePriceStringToMinorUnits = (price: string, currency: "INR" | "USD") =>
   return value;
 };
 
+const getLaunchReferencePrice = (displayPrice: string) => {
+  const symbolMatch = displayPrice.match(/[^\d.,]/);
+  const symbol = symbolMatch ? symbolMatch[0] : "";
+  const cleaned = displayPrice.replace(/,/g, "").replace(/[^\d.]/g, "");
+  const value = Number.parseFloat(cleaned);
+  if (Number.isNaN(value) || value <= 0) return displayPrice;
+
+  // Launch reference price = current price +30%.
+  // INR prices are rounded to nearest 100 as requested.
+  const bumped = value * 1.3;
+  const rounded = symbol === "₹" ? Math.round(bumped / 100) * 100 : Math.round(bumped);
+  return `${symbol}${rounded.toLocaleString("en-IN")}`;
+};
+
 const CheckoutPage = () => {
   const [isQuarterly, setIsQuarterly] = useState(false);
   const searchParams = useSearchParams();
@@ -209,6 +223,9 @@ const CheckoutPage = () => {
               <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
                 {pricingData.description}
               </p>
+              <p className="font-body text-sm text-accent font-semibold">
+                Introductory launch pricing for a limited time
+              </p>
             </motion.div>
 
             <div className="flex items-center justify-center gap-3 mb-10">
@@ -250,6 +267,8 @@ const CheckoutPage = () => {
                 const price = isQuarterly ? plan.quarterlyPrice : plan.monthlyPrice;
                 const total = isQuarterly ? plan.quarterlyTotal : plan.monthlyTotal;
                 const monthlyPrice = plan.monthlyPrice;
+                const launchReferencePrice = getLaunchReferencePrice(price);
+                const launchReferenceTotal = getLaunchReferencePrice(total);
                 const savings = isQuarterly ? plan.quarterlySavings : "";
                 const Icon = iconMap[plan.iconType] || Crown;
 
@@ -292,36 +311,27 @@ const CheckoutPage = () => {
                       >
                         {plan.name}
                       </h3>
-                      <p
-                        className={`font-body text-sm ${
-                          plan.popular
-                            ? "text-primary-foreground/80"
-                            : "text-muted-foreground"
-                        }`}
-                      >
-                        {total}
-                      </p>
+                      
 
                       <div className="mt-4">
                         {isQuarterly ? (
-                          <div className="space-y-1">
-                            <div
-                              className={`font-body text-sm ${
-                                plan.popular
-                                  ? "text-primary-foreground/70"
-                                  : "text-muted-foreground"
-                              }`}
-                            >
-                              <span className="line-through">{monthlyPrice}</span>
-                              <span className="ml-1">/month</span>
-                            </div>
-                            <div>
+                          <div className="flex flex-col items-center gap-1">
+                            <div className="flex items-end justify-center gap-2">
                               <span
-                                className={`font-display text-5xl font-bold ${
+                                className={`font-display text-4xl font-bold ${
                                   plan.popular ? "text-accent" : "text-primary"
                                 }`}
+                                style={{ fontFamily: "'Cormorant Garamond', serif" }}
                               >
                                 {price}
+                              </span>
+                              <span
+                                className={`font-body text-4xl line-through ${
+                                  plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"
+                                }`}
+                                style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                              >
+                                {launchReferencePrice}
                               </span>
                               <span
                                 className={`font-body ml-1 ${
@@ -329,19 +339,32 @@ const CheckoutPage = () => {
                                     ? "text-primary-foreground/80"
                                     : "text-muted-foreground"
                                 }`}
+                                style={{ fontFamily: "'Cormorant Garamond', serif" }}
                               >
-                                /month
+                                /quarter
                               </span>
                             </div>
+                            <span className={`font-body text-sm text-muted-foreground ${plan.popular
+                                    ? "text-primary-foreground/80"
+                                    : "text-muted-foreground"}`}>({plan.effectiveMonthlyPrice})</span>
                           </div>
                         ) : (
-                          <>
+                          <div className="flex items-end justify-center gap-2 whitespace-nowrap">
                             <span
                               className={`font-display text-4xl font-bold ${
-                                plan.popular ? "" : "text-foreground"
+                                plan.popular ? "text-accent" : "text-primary"
                               }`}
+                              style={{ fontFamily: "'Cormorant Garamond', serif" }}
                             >
                               {price}
+                            </span>
+                            <span
+                              className={`font-display text-4xl font-bold line-through ${
+                                plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"
+                              }`}
+                              style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                            >
+                              {launchReferencePrice}
                             </span>
                             <span
                               className={`font-body ${
@@ -349,10 +372,11 @@ const CheckoutPage = () => {
                                   ? "text-primary-foreground/80"
                                   : "text-muted-foreground"
                               }`}
+                              style={{ fontFamily: "'Cormorant Garamond', serif" }}
                             >
                               /month
                             </span>
-                          </>
+                          </div>
                         )}
                       </div>
 
