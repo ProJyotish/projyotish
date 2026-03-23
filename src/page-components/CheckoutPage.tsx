@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { redirect, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { Check, Crown, Star, Users } from "lucide-react";
 import { Button } from "@/src/components/ui/button";
@@ -93,28 +93,6 @@ const CheckoutPage = () => {
   const razorpayKey = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
   const subscriptionApiUrl = process.env.NEXT_PUBLIC_SUBSCRIPTION_API_URL;
   const currency: "INR" | "USD" = region === "india" ? "INR" : "USD";
-  const razorpayPlanIds = {
-    INDIA: {
-      PREMIUM: {
-        MONTHLY: process.env.NEXT_PUBLIC_RAZORPAY_PLAN_ID_INDIA_PREMIUM_MONTHLY,
-        QUARTERLY: process.env.NEXT_PUBLIC_RAZORPAY_PLAN_ID_INDIA_PREMIUM_QUARTERLY,
-      },
-      POWER_USER: {
-        MONTHLY: process.env.NEXT_PUBLIC_RAZORPAY_PLAN_ID_INDIA_POWER_USER_MONTHLY,
-        QUARTERLY: process.env.NEXT_PUBLIC_RAZORPAY_PLAN_ID_INDIA_POWER_USER_QUARTERLY,
-      },
-    },
-    INTERNATIONAL: {
-      PREMIUM: {
-        MONTHLY: process.env.NEXT_PUBLIC_RAZORPAY_PLAN_ID_INTERNATIONAL_PREMIUM_MONTHLY,
-        QUARTERLY: process.env.NEXT_PUBLIC_RAZORPAY_PLAN_ID_INTERNATIONAL_PREMIUM_QUARTERLY,
-      },
-      POWER_USER: {
-        MONTHLY: process.env.NEXT_PUBLIC_RAZORPAY_PLAN_ID_INTERNATIONAL_POWER_USER_MONTHLY,
-        QUARTERLY: process.env.NEXT_PUBLIC_RAZORPAY_PLAN_ID_INTERNATIONAL_POWER_USER_QUARTERLY,
-      },
-    },
-  } as const;
 
   const handleRazorpayPayNow = async (plan: (typeof plans)[number]) => {
     if (!razorpayKey) {
@@ -131,22 +109,6 @@ const CheckoutPage = () => {
     const regionKey = region === "india" ? "INDIA" : "INTERNATIONAL";
     const price = isQuarterly ? plan.quarterlyPrice : plan.monthlyPrice;
 
-    const planId =
-      regionKey === "INDIA"
-        ? planNameKey === "PREMIUM"
-          ? razorpayPlanIds.INDIA.PREMIUM[billingTerm]
-          : razorpayPlanIds.INDIA.POWER_USER[billingTerm]
-        : planNameKey === "PREMIUM"
-          ? razorpayPlanIds.INTERNATIONAL.PREMIUM[billingTerm]
-          : razorpayPlanIds.INTERNATIONAL.POWER_USER[billingTerm];
-
-    if (!planId) {
-      window.alert(
-        `Subscription plan is not configured for ${regionKey} ${planNameKey} ${billingTerm}.`,
-      );
-      return;
-    }
-
     const loaded = await loadRazorpayScript();
     if (!loaded || !window.Razorpay) {
       window.alert("Unable to load Razorpay checkout. Please try again.");
@@ -159,7 +121,6 @@ const CheckoutPage = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        planId,
         amount: parsePriceStringToMinorUnits(price, currency),
         totalCount: 12,
         customerNotify: 1,
@@ -195,22 +156,23 @@ const CheckoutPage = () => {
       theme: { color: "#7C3AED" },
       handler: () => {
         trackCustomEvent("Purchase", {
+          price: price,
           content_name: `Checkout ${plan.name} ${billingTermLabel}`,
           checkout_region: region,
           checkout_currency: currency,
-          checkout_plan_id: planId,
           checkout_subscription_id: subscriptionId,
           checkout_mode: "subscription",
           phone_provided: Boolean(phone),
         });
+        window.location.href = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`;
       },
     });
 
     trackCustomEvent("InitiateCheckout", {
+      price: price,
       content_name: `Checkout ${plan.name} ${billingTermLabel}`,
       checkout_region: region,
       checkout_currency: currency,
-      checkout_plan_id: planId,
       checkout_subscription_id: subscriptionId,
       checkout_mode: "subscription",
       phone_provided: Boolean(phone),
