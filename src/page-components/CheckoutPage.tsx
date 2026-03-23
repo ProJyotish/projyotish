@@ -1,0 +1,448 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { motion } from "framer-motion";
+import { Check, Crown, Star, Users } from "lucide-react";
+import { Button } from "@/src/components/ui/button";
+import { trackCustomEvent } from "@/src/lib/tracking";
+import pricingData from "@/content/pricing.json";
+import logo from "@/src/assets/file.svg";
+
+const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  crown: Crown,
+  users: Users,
+  star: Star,
+};
+
+const normalizePhone = (phone: string) => phone.replace(/[^\d+]/g, "");
+
+const isIndianPhoneNumber = (phone: string | null) => {
+  if (!phone) return false;
+
+  const normalized = normalizePhone(phone);
+  const digitsOnly = normalized.replace(/\D/g, "");
+
+  if (normalized.startsWith("91") && digitsOnly.length === 12) return true;
+  if (digitsOnly.length === 12 && digitsOnly.startsWith("91")) return true;
+  if (digitsOnly.length === 10 && /^[6-9]/.test(digitsOnly)) return true;
+
+  return false;
+};
+
+type RazorpayOptions = {
+  key: string;
+  name: string;
+  description: string;
+  subscription_id: string;
+  prefill?: {
+    contact?: string;
+  };
+  theme?: {
+    color: string;
+  };
+  handler?: (response: unknown) => void;
+};
+
+declare global {
+  interface Window {
+    Razorpay?: new (options: RazorpayOptions) => { open: () => void };
+  }
+}
+
+const loadRazorpayScript = async () => {
+  if (typeof window === "undefined") return false;
+  if (window.Razorpay) return true;
+
+  return new Promise<boolean>((resolve) => {
+    const script = document.createElement("script");
+    script.src = "https://checkout.razorpay.com/v1/checkout.js";
+    script.async = true;
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
+};
+
+const parsePriceStringToMinorUnits = (price: string, currency: "INR" | "USD") => {
+  // Example: "₹499" / "$19.99"
+  const cleaned = price.replace(/,/g, "").replace(/[^\d.]/g, "");
+  const value = Number.parseFloat(cleaned);
+  if (Number.isNaN(value) || value <= 0) return 0;
+
+  // Razorpay expects minor units (paisa/cents).
+  return value;
+};
+
+const CheckoutPage = () => {
+  const [isQuarterly, setIsQuarterly] = useState(false);
+  const searchParams = useSearchParams();
+
+  const phone =
+    searchParams.get("phone") ??
+    searchParams.get("phoneNumber") ??
+    searchParams.get("mobile") ??
+    "";
+
+  const region: "india" | "international" = useMemo(
+    () => (isIndianPhoneNumber(phone) ? "india" : "international"),
+    [phone],
+  );
+
+  const plans = pricingData[region];
+  const razorpayKey = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
+  const subscriptionApiUrl = process.env.NEXT_PUBLIC_SUBSCRIPTION_API_URL;
+  const currency: "INR" | "USD" = region === "india" ? "INR" : "USD";
+  const razorpayPlanIds = {
+    INDIA: {
+      PREMIUM: {
+        MONTHLY: process.env.NEXT_PUBLIC_RAZORPAY_PLAN_ID_INDIA_PREMIUM_MONTHLY,
+        QUARTERLY: process.env.NEXT_PUBLIC_RAZORPAY_PLAN_ID_INDIA_PREMIUM_QUARTERLY,
+      },
+      POWER_USER: {
+        MONTHLY: process.env.NEXT_PUBLIC_RAZORPAY_PLAN_ID_INDIA_POWER_USER_MONTHLY,
+        QUARTERLY: process.env.NEXT_PUBLIC_RAZORPAY_PLAN_ID_INDIA_POWER_USER_QUARTERLY,
+      },
+    },
+    INTERNATIONAL: {
+      PREMIUM: {
+        MONTHLY: process.env.NEXT_PUBLIC_RAZORPAY_PLAN_ID_INTERNATIONAL_PREMIUM_MONTHLY,
+        QUARTERLY: process.env.NEXT_PUBLIC_RAZORPAY_PLAN_ID_INTERNATIONAL_PREMIUM_QUARTERLY,
+      },
+      POWER_USER: {
+        MONTHLY: process.env.NEXT_PUBLIC_RAZORPAY_PLAN_ID_INTERNATIONAL_POWER_USER_MONTHLY,
+        QUARTERLY: process.env.NEXT_PUBLIC_RAZORPAY_PLAN_ID_INTERNATIONAL_POWER_USER_QUARTERLY,
+      },
+    },
+  } as const;
+
+  const handleRazorpayPayNow = async (plan: (typeof plans)[number]) => {
+    if (!razorpayKey) {
+      window.alert("Payment is temporarily unavailable. Razorpay key is missing.");
+      return;
+    }
+    if (!subscriptionApiUrl) {
+      window.alert("Payment is temporarily unavailable. Subscription API URL is missing.");
+      return;
+    }
+
+    const billingTerm = isQuarterly ? "QUARTERLY" : "MONTHLY";
+    const planNameKey = plan.name.replace(/\s+/g, "_").toUpperCase();
+    const regionKey = region === "india" ? "INDIA" : "INTERNATIONAL";
+    const price = isQuarterly ? plan.quarterlyPrice : plan.monthlyPrice;
+
+    const planId =
+      regionKey === "INDIA"
+        ? planNameKey === "PREMIUM"
+          ? razorpayPlanIds.INDIA.PREMIUM[billingTerm]
+          : razorpayPlanIds.INDIA.POWER_USER[billingTerm]
+        : planNameKey === "PREMIUM"
+          ? razorpayPlanIds.INTERNATIONAL.PREMIUM[billingTerm]
+          : razorpayPlanIds.INTERNATIONAL.POWER_USER[billingTerm];
+
+    if (!planId) {
+      window.alert(
+        `Subscription plan is not configured for ${regionKey} ${planNameKey} ${billingTerm}.`,
+      );
+      return;
+    }
+
+    const loaded = await loadRazorpayScript();
+    if (!loaded || !window.Razorpay) {
+      window.alert("Unable to load Razorpay checkout. Please try again.");
+      return;
+    }
+
+    const billingTermLabel = isQuarterly ? "Quarterly" : "Monthly";
+    const normalizedContact = phone.replace(/\D/g, "");
+    const subscriptionRes = await fetch(subscriptionApiUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        planId,
+        amount: parsePriceStringToMinorUnits(price, currency),
+        totalCount: 12,
+        customerNotify: 1,
+        phoneNumber: normalizedContact,
+        // Optional context for your external API/logging
+        metadata: {
+          region: regionKey,
+          plan: planNameKey,
+          term: billingTerm,
+          phone: normalizedContact || undefined,
+        },
+      }),
+    });
+
+    if (!subscriptionRes.ok) {
+      window.alert("Unable to create subscription. Please try again.");
+      return;
+    }
+
+    const subscriptionData = (await subscriptionRes.json()) as { id?: string; subscriptionId?: string };
+    const subscriptionId = subscriptionData.id || subscriptionData.subscriptionId;
+    if (!subscriptionId) {
+      window.alert("Subscription ID was not returned by API.");
+      return;
+    }
+
+    const payment = new window.Razorpay({
+      key: razorpayKey,
+      name: "ProJyotish",
+      description: `${plan.name} ${billingTermLabel} Subscription`,
+      subscription_id: subscriptionId,
+      prefill: normalizedContact ? { contact: normalizedContact } : undefined,
+      theme: { color: "#7C3AED" },
+      handler: () => {
+        trackCustomEvent("Purchase", {
+          content_name: `Checkout ${plan.name} ${billingTermLabel}`,
+          checkout_region: region,
+          checkout_currency: currency,
+          checkout_plan_id: planId,
+          checkout_subscription_id: subscriptionId,
+          checkout_mode: "subscription",
+          phone_provided: Boolean(phone),
+        });
+      },
+    });
+
+    trackCustomEvent("InitiateCheckout", {
+      content_name: `Checkout ${plan.name} ${billingTermLabel}`,
+      checkout_region: region,
+      checkout_currency: currency,
+      checkout_plan_id: planId,
+      checkout_subscription_id: subscriptionId,
+      checkout_mode: "subscription",
+      phone_provided: Boolean(phone),
+    });
+
+    payment.open();
+  };
+
+  return (
+    <div className="min-h-screen bg-gradient-hero">
+      <main>
+        <section className="pt-14 pb-24">
+          <div className="container px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
+            >
+              <div className="flex justify-center mb-3">
+                <div className="relative">
+                  <div className="absolute inset-0 -z-10 rounded-xl bg-primary/35 blur-xl" />
+                  <img
+                    src={logo.src}
+                    alt="ProJyotish Logo"
+                    className="w-20 h-20 md:w-28 md:h-28 mx-auto rounded-2xl shadow-elevated animate-float"
+                  />
+                </div>
+              </div>
+              <h1 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">
+                Checkout
+              </h1>
+              <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
+                {pricingData.description}
+              </p>
+            </motion.div>
+
+            <div className="flex items-center justify-center gap-3 mb-10">
+              <span
+                className={`font-body text-sm font-medium transition-colors ${
+                  !isQuarterly ? "text-foreground" : "text-muted-foreground"
+                }`}
+              >
+                Monthly
+              </span>
+              <button
+                onClick={() => setIsQuarterly(!isQuarterly)}
+                className={`relative inline-flex h-7 w-14 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                  isQuarterly ? "bg-primary" : "bg-input"
+                }`}
+              >
+                <span
+                  className={`pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform ${
+                    isQuarterly ? "translate-x-7" : "translate-x-1"
+                  }`}
+                />
+              </button>
+              <span
+                className={`font-body text-sm font-medium transition-colors ${
+                  isQuarterly ? "text-foreground" : "text-muted-foreground"
+                }`}
+              >
+                Quarterly
+              </span>
+              {isQuarterly && (
+                <span className="bg-accent/20 text-accent px-2 py-0.5 rounded-full text-xs font-body font-semibold">
+                  Best Value
+                </span>
+              )}
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {plans.map((plan, index) => {
+                const price = isQuarterly ? plan.quarterlyPrice : plan.monthlyPrice;
+                const total = isQuarterly ? plan.quarterlyTotal : plan.monthlyTotal;
+                const monthlyPrice = plan.monthlyPrice;
+                const savings = isQuarterly ? plan.quarterlySavings : "";
+                const Icon = iconMap[plan.iconType] || Crown;
+
+                return (
+                  <motion.div
+                    key={plan.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className={`relative rounded-2xl p-8 flex flex-col h-full ${
+                      plan.popular
+                        ? "bg-primary text-primary-foreground shadow-glow"
+                        : "bg-background border-2 border-border"
+                    }`}
+                  >
+                    {plan.badge && (
+                      <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-accent-foreground px-4 py-1 rounded-full text-sm font-body font-semibold shadow-soft">
+                        {plan.badge}
+                      </div>
+                    )}
+
+                    <div className="text-center mb-6">
+                      <div
+                        className={`w-14 h-14 mx-auto mb-4 rounded-xl flex items-center justify-center ${
+                          plan.popular ? "bg-primary-foreground/20" : "bg-primary/10"
+                        }`}
+                      >
+                        <Icon
+                          className={`w-7 h-7 ${
+                            plan.popular ? "text-primary-foreground" : "text-primary"
+                          }`}
+                        />
+                      </div>
+
+                      <h3
+                        className={`font-display text-2xl font-bold mb-2 ${
+                          plan.popular ? "" : "text-foreground"
+                        }`}
+                      >
+                        {plan.name}
+                      </h3>
+                      <p
+                        className={`font-body text-sm ${
+                          plan.popular
+                            ? "text-primary-foreground/80"
+                            : "text-muted-foreground"
+                        }`}
+                      >
+                        {total}
+                      </p>
+
+                      <div className="mt-4">
+                        {isQuarterly ? (
+                          <div className="space-y-1">
+                            <div
+                              className={`font-body text-sm ${
+                                plan.popular
+                                  ? "text-primary-foreground/70"
+                                  : "text-muted-foreground"
+                              }`}
+                            >
+                              <span className="line-through">{monthlyPrice}</span>
+                              <span className="ml-1">/month</span>
+                            </div>
+                            <div>
+                              <span
+                                className={`font-display text-5xl font-bold ${
+                                  plan.popular ? "text-accent" : "text-primary"
+                                }`}
+                              >
+                                {price}
+                              </span>
+                              <span
+                                className={`font-body ml-1 ${
+                                  plan.popular
+                                    ? "text-primary-foreground/80"
+                                    : "text-muted-foreground"
+                                }`}
+                              >
+                                /month
+                              </span>
+                            </div>
+                          </div>
+                        ) : (
+                          <>
+                            <span
+                              className={`font-display text-4xl font-bold ${
+                                plan.popular ? "" : "text-foreground"
+                              }`}
+                            >
+                              {price}
+                            </span>
+                            <span
+                              className={`font-body ${
+                                plan.popular
+                                  ? "text-primary-foreground/80"
+                                  : "text-muted-foreground"
+                              }`}
+                            >
+                              /month
+                            </span>
+                          </>
+                        )}
+                      </div>
+
+                      {isQuarterly && savings && (
+                        <span className="inline-block mt-2 bg-accent/20 text-accent px-3 py-1 rounded-full text-xs font-body font-semibold">
+                          {savings}
+                        </span>
+                      )}
+                    </div>
+
+                    <ul className="space-y-3 mb-8 flex-1">
+                      {plan.features.map((feature) => (
+                        <li key={feature} className="flex items-start gap-3">
+                          <Check
+                            className={`w-5 h-5 shrink-0 mt-0.5 ${
+                              plan.popular ? "text-accent" : "text-primary"
+                            }`}
+                          />
+                          <span
+                            className={`font-body text-sm ${
+                              plan.popular
+                                ? "text-primary-foreground/90"
+                                : "text-foreground"
+                            }`}
+                          >
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Button
+                      className={`w-full ${
+                        plan.popular
+                          ? "bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+                          : "bg-primary text-primary-foreground hover:bg-primary/90"
+                      }`}
+                      size="lg"
+                      onClick={() => handleRazorpayPayNow(plan)}
+                    >
+                      Pay Now
+                    </Button>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  );
+};
+
+export default CheckoutPage;
+

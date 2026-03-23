@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import logo from "@/src/assets/projyotish-logo-new.jpeg";
-import { trackMetaEvent } from "@/src/lib/tracking";
+import { trackCustomEvent } from "@/src/lib/tracking";
 
 const navLinks = [
   { name: "How It Works", href: "/#how-it-works" },
@@ -46,7 +46,7 @@ const Navbar = () => {
               href="https://wa.me/919821956888?text=Namaste"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackMetaEvent("Lead", { content_name: "Navbar Get Started" })}
+              onClick={() => trackCustomEvent("Lead", { content_name: "Navbar Get Started" })}
               className="px-5 py-2 bg-primary text-primary-foreground font-body font-medium text-sm rounded-lg hover:bg-primary/90 transition-colors"
             >
               Get Started
@@ -87,7 +87,7 @@ const Navbar = () => {
                 href="https://wa.me/919821956888?text=Namaste"
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => { setIsOpen(false); trackMetaEvent("Lead", { content_name: "Navbar Mobile Get Started" }); }}
+                onClick={() => { setIsOpen(false); trackCustomEvent("Lead", { content_name: "Navbar Mobile Get Started" }); }}
                 className="px-5 py-3 bg-primary text-primary-foreground font-body font-medium text-center rounded-lg"
               >
                 Get Started

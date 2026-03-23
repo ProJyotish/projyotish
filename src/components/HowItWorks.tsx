@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { MessageSquare, Sparkles, Calendar, Sun, TrendingUp, Heart } from "lucide-react";
-import { trackMetaEvent } from "@/src/lib/tracking";
+import { trackCustomEvent } from "@/src/lib/tracking";
 
 const capabilities = [
   {
@@ -101,7 +101,7 @@ const HowItWorks = () => {
             </h3>
           </div>
           <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
-            It's incredibly straightforward. Just <a href="https://wa.me/919821956888?text=Namaste" target="_blank" rel="noopener noreferrer" onClick={() => trackMetaEvent("Lead", { content_name: "HowItWorks WhatsApp Link" })} className="text-primary font-semibold hover:underline">send a "Namaste" to ProJyotish on WhatsApp</a>, and you're in.
+            It's incredibly straightforward. Just <a href="https://wa.me/919821956888?text=Namaste" target="_blank" rel="noopener noreferrer" onClick={() => trackCustomEvent("Lead", { content_name: "HowItWorks WhatsApp Link" })} className="text-primary font-semibold hover:underline">send a "Namaste" to ProJyotish on WhatsApp</a>, and you're in.
           </p>
           {/* What to expect steps */}
           <div className="space-y-4">

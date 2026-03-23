@@ -16,7 +16,7 @@ declare global {
   }
 }
 
-export const trackMetaEvent = (eventName: string, params?: Record<string, unknown>) => {
+export const trackCustomEvent = (eventName: string, params?: Record<string, unknown>) => {
   if (typeof window === "undefined") return;
 
   if (window.fbq) {
