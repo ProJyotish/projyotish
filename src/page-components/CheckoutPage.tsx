@@ -255,11 +255,15 @@ const CheckoutPage = () => {
               >
                 Quarterly
               </span>
-              {isQuarterly && (
-                <span className="bg-accent/20 text-accent px-2 py-0.5 rounded-full text-xs font-body font-semibold">
+              <span
+                className={`w-20 text-center px-2 py-0.5 rounded-full text-xs font-body font-semibold transition-opacity ${
+                  isQuarterly
+                    ? "bg-accent/20 text-accent opacity-100"
+                    : "opacity-0"
+                }`}
+              >
                   Best Value
-                </span>
-              )}
+              </span>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
