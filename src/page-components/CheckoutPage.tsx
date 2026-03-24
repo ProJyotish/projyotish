@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import { redirect, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { Check, Crown, Star, Users } from "lucide-react";
+import { Check, Crown, Sparkles, Star, Users } from "lucide-react";
 import { Button } from "@/src/components/ui/button";
 import { trackCustomEvent } from "@/src/lib/tracking";
 import pricingData from "@/content/pricing.json";
@@ -197,8 +197,19 @@ const CheckoutPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-hero">
+      <div
+        role="banner"
+        className="w-full border-b border-primary/20 bg-primary text-primary-foreground shadow-sm"
+      >
+        <div className="container mx-auto flex items-center justify-center gap-2 px-4 py-2.5 sm:py-3">
+          <Sparkles className="h-4 w-4 shrink-0 opacity-90" aria-hidden />
+          <p className="font-body text-center text-xs font-semibold uppercase tracking-wide sm:text-sm">
+            Introductory launch pricing — limited time
+          </p>
+        </div>
+      </div>
       <main>
-        <section className="pt-14 pb-24">
+        <section className="pt-10 pb-24 sm:pt-12">
           <div className="container px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -222,9 +233,6 @@ const CheckoutPage = () => {
               </h1>
               <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
                 {pricingData.description}
-              </p>
-              <p className="font-body text-sm text-accent font-semibold">
-                Introductory launch pricing for a limited time
               </p>
             </motion.div>
 
