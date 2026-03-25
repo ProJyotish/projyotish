@@ -88,6 +88,28 @@ const getLaunchReferencePrice = (displayPrice: string) => {
   return `${symbol}${rounded.toLocaleString("en-IN")}`;
 };
 
+const checkoutFaqs = [
+  {
+    question: "Only Rs 5 were deducted when I made the payment",
+    answer:
+      "As per UPI AutoPay standard procedure, Rs 5 is deducted to verify your payment method. Your chosen plan amount will be deducted automatically later at the selected billing frequency.",
+  },
+  {
+    question: "How can I upgrade to Power User if I am on Premium?",
+    answer:
+      "You can upgrade anytime. Your old subscription will be cancelled, and any unused balance will be refunded.",
+  },
+  {
+    question: "How can I cancel?",
+    answer: "You can cancel your subscription directly from your UPI app or through your credit card provider.",
+  },
+  {
+    question: "Refund policy",
+    answer:
+      "We do not offer refunds once payment is made. We provide a free trial of 10 questions and 3 days of personalized reports so you can evaluate our service before subscribing.",
+  },
+];
+
 const CheckoutPage = () => {
   const [isQuarterly, setIsQuarterly] = useState(false);
   const searchParams = useSearchParams();
@@ -435,6 +457,33 @@ const CheckoutPage = () => {
                 );
               })}
             </div>
+
+            <motion.section
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="mt-16 max-w-4xl mx-auto"
+            >
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-6 text-center">
+                Frequently Asked Questions
+              </h2>
+              <div className="space-y-4">
+                {checkoutFaqs.map((faq) => (
+                  <div
+                    key={faq.question}
+                    className="rounded-xl border border-border bg-background/80 p-5"
+                  >
+                    <h3 className="font-body text-base md:text-lg font-semibold text-foreground">
+                      {faq.question}
+                    </h3>
+                    <p className="mt-2 font-body text-sm md:text-base text-muted-foreground">
+                      {faq.answer}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </motion.section>
           </div>
         </section>
       </main>
