@@ -101,7 +101,7 @@ const checkoutFaqs = [
   },
   {
     question: "How can I cancel?",
-    answer: "You can cancel your subscription directly from your UPI app or through your credit card provider.",
+    answer: "You can cancel your subscription directly from your UPI app or through your credit card provider. Cancellations will be effective from the next billing date and subscription will stay active until the end of the current billing period. You can also contact us at support[@]projyotish.com for assistance.",
   },
   {
     question: "Refund policy",
