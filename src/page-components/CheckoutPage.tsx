@@ -114,15 +114,17 @@ const CheckoutPage = () => {
   const [isQuarterly, setIsQuarterly] = useState(false);
   const searchParams = useSearchParams();
 
-  const phone =
+  const userId =
     searchParams.get("phone") ??
     searchParams.get("phoneNumber") ??
     searchParams.get("mobile") ??
     "";
 
+  const normalizedUserId = useMemo(() => userId.replace(/\D/g, ""), [userId]);
+
   const region: "india" | "international" = useMemo(
-    () => (isIndianPhoneNumber(phone) ? "india" : "international"),
-    [phone],
+    () => (isIndianPhoneNumber(userId) ? "india" : "international"),
+    [userId],
   );
 
   const plans = pricingData[region];
@@ -152,7 +154,6 @@ const CheckoutPage = () => {
     }
 
     const billingTermLabel = isQuarterly ? "Quarterly" : "Monthly";
-    const normalizedContact = phone.replace(/\D/g, "");
     const subscriptionRes = await fetch(subscriptionApiUrl, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -160,13 +161,13 @@ const CheckoutPage = () => {
         amount: parsePriceStringToMinorUnits(price, currency),
         totalCount: 12,
         customerNotify: 1,
-        phoneNumber: normalizedContact,
+        phoneNumber: normalizedUserId,
         // Optional context for your external API/logging
         metadata: {
           region: regionKey,
           plan: planNameKey,
           term: billingTerm,
-          phone: normalizedContact || undefined,
+          user_id: normalizedUserId || undefined,
         },
       }),
     });
@@ -188,7 +189,7 @@ const CheckoutPage = () => {
       name: "ProJyotish",
       description: `${plan.name} ${billingTermLabel} Subscription`,
       subscription_id: subscriptionId,
-      prefill: normalizedContact ? { contact: normalizedContact } : undefined,
+      prefill: normalizedUserId ? { contact: normalizedUserId } : undefined,
       theme: { color: "#7C3AED" },
       handler: () => {
         trackCustomEvent("Purchase", {
@@ -198,7 +199,8 @@ const CheckoutPage = () => {
           checkout_currency: currency,
           checkout_subscription_id: subscriptionId,
           checkout_mode: "subscription",
-          phone_provided: Boolean(phone),
+          phone_provided: Boolean(normalizedUserId),
+          user_id: normalizedUserId
         });
         window.location.href = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`;
       },
@@ -211,7 +213,8 @@ const CheckoutPage = () => {
       checkout_currency: currency,
       checkout_subscription_id: subscriptionId,
       checkout_mode: "subscription",
-      phone_provided: Boolean(phone),
+      phone_provided: Boolean(normalizedUserId),
+      user_id: normalizedUserId
     });
 
     payment.open();
