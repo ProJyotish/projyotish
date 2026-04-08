@@ -121,7 +121,7 @@ const CheckoutPage = () => {
     "";
 
   const normalizedUserId = useMemo(() => userId.replace(/\D/g, ""), [userId]);
-
+  
   const region: "india" | "international" = useMemo(
     () => (isIndianPhoneNumber(userId) ? "india" : "international"),
     [userId],
@@ -200,6 +200,7 @@ const CheckoutPage = () => {
           checkout_subscription_id: subscriptionId,
           checkout_mode: "subscription",
           phone_provided: Boolean(normalizedUserId),
+          langfuse_user_id: normalizedUserId,
           distinct_id: normalizedUserId
         });
         window.location.href = `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}`;
@@ -214,6 +215,7 @@ const CheckoutPage = () => {
       checkout_subscription_id: subscriptionId,
       checkout_mode: "subscription",
       phone_provided: Boolean(normalizedUserId),
+      langfuse_user_id: normalizedUserId,
       distinct_id: normalizedUserId
     });
 

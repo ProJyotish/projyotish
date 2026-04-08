@@ -135,6 +135,15 @@ export default function RootLayout({
           posthog.init('phc_N5p2DVRO6BXcEIKv86kabRWxa1l7wywFIrpgNQbsMic',{api_host:'https://us.i.posthog.com',defaults:'2026-01-30'})`}
         </Script>
 
+        <Script>
+          {`
+            const urlParams = new URLSearchParams(window.location.search);
+            const userId = urlParams.get("phone") ?? urlParams.get("phoneNumber") ?? urlParams.get("mobile") ?? "";
+            const normalizedUserId = userId.replace(/\D/g, "");
+            window.posthog?.identify(normalizedUserId);
+          `}
+        </Script>
+
         {/* Reddit Pixel */}
         <Script id="reddit-pixel" strategy="lazyOnload">
           {`!function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js?pixel_id=a2_inhxatfmgann",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);rdt('init','a2_inhxatfmgann');rdt('track', 'PageVisit');`}
