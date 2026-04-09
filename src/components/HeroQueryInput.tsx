@@ -2,6 +2,7 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { trackCustomEvent } from "@/src/lib/tracking";
+import { useSourceGreeting } from "@/src/contexts/SourceGreetingContext";
 
 const suggestions = [
   "When to schedule salary hike meeting with boss",
@@ -27,12 +28,16 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 
 const HeroQueryInput = () => {
   const [query, setQuery] = useState("");
+  const { greeting } = useSourceGreeting();
 
   const whatsappUrl = useMemo(() => {
-    const message = query.trim() || "Namaste";
+    const trimmed = query.trim();
+    const message = trimmed
+      ? `${greeting.word}. ${trimmed}`
+      : greeting.word;
     const encodedMessage = encodeURIComponent(message);
     return `https://wa.me/919821956888?text=${encodedMessage}`;
-  }, [query]);
+  }, [query, greeting.word]);
 
   const handleChipClick = (suggestion: string) => {
     setQuery(suggestion);

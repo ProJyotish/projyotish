@@ -1,11 +1,13 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, Shield, Clock, Globe, CheckCircle } from "lucide-react";
 import logo from "@/src/assets/file.svg";
 import { trackCustomEvent } from "@/src/lib/tracking";
 import Navbar from "@/src/components/Navbar";
 import Footer from "@/src/components/Footer";
+import { SourceGreetingProvider, useSourceGreeting } from "@/src/contexts/SourceGreetingContext";
+import { buildWhatsAppPrefillUrl } from "@/src/lib/sourceGreeting";
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className} xmlns="http://www.w3.org/2000/svg">
@@ -13,22 +15,34 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const WHATSAPP_URL = "https://wa.me/919821956888?text=I%20have%20a%20question%20about%20my%20child%27s%20future";
+const CHILD_FUTURE_MESSAGE = "I have a question about my child's future";
 
-const WhatsAppButton = ({ text = "Start with 10 free questions", className = "" }: { text?: string; className?: string }) => (
-  <motion.a
-    href={WHATSAPP_URL}
-    target="_blank"
-    rel="noopener noreferrer"
-    onClick={() => trackCustomEvent("Lead", { content_name: "Child Future Landing WhatsApp CTA" })}
-    whileHover={{ scale: 1.03, y: -2 }}
-    whileTap={{ scale: 0.97 }}
-    className={`inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] text-white font-body font-bold text-lg rounded-2xl shadow-elevated hover:bg-[#20BD5A] transition-colors duration-300 ${className}`}
-  >
-    <WhatsAppIcon className="w-6 h-6" />
-    {text}
-  </motion.a>
-);
+const WhatsAppButton = ({ text = "Start with 10 free questions", className = "" }: { text?: string; className?: string }) => {
+  const { greeting } = useSourceGreeting();
+  const waUrl = useMemo(
+    () =>
+      buildWhatsAppPrefillUrl(
+        "919821956888",
+        `${greeting.word}. ${CHILD_FUTURE_MESSAGE}`
+      ),
+    [greeting.word]
+  );
+
+  return (
+    <motion.a
+      href={waUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => trackCustomEvent("Lead", { content_name: "Child Future Landing WhatsApp CTA" })}
+      whileHover={{ scale: 1.03, y: -2 }}
+      whileTap={{ scale: 0.97 }}
+      className={`inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] text-white font-body font-bold text-lg rounded-2xl shadow-elevated hover:bg-[#20BD5A] transition-colors duration-300 ${className}`}
+    >
+      <WhatsAppIcon className="w-6 h-6" />
+      {text}
+    </motion.a>
+  );
+};
 
 const RotatingText = ({ texts, className = "" }: { texts: string[]; className?: string }) => {
   const [index, setIndex] = useState(0);
@@ -206,6 +220,7 @@ const ChildFutureLanding = () => {
   };
 
   return (
+    <SourceGreetingProvider>
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Navbar />
       {/* ===== HERO ===== */}
@@ -384,6 +399,7 @@ const ChildFutureLanding = () => {
 
       <Footer />
     </div>
+    </SourceGreetingProvider>
   );
 };
 

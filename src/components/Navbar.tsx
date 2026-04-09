@@ -4,8 +4,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import logo from "@/src/assets/projyotish-logo-new.jpeg";
+import logo from "@/src/assets/file.svg";
 import { trackCustomEvent } from "@/src/lib/tracking";
+import { useSourceGreeting } from "@/src/contexts/SourceGreetingContext";
 
 const navLinks = [
   { name: "How It Works", href: "/#how-it-works" },
@@ -17,6 +18,7 @@ const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { waUrl } = useSourceGreeting();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
@@ -27,7 +29,7 @@ const Navbar = () => {
             <img
               src={logo.src}
               alt="ProJyotish"
-              className="h-11 w-11 rounded-xl object-cover"
+              className="h-20 w-20"
             />
           </Link>
 
@@ -43,7 +45,7 @@ const Navbar = () => {
               </a>
             ))}
             <a
-              href="https://wa.me/919821956888?text=Namaste"
+              href={waUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackCustomEvent("Lead", { content_name: "Navbar Get Started" })}
@@ -84,7 +86,7 @@ const Navbar = () => {
                 </a>
               ))}
               <a
-                href="https://wa.me/919821956888?text=Namaste"
+                href={waUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => { setIsOpen(false); trackCustomEvent("Lead", { content_name: "Navbar Mobile Get Started" }); }}
