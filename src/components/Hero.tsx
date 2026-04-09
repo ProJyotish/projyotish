@@ -17,7 +17,7 @@ const Hero = () => {
       <div className="container px-4 py-20 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Logo */}
-          {/* <motion.div
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
@@ -28,7 +28,7 @@ const Hero = () => {
               alt="ProJyotish Logo"
               className="w-40 h-40 md:w-52 md:h-52 mx-auto rounded-2xl shadow-elevated animate-float"
             />
-          </motion.div> */}
+          </motion.div>
 
           {/* Solar system SVG */}
           <motion.div
