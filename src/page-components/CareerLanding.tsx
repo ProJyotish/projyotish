@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, Shield, Clock, Globe, CheckCircle } from "lucide-react";
 import logo from "@/src/assets/file.svg";
-import { trackMetaEvent } from "@/src/lib/tracking";
+import { trackCustomEvent } from "@/src/lib/tracking";
 import Navbar from "@/src/components/Navbar";
 import Footer from "@/src/components/Footer";
 
@@ -21,7 +21,7 @@ const WhatsAppButton = ({ text = "Start with 10 free questions", className = "" 
     href={WHATSAPP_URL}
     target="_blank"
     rel="noopener noreferrer"
-    onClick={() => trackMetaEvent("Lead", { content_name: "Career Landing WhatsApp CTA" })}
+    onClick={() => trackCustomEvent("Lead", { content_name: "Career Landing WhatsApp CTA" })}
     whileHover={{ scale: 1.03, y: -2 }}
     whileTap={{ scale: 0.97 }}
     className={`inline-flex items-center gap-3 px-8 py-4 bg-[#25D366] text-white font-body font-bold text-lg rounded-2xl shadow-elevated hover:bg-[#20BD5A] transition-colors duration-300 ${className}`}
@@ -273,6 +273,9 @@ const CareerLanding = () => {
 
         <div className="container px-4 py-6 relative z-10">
           <div className="max-w-2xl mx-auto text-center">
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="mb-8">
+              <img src={logo.src} alt="ProJyotish" className="w-20 h-20 mx-auto rounded-2xl shadow-elevated" />
+            </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}

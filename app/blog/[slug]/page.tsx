@@ -68,12 +68,19 @@ export default async function BlogPostPage({
         )}
 
         <div
-          className="prose prose-lg max-w-none font-body
-            prose-headings:font-display prose-headings:text-foreground
-            prose-p:text-muted-foreground prose-p:leading-relaxed
-            prose-a:text-primary prose-a:no-underline hover:prose-a:text-primary/80
-            prose-strong:text-foreground
-            prose-ul:text-muted-foreground prose-ol:text-muted-foreground"
+          className="max-w-none font-body text-muted-foreground leading-relaxed
+            [&_h2]:font-display [&_h2]:text-foreground [&_h2]:text-3xl [&_h2]:font-semibold [&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:text-left
+            [&_h3]:font-display [&_h3]:text-foreground [&_h3]:text-2xl [&_h3]:font-semibold [&_h3]:mt-8 [&_h3]:mb-3 [&_h3]:text-left
+            [&_p]:my-4 [&_p]:text-muted-foreground
+            [&_a]:text-primary [&_a]:no-underline hover:[&_a]:text-primary/80
+            [&_strong]:text-foreground [&_strong]:font-semibold
+            [&_ul]:my-4 [&_ul]:list-disc [&_ul]:pl-6
+            [&_ol]:my-4 [&_ol]:list-decimal [&_ol]:pl-6
+            [&_li]:my-2
+            [&_table]:w-full [&_table]:border-collapse [&_table]:my-6
+            [&_th]:border [&_th]:border-border [&_th]:bg-muted [&_th]:p-3 [&_th]:text-left [&_th]:text-foreground
+            [&_td]:border [&_td]:border-border [&_td]:p-3
+            [&_hr]:my-8 [&_hr]:border-border"
           dangerouslySetInnerHTML={{ __html: post.contentHtml || "" }}
         />
       </article>

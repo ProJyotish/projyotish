@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Check, Crown, Sparkles, MessageCircle, Users, Globe, Star } from "lucide-react";
 import { Button } from "@/src/components/ui/button";
-import { trackMetaEvent } from "@/src/lib/tracking";
+import { trackCustomEvent } from "@/src/lib/tracking";
 import pricingData from "@/content/pricing.json";
 import settingsData from "@/content/settings.json";
 
@@ -183,7 +183,7 @@ const Pricing = () => {
                     href={`https://wa.me/${settingsData.whatsappNumber}?text=${encodeURIComponent(whatsapp)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => trackMetaEvent("Lead", { content_name: `Pricing ${plan.name} ${isQuarterly ? "Quarterly" : "Monthly"}` })}
+                    onClick={() => trackCustomEvent("Lead", { content_name: `Pricing ${plan.name} ${isQuarterly ? "Quarterly" : "Monthly"}` })}
                     className="flex items-center gap-2"
                   >
                     <MessageCircle className="w-5 h-5" />

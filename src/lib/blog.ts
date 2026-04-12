@@ -55,6 +55,11 @@ export function getAllPostSlugs(): string[] {
   return fs
     .readdirSync(postsDirectory)
     .filter((fileName) => fileName.endsWith(".md"))
+    .filter((fileName) => {
+      const fullPath = path.join(postsDirectory, fileName);
+      const { data } = matter(fs.readFileSync(fullPath, "utf8"));
+      return data.published !== false;
+    })
     .map((fileName) => fileName.replace(/\.md$/, ""));
 }
 
@@ -68,7 +73,12 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
-  const processedContent = await remark().use(html).process(content);
+  if (data.published === false) {
+    return null;
+  }
+
+  // Trusted repo content; allow inline HTML blocks (e.g. tables) in posts
+  const processedContent = await remark().use(html, { sanitize: false }).process(content);
   const contentHtml = processedContent.toString();
 
   return {

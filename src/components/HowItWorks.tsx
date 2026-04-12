@@ -1,7 +1,9 @@
 "use client";
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { MessageSquare, Sparkles, Calendar, Sun, TrendingUp, Heart } from "lucide-react";
-import { trackMetaEvent } from "@/src/lib/tracking";
+import { trackCustomEvent } from "@/src/lib/tracking";
+import { useSourceGreeting } from "@/src/contexts/SourceGreetingContext";
 
 const capabilities = [
   {
@@ -27,6 +29,29 @@ const capabilities = [
 ];
 
 const HowItWorks = () => {
+  const { greeting, waUrl } = useSourceGreeting();
+
+  const startSteps = useMemo(
+    () => [
+      {
+        step: "1",
+        title: `Say ${greeting.word}`,
+        desc: `Tap the WhatsApp button. "${greeting.word}" is pre-typed - just press Send.`,
+      },
+      {
+        step: "2",
+        title: "Share your birth details",
+        desc: "We'll ask for your date, time, and place of birth to build your Kundli.",
+      },
+      {
+        step: "3",
+        title: "Get your first reading instantly",
+        desc: "Ask any question - career, health, relationships, timing - and receive a precise, personalised answer.",
+      },
+    ],
+    [greeting.word]
+  );
+
   return (
     <section id="how-it-works" className="py-24 bg-card">
       <div className="container px-4">
@@ -101,27 +126,23 @@ const HowItWorks = () => {
             </h3>
           </div>
           <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
-            It's incredibly straightforward. Just <a href="https://wa.me/919821956888?text=Namaste" target="_blank" rel="noopener noreferrer" onClick={() => trackMetaEvent("Lead", { content_name: "HowItWorks WhatsApp Link" })} className="text-primary font-semibold hover:underline">send a "Namaste" to ProJyotish on WhatsApp</a>, and you're in.
+            It&apos;s incredibly straightforward. Just{" "}
+            <a
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() =>
+                trackCustomEvent("Lead", { content_name: "HowItWorks WhatsApp Link" })
+              }
+              className="text-primary font-semibold hover:underline"
+            >
+              send a &quot;{greeting.word}&quot; to ProJyotish on WhatsApp
+            </a>
+            , and you&apos;re in.
           </p>
           {/* What to expect steps */}
           <div className="space-y-4">
-            {[
-              {
-                step: "1",
-                title: "Say Namaste",
-                desc: "Tap the WhatsApp button. \"Namaste\" is pre-typed — just press Send.",
-              },
-              {
-                step: "2",
-                title: "Share your birth details",
-                desc: "We'll ask for your date, time, and place of birth to build your Kundli.",
-              },
-              {
-                step: "3",
-                title: "Get your first reading instantly",
-                desc: "Ask any question — career, health, relationships, timing — and receive a precise, personalised answer.",
-              },
-            ].map((item) => (
+            {startSteps.map((item) => (
               <div key={item.step} className="flex items-start gap-4 bg-background/60 rounded-2xl px-5 py-4">
                 <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center shrink-0 font-display font-bold text-sm">
                   {item.step}
